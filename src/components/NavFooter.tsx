@@ -22,7 +22,7 @@ export function NavFooter({
       {backHref ? (
         <Link
           href={backHref}
-          className="back-arrow group inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-[#4a90d9] to-[#1a4f8a] px-5 py-3 text-white shadow-[0_6px_0_#0a2a4a] transition-transform hover:-translate-y-0.5"
+          className="back-arrow group inline-flex items-center gap-2 rounded-full border border-[#8f6a1c]/40 bg-gradient-to-br from-[#6eb0e0] to-[#1a5f8a] px-5 py-3 text-white shadow-[0_4px_0_rgba(143,106,28,0.35),0_8px_16px_rgba(90,60,10,0.12)] transition-transform hover:-translate-y-0.5"
         >
           <span aria-hidden className="text-lg font-bold">
             ←

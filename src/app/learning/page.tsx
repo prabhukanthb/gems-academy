@@ -23,9 +23,9 @@ export default function LearningPage() {
           </p>
         </div>
         <Link href="/learning/baseline" aria-label="Baseline tests">
-          <HexBadge variant="blue" className="!text-[0.65rem] !leading-tight">
-            <span className="text-[#ffe566]">{ui.baselineTests.en}</span>
-            <span className="font-telugu mt-0.5 block text-[0.55rem] font-normal text-white/90">
+          <HexBadge variant="gold" className="!text-[0.62rem] !leading-tight">
+            <span>{ui.baselineTests.en}</span>
+            <span className="font-telugu mt-0.5 block text-[0.55rem] font-normal">
               {ui.baselineTests.te}
             </span>
           </HexBadge>
