@@ -332,36 +332,123 @@ export const faqs: { q: Bilingual; a: Bilingual }[] = [
 ];
 
 export const testimonials: {
+  id: string;
   name: Bilingual;
   role: Bilingual;
   quote: Bilingual;
+  image: string;
+  link?: { label: Bilingual; href: string };
 }[] = [
   {
-    name: { en: "Lakshmi Devi", te: "లక్ష్మీ దేవి" },
-    role: { en: "Parent · Beginner batch", te: "తల్లి · బిగినర్ బ్యాచ్" },
-    quote: {
-      en: "My daughter now greets guests in English with confidence. The Telugu support made all the difference.",
-      te: "నా కూతురు ఇప్పుడు అతిథులను నమ్మకంగా ఇంగ్లీష్‌లో పలకరిస్తుంది. తెలుగు సహాయం చాలా ఉపయోగపడింది.",
-    },
-  },
-  {
-    name: { en: "Ravi Kumar", te: "రవి కుమార్" },
+    id: "ghanta-subba-rao",
+    name: { en: "Dr. Ghanta Subba Rao", te: "డా. ఘంటా సుబ్బా రావు" },
     role: {
-      en: "IT Professional · Professional level",
-      te: "ఐటీ నిపుణుడు · ప్రొఫెషనల్ స్థాయి",
+      en: "Soft skills & skill development · Andhra Pradesh",
+      te: "సాఫ్ట్ స్కిల్స్ & నైపుణ్య అభివృద్ధి · ఆంధ్రప్రదేశ్",
     },
     quote: {
-      en: "Workplace emails and meetings became easier after the Professional track at GEMS.",
-      te: "GEMS ప్రొఫెషనల్ ట్రాక్ తర్వాత కార్యాలయ ఇమెయిల్‌లు మరియు మీటింగ్‌లు సులభమయ్యాయి.",
+      en: "Mr. Kiron Satyamurthy is a passionate and thoughtful English language Communication and soft-skills trainer who puts a lot of thought into how he presents the material and builds confidence in a learner. For over three decades he has been teaching communication skills. He passionately advocates Oracy first and Literacy next. Through smart teaching, joyful learning and his GEMS methodology he was able to train successfully over 20,000 students. We made use of his expertise in imparting soft skills to graduate students entering Information Technology at the Institute for Electronic Governance (IEG).",
+      te: "శ్రీ కిరణ్ సత్యమూర్తి గారు ఉత్సాహవంతులైన ఇంగ్లీష్ కమ్యూనికేషన్ మరియు సాఫ్ట్ స్కిల్స్ ట్రైనర్. మూడు దశాబ్దాలుగా సంభాషణ నైపుణ్యాలు బోధిస్తున్నారు. ముందు మాట్లాడటం (Oracy), తర్వాత రాత (Literacy) అని ఆయన సూచిస్తారు. GEMS పద్ధతి ద్వారా 20,000 కంటే ఎక్కువ మంది విద్యార్థులకు శిక్షణ ఇచ్చారు. IEGలో ఐటీలో చేరే గ్రాడ్యుయేట్ విద్యార్థులకు సాఫ్ట్ స్కిల్స్ బోధించడంలో ఆయన నైపుణ్యాన్ని ఉపయోగించుకున్నాము.",
+    },
+    image: "/testimonials/ghanta-subba-rao.jpg",
+  },
+  {
+    id: "sunita-gandhi",
+    name: { en: "Dr. Sunita Gandhi", te: "డా. సునీతా గాంధీ" },
+    role: {
+      en: "Director, Global Education & Training Institute (GETI)",
+      te: "డైరెక్టర్, గ్లోబల్ ఎడ్యుకేషన్ & ట్రైనింగ్ ఇన్‌స్టిట్యూట్ (GETI)",
+    },
+    quote: {
+      en: "Mr. Kiron impressed our Master Trainers and joined GETI. He trained teachers in Vaniyambadi, Tamil Nadu and our franchise schools in Pune and Mumbai on improving English communication skills. He and his children Bhavya and Ray took part in programmes at City Montessori School, Lucknow — the world’s largest school — and at our Hyderabad GETI Convention. I am impressed with his presentation skills and out-of-the-box thinking. He is dedicated to changing education so young children can enjoy learning.",
+      te: "శ్రీ కిరణ్ మా మాస్టర్ ట్రైనర్లను ఆకట్టుకొని GETIలో చేరారు. వాణియంబడి, పూణే, ముంబైలో ఉపాధ్యాయులకు ఇంగ్లీష్ కమ్యూనికేషన్ శిక్షణ ఇచ్చారు. లక్నో CMS మరియు హైదరాబాద్ GETI కాన్వెన్షన్‌లో కుటుంబంతో పాల్గొన్నారు. ఆయన ప్రెజెంటేషన్ నైపుణ్యాలు మరియు కొత్త ఆలోచనలు నన్ను ఆకట్టుకున్నాయి. పిల్లలు సంతోషంగా నేర్చుకునేలా విద్యా వ్యవస్థను మార్చాలని ఆయన కృషి చేస్తున్నారు.",
+    },
+    image: "/testimonials/sunita-gandhi-geti.jpg",
+  },
+  {
+    id: "venkataramana-reddy",
+    name: {
+      en: "Prof. Dr. C. Venkataramana Reddy",
+      te: "ప్రొఫెసర్ డా. సి. వెంకటరమణ రెడ్డి",
+    },
+    role: {
+      en: "Vice Chancellor, K. K. University, Nalanda",
+      te: "వైస్ ఛాన్సలర్, కె.కె. యూనివర్సిటీ, నలంద",
+    },
+    quote: {
+      en: "Sri Kiron Satyamurthy is an English trainer with a difference — on a mission to make Listening, Speaking, Reading and Writing a pleasure, especially for rural learners. As Founder-Principal of Vivekananda Institute of Technology and Science, Karimnagar, I invited him as a Guest Trainer for engineering students and the outcome was wonderful. His method appears close to the way we learn our mother tongue. Thank you for helping students gain a good command over English in a fun way.",
+      te: "శ్రీ కిరణ్ సత్యమూర్తి గారు విభిన్నమైన ఇంగ్లీష్ ట్రైనర్ — ముఖ్యంగా గ్రామీణ విద్యార్థులకు LSRW నైపుణ్యాలు సరదాగా నేర్పించాలని కృషి చేస్తున్నారు. కరీంనగర్‌లో ఇంజనీరింగ్ విద్యార్థులకు గెస్ట్ ట్రైనర్‌గా ఆహ్వానించగా ఫలితాలు అద్భుతంగా ఉన్నాయి. ఆయన పద్ధతి మాతృభాష నేర్చుకునే విధానానికి దగ్గరగా ఉంటుంది.",
+    },
+    image: "/testimonials/venkataramana-reddy.jpg",
+  },
+  {
+    id: "gnanakan",
+    name: { en: "Dr. Gnanakan", te: "డా. ఙ్ఞానకన్" },
+    role: {
+      en: "Educator & mentor",
+      te: "విద్యావేత్త & మార్గదర్శకులు",
+    },
+    quote: {
+      en: "Primarily a Zoology professor, Mr. Kiron left that role to structure his own style of teaching Spoken English — easily yet concretely. His experiments with children of the Banjara tribe are living proof that nothing is impossible: tribal kids communicating in fine English with correct accent and intonation. He is a Trainer of Trainers. I prayerfully wish that he continues to fine-tune the learning world with good English.",
+      te: "జంతుశాస్త్ర ప్రొఫెసర్‌గా ఉన్న శ్రీ కిరణ్, స్పోకెన్ ఇంగ్లీష్‌ను సులభంగా, స్పష్టంగా బోధించే స్వంత పద్ధతిని రూపొందించారు. బంజారా గిరిజన పిల్లలతో ఆయన ప్రయోగాలు — సరైన యాస, స్వరంతో ఇంగ్లీష్ మాట్లాడటం — అసాధ్యం అనేది లేదని నిరూపిస్తాయి. ఆయన ట్రైనర్ ఆఫ్ ట్రైనర్స్. మంచి ఇంగ్లీష్‌తో నేర్చుకునే ప్రపంచాన్ని మెరుగుపరచాలని నా ఆశీర్వాదాలు.",
+    },
+    image: "/testimonials/gnanakan.jpg",
+  },
+  {
+    id: "luder-luers",
+    name: { en: "Lüder Lüers", te: "లూడర్ లూయర్స్" },
+    role: {
+      en: "Founder Director, Kindernothilfe, Germany",
+      te: "వ్యవస్థాపక డైరెక్టర్, కిండర్‌నోత్‌హిల్ఫే, జర్మనీ",
+    },
+    quote: {
+      en: "I am indeed very happy about the amazing performance of children at BSS High School, Garla, where Mr. Kiron Satyamurthy has been working as Academic Director. The Government of Telangana should undertake a special study of the school and his teaching concepts. BSS High School could be declared a Model School. I have read his paper to the NCERT Expert Committee — ENGLISH IS BEING TAUGHT AND LEARNT IN THE WRONG WAY IN MOST OF THE PLACES IN INDIA — and I am fully convinced that HE IS RIGHT.",
+      te: "గార్లా BSS హైస్కూల్‌లో అకడమిక్ డైరెక్టర్‌గా పనిచేస్తున్న శ్రీ కిరణ్ సత్యమూర్తి గారి వద్ద పిల్లల అద్భుత ప్రదర్శన చూసి సంతోషంగా ఉన్నాను. తెలంగాణ ప్రభుత్వం ఆ పాఠశాలను మోడల్ స్కూల్‌గా ప్రకటించి మద్దతు ఇవ్వాలి. NCERTకి ఆయన సమర్పించిన పత్రం చదివాను — భారతదేశంలో చాలా చోట్ల ఇంగ్లీష్ తప్పు విధంగా నేర్పబడుతోంది అని — మరియు ఆయన సరైనవారని నేను నమ్ముతున్నాను.",
+    },
+    image: "/testimonials/luder-luers.jpg",
+  },
+  {
+    id: "prof-carol",
+    name: { en: "Prof. Carol", te: "ప్రొఫెసర్ కరోల్" },
+    role: {
+      en: "IEG JKC · Mana TV, USA",
+      te: "IEG JKC · మన టీవీ, USA",
+    },
+    quote: {
+      en: "On the Mana TV show about communication — words, tonality and body language — Prof. Carol said: “Wow, but I really like your body language… You talked about body language and you did body language.” When asked whether the topic or the body language was good, she answered: “Both.”",
+      te: "కమ్యూనికేషన్ — పదాలు, స్వరం, భాషా భావాలు — గురించి మన టీవీ కార్యక్రమంలో ప్రొఫెసర్ కరోల్: “మీ బాడీ లాంగ్వేజ్ నచ్చింది… మీరు బాడీ లాంగ్వేజ్ గురించి మాట్లాడారు మరియు చూపించారు.” అంశం మంచిదా, బాడీ లాంగ్వేజ్ మంచిదా అని అడిగితే: “రెండూ” అన్నారు.",
+    },
+    image: "/testimonials/prof-carol.jpg",
+    link: {
+      label: { en: "Watch on YouTube", te: "YouTubeలో చూడండి" },
+      href: "https://youtu.be/iO0SO7Zj6Y4",
     },
   },
   {
-    name: { en: "Sita Reddy", te: "సీతా రెడ్డి" },
-    role: { en: "Home Tutor · Earn programme", te: "హోమ్ ట్యూటర్ · ఎర్న్ ప్రోగ్రామ్" },
-    quote: {
-      en: "I recovered my course fee within months by tutoring juniors through GEMS Home Tutors.",
-      te: "GEMS హోమ్ ట్యూటర్ల ద్వారా జూనియర్లకు బోధించి కొన్ని నెలల్లోనే నా కోర్సు ఫీజు తిరిగి సంపాదించాను.",
+    id: "james-mary-pearce",
+    name: { en: "James & Mary Pearce", te: "జేమ్స్ & మేరీ పియర్స్" },
+    role: {
+      en: "GETI Master Trainers · USA",
+      te: "GETI మాస్టర్ ట్రైనర్లు · USA",
     },
+    quote: {
+      en: "We have worked for Dr. Sunita Gandhi for 8 years in India. We have closely followed Kiron’s work and are quite impressed. Kiron has dedicated his life (and family) to bringing excellent English skills to young people who would never otherwise attain this. His concepts and practices are creative and extremely useful. Kiron’s best legacy is the trail of success he leaves as he gives his best to rural India.",
+      te: "మేము భారతదేశంలో డా. సునీతా గాంధీ గారి కోసం 8 సంవత్సరాలు పనిచేశాము. కిరణ్ పనిని దగ్గరగా చూశాము — చాలా ఆకట్టుకుంది. లేకపోతే ఈ నైపుణ్యాలు రాని యువతకు అద్భుతమైన ఇంగ్లీష్ తీసుకురావడానికి ఆయన జీవితాన్ని (కుటుంబాన్ని కూడా) అంకితం చేశారు. గ్రామీణ భారతదేశానికి ఆయన ఇచ్చే విజయ మార్గమే ఆయన ఉత్తమ వారసత్వం.",
+    },
+    image: "/testimonials/james-mary-pearce.jpg",
+  },
+  {
+    id: "judy-thompson",
+    name: { en: "Prof. Judy Thompson", te: "ప్రొఫెసర్ జూడీ థాంప్సన్" },
+    role: {
+      en: "Language Coach, Author & Innovator",
+      te: "లాంగ్వేజ్ కోచ్, రచయిత & ఇన్నోవేటర్",
+    },
+    quote: {
+      en: "Hi Kiron — we are not alone. Last year I organised a meeting in England for radical English teachers from all over the world. Each of us had developed simple systems for teaching different aspects of English. The Radical English Summit was so successful that all participants decided to go forward together to support change in the way English is being taught. Stay in touch. — Judy Thompson, July 27, 2013",
+      te: "హాయ్ కిరణ్ — మనం ఒంటరిగా లేము. ప్రపంచవ్యాప్తంగా రాడికల్ ఇంగ్లీష్ ఉపాధ్యాయుల సమావేశాన్ని ఇంగ్లాండ్‌లో నిర్వహించాను. ఇంగ్లీష్ బోధనలో మార్పుకు కలిసి ముందుకు వెళ్లాలని అందరూ నిర్ణయించుకున్నారు. సంప్రదింపులో ఉండండి. — జూడీ థాంప్సన్, జూలై 27, 2013",
+    },
+    image: "/testimonials/judy-thompson.jpg",
   },
 ];
 
