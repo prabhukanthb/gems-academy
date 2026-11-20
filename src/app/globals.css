@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+:root {
+  --background: #eef4f8;
+  --foreground: #0d2438;
+  --brand-blue: #1a4f8a;
+  --brand-deep: #0d355f;
+  --brand-green: #1e7a3a;
+  --brand-red: #b01e2e;
+  --mist: #d6e6f2;
+  --paper: #f7fbfc;
+  --font-brand: var(--font-brand);
+  --font-display: var(--font-display);
+  --font-script: var(--font-script);
+  --font-body: var(--font-body);
+  --font-telugu: var(--font-telugu);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-body);
+  --font-brand: var(--font-brand);
+  --font-display: var(--font-display);
+  --font-script: var(--font-script);
+  --font-telugu: var(--font-telugu);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+.font-brand {
+  font-family: var(--font-brand), Georgia, serif;
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+.font-script {
+  font-family: var(--font-script), cursive;
+}
+
+.font-telugu {
+  font-family: var(--font-telugu), "Noto Sans Telugu", sans-serif;
+}
+
+.atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, #b8d4ec 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 80%, #c5e8d4 0%, transparent 45%),
+    radial-gradient(ellipse 50% 35% at 0% 70%, #f0d8c0 0%, transparent 40%),
+    linear-gradient(165deg, #eef4f8 0%, #f7fbfc 40%, #e8f0f6 100%);
+}
+
+.hex-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath fill='none' stroke='%230d355f' stroke-width='1' d='M28 0l28 16v32L28 64 0 48V16zM28 64l28 16v32L28 128 0 112V80z'/%3E%3C/svg%3E");
+  background-size: 56px 100px;
+  pointer-events: none;
+}
+
+.hex-btn {
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+@keyframes float-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulse-hint {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@keyframes shine-sweep {
+  0% {
+    transform: translateX(-120%) rotate(12deg);
+  }
+  100% {
+    transform: translateX(120%) rotate(12deg);
+  }
+}
+
+.anim-enter {
+  animation: float-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.anim-enter-delay-1 {
+  animation: float-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+.anim-enter-delay-2 {
+  animation: float-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both;
+}
+
+.anim-enter-delay-3 {
+  animation: float-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.36s both;
+}
+
+.anim-hint {
+  animation: pulse-hint 1.8s ease-in-out infinite;
+}
+
+.landing-hex {
+  position: relative;
+  overflow: hidden;
+}
+
+.landing-hex::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 60%
+  );
+  animation: shine-sweep 3.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.ribbon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.4rem;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  clip-path: polygon(8% 0, 92% 0, 100% 50%, 92% 100%, 8% 100%, 0 50%);
+  transition: transform 0.25s ease;
+}
+
+.ribbon:hover {
+  transform: translateY(-2px);
+}
+
+.topic-list a {
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.topic-list a:hover {
+  color: var(--brand-blue);
+  transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-enter,
+  .anim-enter-delay-1,
+  .anim-enter-delay-2,
+  .anim-enter-delay-3,
+  .anim-hint,
+  .landing-hex::after {
+    animation: none;
+  }
+}
