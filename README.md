@@ -4,12 +4,13 @@ Bilingual English–Telugu website for GEMS Academy, built from the provided nav
 
 ## What it does
 
-- Welcome landing with a hexagonal **Welcome to GEMS** button
-- Hub to choose **Learning @ GEMS** or **Earning @ GEMS**
+- Blueprint-style landing: academy crest, glossy blue **Welcome** honeycomb cell, red gold CTA pill
+- Hub path chooser: **Learning @ GEMS**, **Earning @ GEMS**, **Home Screen**
 - Learning path: course levels (Toddler → Professional), sample topics, handwriting, family English, fees, and pay
-- Earning path: tuition centre, home tutors, earn-back fee, work with GEMS
-- Resource pages: concept cards/videos, testimonials, FAQs, demos, comments, contact
-- Every screen shows **English and Telugu** together; hexagon buttons link between pages
+- Earning path: elongated honeycomb bars for tuition, home tutors, earn-back fee, work with GEMS
+- Resources honeycomb grid: track record, concept cards/videos, testimonials, FAQs, demos, comments, contact
+- Every screen shows **English and Telugu** together; honeycomb buttons link between pages
+- Colour samples at `/samples` (default theme: **Blueprint Comb**)
 
 ## Run locally
 

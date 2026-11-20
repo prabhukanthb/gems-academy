@@ -1,4 +1,5 @@
 export type ThemeId =
+  | "blueprint"
   | "current"
   | "pure-honey"
   | "sapphire"
@@ -15,6 +16,54 @@ export type Theme = {
 };
 
 export const themes: Theme[] = [
+  {
+    id: "blueprint",
+    name: { en: "Blueprint Comb", te: "బ్లూప్రింట్ కాంబ్" },
+    blurb: {
+      en: "Light sky honeycomb with glossy gold rims — matches the design boards.",
+      te: "మెరిసే బంగారు అంచులతో లేత నీలి తేనెగూడు — డిజైన్ బోర్డులకు సరిపోతుంది.",
+    },
+    vars: {
+      "--background": "#b8d8f0",
+      "--foreground": "#0d2840",
+      "--brand-deep": "#0d3f68",
+      "--brand-blue": "#1560b0",
+      "--honey": "#f0b020",
+      "--honey-deep": "#c48810",
+      "--wax": "#d8eaf8",
+      "--wall": "#8a6010",
+      "--wall-strong": "#6a4808",
+      "--welcome": "#0d3f68",
+      "--hint": "#0d3f68",
+      "--cell-blue-0": "#4a9fe8",
+      "--cell-blue-1": "#1560b0",
+      "--cell-blue-2": "#0a3a78",
+      "--cell-green-0": "#4ecf6a",
+      "--cell-green-1": "#1a9a38",
+      "--cell-green-2": "#0a6420",
+      "--cell-red-0": "#e84848",
+      "--cell-red-1": "#c01018",
+      "--cell-red-2": "#780808",
+      "--cell-orange-0": "#ff9a3c",
+      "--cell-orange-1": "#e06810",
+      "--cell-orange-2": "#a04008",
+      "--cell-purple-0": "#b070e0",
+      "--cell-purple-1": "#7030b0",
+      "--cell-purple-2": "#401868",
+      "--cell-maroon-0": "#e05070",
+      "--cell-maroon-1": "#a01840",
+      "--cell-maroon-2": "#601028",
+      "--cell-gold-0": "#ffe060",
+      "--cell-gold-1": "#f0b020",
+      "--cell-gold-2": "#b07808",
+      "--atm-1": "#9ec8e8",
+      "--atm-2": "#c5dff2",
+      "--atm-3": "#a8d4ec",
+      "--atm-base-0": "#d4ebf8",
+      "--atm-base-1": "#b8d8f0",
+      "--atm-base-2": "#a0cce8",
+    },
+  },
   {
     id: "current",
     name: { en: "Honey + Sky", te: "తేనె + ఆకాశం" },

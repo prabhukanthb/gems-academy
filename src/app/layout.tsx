@@ -53,7 +53,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      data-theme="sunset"
+      data-theme="blueprint"
       className={`${brand.variable} ${display.variable} ${script.variable} ${body.variable} ${telugu.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">

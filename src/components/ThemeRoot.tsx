@@ -13,10 +13,11 @@ export function ThemeRoot() {
 
   useEffect(() => {
     const stored = window.localStorage.getItem(STORAGE_KEY);
+    // Prefer query, else keep a saved sample theme, else Blueprint Comb.
     const id =
       (fromQuery && isThemeId(fromQuery) && fromQuery) ||
-      (stored && isThemeId(stored) && stored) ||
-      "sunset";
+      (stored && isThemeId(stored) && stored !== "sunset" && stored) ||
+      "blueprint";
     applyThemeId(id);
     if (fromQuery && isThemeId(fromQuery)) {
       window.localStorage.setItem(STORAGE_KEY, fromQuery);

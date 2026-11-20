@@ -1,0 +1,255 @@
+import Link from "next/link";
+import type { ReactNode } from "react";
+
+export type GlossVariant =
+  | "blue"
+  | "green"
+  | "red"
+  | "orange"
+  | "purple"
+  | "maroon"
+  | "pink"
+  | "gold";
+
+const fills: Record<GlossVariant, { a: string; b: string; c: string }> = {
+  blue: { a: "#4a9fe8", b: "#1560b0", c: "#0a3a78" },
+  green: { a: "#4ecf6a", b: "#1a9a38", c: "#0a6420" },
+  red: { a: "#e84848", b: "#c01018", c: "#780808" },
+  orange: { a: "#ff9a3c", b: "#e06810", c: "#a04008" },
+  purple: { a: "#b070e0", b: "#7030b0", c: "#401868" },
+  maroon: { a: "#e05070", b: "#a01840", c: "#601028" },
+  pink: { a: "#f070a0", b: "#d03068", c: "#901040" },
+  gold: { a: "#ffe060", b: "#f0b020", c: "#b07808" },
+};
+
+const VIEW = "0 0 100 115.47";
+const HEX =
+  "M50 1.2 L96.2 28.9 L96.2 86.6 L50 114.3 L3.8 86.6 L3.8 28.9 Z";
+const INNER =
+  "M50 9.5 L88.5 32.5 L88.5 83 L50 106 L11.5 83 L11.5 32.5 Z";
+
+type Size = "sm" | "md" | "lg" | "xl";
+
+const sizes: Record<Size, string> = {
+  sm: "w-[8.5rem] h-[9.8rem]",
+  md: "w-[11rem] h-[12.7rem]",
+  lg: "w-[14rem] h-[16.16rem]",
+  xl: "w-[16.5rem] h-[19.05rem]",
+};
+
+type Props = {
+  href: string;
+  variant?: GlossVariant;
+  size?: Size;
+  icon?: ReactNode;
+  titleEn: string;
+  titleAccent?: string;
+  titleTe: string;
+  className?: string;
+  ariaLabel?: string;
+  highlightAccent?: boolean;
+};
+
+/** Glossy blueprint-style honeycomb cell with thick gold rim. */
+export function GlossHex({
+  href,
+  variant = "blue",
+  size = "md",
+  icon,
+  titleEn,
+  titleAccent,
+  titleTe,
+  className = "",
+  ariaLabel,
+  highlightAccent = true,
+}: Props) {
+  const f = fills[variant];
+  const uid = `gh-${variant}-${titleEn.replace(/\W+/g, "").slice(0, 12)}`;
+
+  return (
+    <Link
+      href={href}
+      aria-label={ariaLabel ?? `${titleEn} ${titleTe}`}
+      className={`group relative inline-flex flex-col items-center justify-center text-center select-none transition-transform duration-300 hover:-translate-y-1.5 hover:scale-[1.03] active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f0b020] ${sizes[size]} ${className}`}
+    >
+      <svg
+        className="absolute inset-0 h-full w-full drop-shadow-[0_10px_18px_rgba(20,40,80,0.28)]"
+        viewBox={VIEW}
+        preserveAspectRatio="xMidYMid meet"
+        aria-hidden
+      >
+        <defs>
+          <linearGradient id={`${uid}-fill`} x1="0.2" y1="0" x2="0.85" y2="1">
+            <stop offset="0%" stopColor={f.a} />
+            <stop offset="48%" stopColor={f.b} />
+            <stop offset="100%" stopColor={f.c} />
+          </linearGradient>
+          <linearGradient id={`${uid}-gold`} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#fff6a8" />
+            <stop offset="35%" stopColor="#ffd24a" />
+            <stop offset="70%" stopColor="#e0a010" />
+            <stop offset="100%" stopColor="#b07808" />
+          </linearGradient>
+          <radialGradient id={`${uid}-shine`} cx="50%" cy="18%" r="55%">
+            <stop offset="0%" stopColor="rgba(255,255,255,0.55)" />
+            <stop offset="55%" stopColor="rgba(255,255,255,0)" />
+          </radialGradient>
+        </defs>
+        {/* Outer gold rim */}
+        <path
+          d={HEX}
+          fill={`url(#${uid}-gold)`}
+          stroke="#8a6010"
+          strokeWidth="1.1"
+          strokeLinejoin="miter"
+          strokeMiterlimit={8}
+        />
+        {/* Inner colored face */}
+        <path
+          d={INNER}
+          fill={`url(#${uid}-fill)`}
+          stroke="rgba(255,236,160,0.55)"
+          strokeWidth="0.8"
+          strokeLinejoin="miter"
+          strokeMiterlimit={8}
+        />
+        <path d={INNER} fill={`url(#${uid}-shine)`} />
+        {/* Gloss flares */}
+        <ellipse cx="50" cy="14" rx="7" ry="3.2" fill="rgba(255,255,255,0.85)" />
+        <ellipse cx="50" cy="102" rx="5.5" ry="2.4" fill="rgba(255,255,255,0.45)" />
+      </svg>
+
+      <span className="relative z-10 flex w-[78%] flex-col items-center justify-center gap-1 px-1 pt-1">
+        {icon ? (
+          <span className="mb-0.5 flex h-12 w-12 items-center justify-center drop-shadow-[0_2px_6px_rgba(0,0,0,0.25)] sm:h-14 sm:w-14">
+            {icon}
+          </span>
+        ) : null}
+        <span className="font-display text-[0.95rem] font-extrabold leading-tight tracking-wide text-white sm:text-[1.05rem]">
+          {titleAccent && highlightAccent ? (
+            <>
+              {titleEn}{" "}
+              <span className="text-[#ffe84a]">{titleAccent}</span>
+            </>
+          ) : (
+            titleEn
+          )}
+        </span>
+        <span className="font-telugu text-[0.7rem] font-bold leading-snug text-[#fff6b0] sm:text-[0.78rem]">
+          {titleTe}
+        </span>
+      </span>
+    </Link>
+  );
+}
+
+/** Elongated horizontal honeycomb bar (earning menu style). */
+export function WideHexBar({
+  href,
+  variant = "blue",
+  icon,
+  line1,
+  line1Accent,
+  line2Te,
+  ariaLabel,
+}: {
+  href: string;
+  variant?: GlossVariant;
+  icon?: ReactNode;
+  line1: string;
+  line1Accent?: string;
+  line2Te: string;
+  ariaLabel?: string;
+}) {
+  const f = fills[variant];
+  const uid = `wh-${variant}-${line1.replace(/\W+/g, "").slice(0, 10)}`;
+  // Flat-top elongated hex
+  const W = 320;
+  const H = 92;
+  const tip = 28;
+  const d = `M${tip} 2 L${W - tip} 2 L${W - 2} ${H / 2} L${W - tip} ${H - 2} L${tip} ${H - 2} L2 ${H / 2} Z`;
+  const di = `M${tip + 6} 10 L${W - tip - 6} 10 L${W - 10} ${H / 2} L${W - tip - 6} ${H - 10} L${tip + 6} ${H - 10} L10 ${H / 2} Z`;
+
+  return (
+    <Link
+      href={href}
+      aria-label={ariaLabel ?? `${line1} ${line2Te}`}
+      className="group relative mx-auto flex h-[5.75rem] w-full max-w-[22rem] items-center transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.015] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f0b020] sm:h-[6.25rem] sm:max-w-[26rem]"
+    >
+      <svg
+        className="absolute inset-0 h-full w-full drop-shadow-[0_8px_16px_rgba(20,40,80,0.28)]"
+        viewBox={`0 0 ${W} ${H}`}
+        preserveAspectRatio="none"
+        aria-hidden
+      >
+        <defs>
+          <linearGradient id={`${uid}-fill`} x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor={f.a} />
+            <stop offset="50%" stopColor={f.b} />
+            <stop offset="100%" stopColor={f.c} />
+          </linearGradient>
+          <linearGradient id={`${uid}-gold`} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#fff6a8" />
+            <stop offset="40%" stopColor="#ffd24a" />
+            <stop offset="100%" stopColor="#b07808" />
+          </linearGradient>
+        </defs>
+        <path d={d} fill={`url(#${uid}-gold)`} stroke="#8a6010" strokeWidth="1.4" />
+        <path d={di} fill={`url(#${uid}-fill)`} />
+        <ellipse cx={W / 2} cy="12" rx="28" ry="5" fill="rgba(255,255,255,0.35)" />
+      </svg>
+      <span className="relative z-10 flex w-full items-center gap-3 px-8 sm:gap-4 sm:px-10">
+        {icon ? (
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center drop-shadow sm:h-14 sm:w-14">
+            {icon}
+          </span>
+        ) : null}
+        <span className="min-w-0 text-left">
+          <span className="block font-display text-base font-extrabold leading-tight tracking-wide text-white sm:text-lg">
+            {line1Accent ? (
+              <>
+                {line1}{" "}
+                <span className="text-[#ffe84a]">{line1Accent}</span>
+              </>
+            ) : (
+              line1
+            )}
+          </span>
+          <span className="font-telugu mt-0.5 block text-sm font-bold text-white/95">
+            {line2Te}
+          </span>
+        </span>
+      </span>
+    </Link>
+  );
+}
+
+export function PathBanner({
+  en,
+  te,
+}: {
+  en: string;
+  te: string;
+}) {
+  return (
+    <div className="relative mx-auto w-full max-w-sm">
+      <div
+        className="relative overflow-hidden rounded-full px-6 py-3 text-center shadow-[0_8px_20px_rgba(20,40,80,0.25)]"
+        style={{
+          background:
+            "linear-gradient(180deg, #3a8fd4 0%, #1560b0 45%, #0a3a78 100%)",
+          border: "3.5px solid #f0b020",
+          boxShadow:
+            "0 0 0 1.5px #8a6010, 0 8px 20px rgba(20,40,80,0.25), inset 0 2px 0 rgba(255,255,255,0.35)",
+        }}
+      >
+        <p className="font-display text-xl font-extrabold tracking-wide text-white sm:text-2xl">
+          {en}
+        </p>
+        <p className="font-telugu mt-0.5 text-sm font-bold text-[#ffe84a] sm:text-base">
+          {te}
+        </p>
+      </div>
+    </div>
+  );
+}

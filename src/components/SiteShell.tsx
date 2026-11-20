@@ -38,12 +38,20 @@ export function SiteShell({
               </span>
             </Link>
             <div className="flex flex-col items-end gap-1 text-right text-xs sm:text-sm">
-              <Link
-                href="/samples"
-                className="font-semibold text-[var(--hint)] underline-offset-2 hover:underline"
-              >
-                Colour samples
-              </Link>
+              <div className="flex flex-col items-end gap-0.5">
+                <Link
+                  href="/resources"
+                  className="font-semibold text-[var(--hint)] underline-offset-2 hover:underline"
+                >
+                  Resources
+                </Link>
+                <Link
+                  href="/samples"
+                  className="text-[0.7rem] font-semibold text-[var(--hint)]/80 underline-offset-2 hover:underline"
+                >
+                  Colour samples
+                </Link>
+              </div>
               <p className="hidden text-[var(--hint)] sm:block">
                 <span className="block font-medium">{brand.domain}</span>
                 <span className="font-telugu opacity-80">

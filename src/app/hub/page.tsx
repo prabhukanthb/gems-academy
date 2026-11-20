@@ -1,7 +1,10 @@
 import { SiteShell } from "@/components/SiteShell";
-import { HexButton } from "@/components/HexButton";
-import { HoneycombArt } from "@/components/HoneycombArt";
-import { Bilingual } from "@/components/Bilingual";
+import { GlossHex, PathBanner } from "@/components/GlossHex";
+import {
+  IconBookCap,
+  IconHome,
+  IconRupeeStack,
+} from "@/components/MenuIcons";
 import { ui } from "@/lib/content";
 
 export const metadata = {
@@ -10,67 +13,45 @@ export const metadata = {
 
 export default function HubPage() {
   return (
-    <SiteShell>
-      <div className="relative flex flex-1 flex-col items-center py-4">
-        <div className="pointer-events-none absolute -top-6 right-0 w-48 opacity-50 sm:w-64">
-          <HoneycombArt density="soft" className="h-auto w-full" />
+    <SiteShell showBrand={false}>
+      <div className="relative flex flex-1 flex-col items-center gap-6 py-4 sm:gap-8">
+        <div className="anim-enter w-full">
+          <PathBanner en="Choose your path" te="మీ మార్గాన్ని ఎంచుకోండి" />
         </div>
 
-        <h1 className="anim-enter relative z-10 text-center font-display text-2xl font-semibold text-[#0d3f68] sm:text-3xl">
-          Choose your path
-        </h1>
-        <p className="anim-enter font-telugu relative z-10 mt-1 text-center text-[#5a4a28]">
-          మీ మార్గాన్ని ఎంచుకోండి
-        </p>
-        <p className="anim-enter-delay-1 relative z-10 mt-2 max-w-sm text-center text-sm text-[#6a5a38]">
-          A honeycomb of learning and earning — tap a cell to continue.
-          <span className="font-telugu mt-1 block">
-            నేర్చుకోవడం మరియు సంపాదన కలయిక — కొనసాగడానికి ఒక గూడును తాకండి.
-          </span>
-        </p>
-
-        <div className="anim-enter-delay-2 honeycomb-cluster relative z-10 mt-10">
-          <HexButton
+        <div className="anim-enter-delay-1 flex flex-col items-center gap-5 sm:gap-6">
+          <GlossHex
             href="/learning"
             variant="blue"
             size="xl"
+            icon={<IconBookCap />}
+            titleEn="LEARNING @"
+            titleAccent="GEMS"
+            titleTe={ui.learning.te}
             ariaLabel="Learning at GEMS"
-            className="cluster-learn"
-          >
-            <Bilingual
-              text={ui.learning}
-              enClassName="text-base sm:text-lg"
-              teClassName="text-sm font-normal"
-            />
-          </HexButton>
+          />
 
-          <HexButton
+          <GlossHex
             href="/earning"
-            variant="maroon"
+            variant="red"
             size="xl"
+            icon={<IconRupeeStack />}
+            titleEn="EARNING @"
+            titleAccent="GEMS"
+            titleTe={ui.earning.te}
             ariaLabel="Earning at GEMS"
-            className="cluster-earn"
-          >
-            <Bilingual
-              text={ui.earning}
-              enClassName="text-base sm:text-lg"
-              teClassName="text-sm font-normal"
-            />
-          </HexButton>
+          />
 
-          <HexButton
+          <GlossHex
             href="/"
             variant="green"
-            size="sm"
+            size="md"
+            icon={<IconHome className="h-10 w-10" />}
+            titleEn="HOME"
+            titleAccent="SCREEN"
+            titleTe={ui.home.te}
             ariaLabel="Home screen"
-            className="cluster-home"
-          >
-            <Bilingual
-              text={ui.home}
-              enClassName="text-[0.75rem]"
-              teClassName="text-[0.65rem] font-normal"
-            />
-          </HexButton>
+          />
         </div>
       </div>
     </SiteShell>
