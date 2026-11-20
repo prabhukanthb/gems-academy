@@ -18,7 +18,7 @@ export function ThemeRoot({ children }: { children: React.ReactNode }) {
     const id =
       (fromQuery && isThemeId(fromQuery) && fromQuery) ||
       (stored && isThemeId(stored) && stored) ||
-      "current";
+      "sunset";
     const theme = getTheme(id);
     const root = document.documentElement;
     root.setAttribute("data-theme", theme.id);
