@@ -58,19 +58,19 @@ export default function LandingPage() {
               </svg>
 
               {/* Text sits in the honey “cell” mid-band so Welcome fits the comb */}
-              <span className="relative z-10 flex w-[78%] flex-col items-center justify-center gap-0.5 pt-1">
-                <span className="font-display text-[1.85rem] font-bold leading-[1.05] tracking-wide text-[#c4922a] sm:text-[2.15rem]">
+              <span className="relative z-10 flex w-[78%] flex-col items-center justify-center gap-1 pt-2">
+                <span className="font-display text-[2rem] font-extrabold leading-[1.05] tracking-wide text-[#7a5210] [text-shadow:0_1px_0_rgba(255,233,168,0.65)] sm:text-[2.35rem]">
                   {ui.welcome.en}
                 </span>
-                <span className="flex items-center gap-2 text-[0.72rem] font-bold uppercase tracking-[0.2em] text-[#d4a017]">
-                  <span className="h-px w-5 bg-[#e0a830]/80" aria-hidden />
+                <span className="flex items-center gap-2 text-[0.75rem] font-extrabold uppercase tracking-[0.2em] text-[#8f6a1c]">
+                  <span className="h-px w-5 bg-[#8f6a1c]/70" aria-hidden />
                   {ui.to.en}
-                  <span className="h-px w-5 bg-[#e0a830]/80" aria-hidden />
+                  <span className="h-px w-5 bg-[#8f6a1c]/70" aria-hidden />
                 </span>
-                <span className="font-brand text-[2.35rem] font-bold leading-none tracking-wide text-[#0d3f68] sm:text-[2.75rem]">
+                <span className="font-brand text-[2.45rem] font-extrabold leading-none tracking-wide text-[#0d3f68] sm:text-[2.85rem]">
                   GEMS
                 </span>
-                <span className="font-telugu mt-2 text-[0.95rem] font-semibold leading-snug text-[#a07018] sm:text-base">
+                <span className="font-telugu mt-2 text-[1rem] font-bold leading-snug text-[#6b4a10] sm:text-[1.05rem]">
                   GEMS కి స్వాగతం!
                 </span>
               </span>
@@ -85,10 +85,10 @@ export default function LandingPage() {
               <BumbleBee />
             </span>
             <div className="text-left">
-              <p className="font-display text-base font-bold text-[#c4922a] sm:text-lg">
+              <p className="font-display text-base font-extrabold text-[#8f6a1c] sm:text-lg">
                 {ui.clickHint.en}
               </p>
-              <p className="font-telugu text-sm font-semibold text-[#a07018]">
+              <p className="font-telugu text-sm font-bold text-[#6b4a10]">
                 {ui.clickHint.te}
               </p>
             </div>
