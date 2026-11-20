@@ -12,13 +12,13 @@ export default function LandingPage() {
         </div>
 
         <div className="relative z-10 flex flex-col items-center">
-          <p className="anim-enter font-brand text-5xl font-bold tracking-tight text-[#0d3f68] sm:text-6xl">
+          <p className="anim-enter font-brand text-5xl font-bold tracking-tight text-[var(--brand-deep)] sm:text-6xl">
             GEMS
           </p>
-          <p className="anim-enter-delay-1 mt-1 font-display text-base font-semibold text-[#5a4a28] sm:text-lg">
+          <p className="anim-enter-delay-1 mt-1 font-display text-base font-semibold text-[var(--honey-deep)] sm:text-lg">
             Academy · {brand.domain}
           </p>
-          <p className="anim-enter-delay-1 font-telugu mt-1 text-sm font-medium text-[#6a5a38]">
+          <p className="anim-enter-delay-1 font-telugu mt-1 text-sm font-medium text-[var(--hint)]">
             {brand.tagline.te}
           </p>
 
@@ -37,7 +37,7 @@ export default function LandingPage() {
                 <path
                   d="M50 0.75 L96.56 28.67 L96.56 86.8 L50 114.72 L3.44 86.8 L3.44 28.67 Z"
                   fill="url(#cell-gold)"
-                  stroke="#5a4010"
+                  stroke="var(--wall-strong)"
                   strokeWidth="1.9"
                   strokeLinejoin="miter"
                   strokeMiterlimit={8}
@@ -57,18 +57,18 @@ export default function LandingPage() {
 
               {/* Text sits in the honey “cell” mid-band so Welcome fits the comb */}
               <span className="relative z-10 flex w-[78%] flex-col items-center justify-center gap-1 pt-2">
-                <span className="font-display text-[2rem] font-extrabold leading-[1.05] tracking-wide text-[#7a5210] [text-shadow:0_1px_0_rgba(255,233,168,0.65)] sm:text-[2.35rem]">
+                <span className="font-display text-[2rem] font-extrabold leading-[1.05] tracking-wide text-[var(--welcome)] [text-shadow:0_1px_0_rgba(255,233,168,0.65)] sm:text-[2.35rem]">
                   {ui.welcome.en}
                 </span>
-                <span className="flex items-center gap-2 text-[0.75rem] font-extrabold uppercase tracking-[0.2em] text-[#8f6a1c]">
-                  <span className="h-px w-5 bg-[#8f6a1c]/70" aria-hidden />
+                <span className="flex items-center gap-2 text-[0.75rem] font-extrabold uppercase tracking-[0.2em] text-[var(--honey-deep)]">
+                  <span className="h-px w-5 bg-[var(--honey-deep)]/70" aria-hidden />
                   {ui.to.en}
-                  <span className="h-px w-5 bg-[#8f6a1c]/70" aria-hidden />
+                  <span className="h-px w-5 bg-[var(--honey-deep)]/70" aria-hidden />
                 </span>
-                <span className="font-brand text-[2.45rem] font-extrabold leading-none tracking-wide text-[#0d3f68] sm:text-[2.85rem]">
+                <span className="font-brand text-[2.45rem] font-extrabold leading-none tracking-wide text-[var(--brand-deep)] sm:text-[2.85rem]">
                   GEMS
                 </span>
-                <span className="font-telugu mt-2 text-[1rem] font-bold leading-snug text-[#6b4a10] sm:text-[1.05rem]">
+                <span className="font-telugu mt-2 text-[1rem] font-bold leading-snug text-[var(--wall)] sm:text-[1.05rem]">
                   GEMS కి స్వాగతం!
                 </span>
               </span>
@@ -76,17 +76,24 @@ export default function LandingPage() {
           </div>
 
           <Link
+            href="/samples"
+            className="anim-enter-delay-3 relative z-10 mt-6 text-sm font-bold text-[var(--hint)] underline-offset-2 hover:underline"
+          >
+            Colour samples · రంగు నమూనాలు
+          </Link>
+
+          <Link
             href="/hub"
-            className="anim-enter-delay-3 group relative z-10 mt-8 flex items-center gap-3 rounded-2xl px-2 py-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#c4922a]"
+            className="group relative z-10 mt-4 flex items-center gap-3 rounded-2xl px-2 py-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--honey)]"
           >
             <span className="bee-buzz inline-flex shrink-0">
               <BumbleBee />
             </span>
             <div className="text-left">
-              <p className="font-display text-base font-extrabold text-[#8f6a1c] sm:text-lg">
+              <p className="font-display text-base font-extrabold text-[var(--hint)] sm:text-lg">
                 {ui.clickHint.en}
               </p>
-              <p className="font-telugu text-sm font-bold text-[#6b4a10]">
+              <p className="font-telugu text-sm font-bold text-[var(--wall)]">
                 {ui.clickHint.te}
               </p>
             </div>

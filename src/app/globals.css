@@ -10,7 +10,38 @@
   --honey: #e0a830;
   --honey-deep: #8f6a1c;
   --wax: #ffe9a8;
+  --wall: #6b4a10;
+  --wall-strong: #5a4010;
+  --welcome: #7a5210;
+  --hint: #8f6a1c;
   --sky-mist: #d8eaf5;
+  --cell-blue-0: #6eb0e0;
+  --cell-blue-1: #2a6fa8;
+  --cell-blue-2: #0d3f68;
+  --cell-green-0: #7dcc8e;
+  --cell-green-1: #2f8f4a;
+  --cell-green-2: #145c2c;
+  --cell-red-0: #e87868;
+  --cell-red-1: #b83232;
+  --cell-red-2: #6e1418;
+  --cell-orange-0: #f0b050;
+  --cell-orange-1: #d07820;
+  --cell-orange-2: #8a4810;
+  --cell-purple-0: #c090d8;
+  --cell-purple-1: #6e3a98;
+  --cell-purple-2: #3a1860;
+  --cell-maroon-0: #d07088;
+  --cell-maroon-1: #8a2848;
+  --cell-maroon-2: #4a1028;
+  --cell-gold-0: #ffe08a;
+  --cell-gold-1: #e0a830;
+  --cell-gold-2: #a07010;
+  --atm-1: #ffe9a8;
+  --atm-2: #b8dce8;
+  --atm-3: #c8e8c0;
+  --atm-base-0: #f7f3e8;
+  --atm-base-1: #eef5f8;
+  --atm-base-2: #e6f0e8;
   --font-brand: var(--font-brand);
   --font-display: var(--font-display);
   --font-script: var(--font-script);
@@ -65,10 +96,15 @@ body {
   inset: 0;
   z-index: 0;
   background:
-    radial-gradient(ellipse 70% 45% at 50% -5%, #ffe9a8 0%, transparent 55%),
-    radial-gradient(ellipse 50% 40% at 100% 90%, #b8dce8 0%, transparent 50%),
-    radial-gradient(ellipse 45% 35% at 0% 80%, #c8e8c0 0%, transparent 45%),
-    linear-gradient(168deg, #f7f3e8 0%, #eef5f8 48%, #e6f0e8 100%);
+    radial-gradient(ellipse 70% 45% at 50% -5%, var(--atm-1) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 100% 90%, var(--atm-2) 0%, transparent 50%),
+    radial-gradient(ellipse 45% 35% at 0% 80%, var(--atm-3) 0%, transparent 45%),
+    linear-gradient(
+      168deg,
+      var(--atm-base-0) 0%,
+      var(--atm-base-1) 48%,
+      var(--atm-base-2) 100%
+    );
 }
 
 .hex-grid {

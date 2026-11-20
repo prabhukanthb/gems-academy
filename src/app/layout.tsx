@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import {
   Cormorant_Garamond,
   Fraunces,
@@ -6,6 +7,7 @@ import {
   Noto_Sans_Telugu,
   Outfit,
 } from "next/font/google";
+import { ThemeRoot } from "@/components/ThemeRoot";
 import "./globals.css";
 
 const brand = Cormorant_Garamond({
@@ -53,7 +55,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${brand.variable} ${display.variable} ${script.variable} ${body.variable} ${telugu.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+      <body className="min-h-full flex flex-col font-sans">
+        <Suspense fallback={null}>
+          <ThemeRoot>{children}</ThemeRoot>
+        </Suspense>
+      </body>
     </html>
   );
 }

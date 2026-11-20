@@ -1,4 +1,4 @@
-/** Shared SVG paint servers for honeycomb cells — mount once in the layout. */
+/** Shared SVG paint servers — stop colors come from theme CSS variables. */
 export function HoneycombDefs() {
   return (
     <svg
@@ -10,39 +10,39 @@ export function HoneycombDefs() {
     >
       <defs>
         <linearGradient id="cell-blue" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#6eb0e0" />
-          <stop offset="45%" stopColor="#2a6fa8" />
-          <stop offset="100%" stopColor="#0d3f68" />
+          <stop offset="0%" stopColor="var(--cell-blue-0)" />
+          <stop offset="45%" stopColor="var(--cell-blue-1)" />
+          <stop offset="100%" stopColor="var(--cell-blue-2)" />
         </linearGradient>
         <linearGradient id="cell-green" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#7dcc8e" />
-          <stop offset="45%" stopColor="#2f8f4a" />
-          <stop offset="100%" stopColor="#145c2c" />
+          <stop offset="0%" stopColor="var(--cell-green-0)" />
+          <stop offset="45%" stopColor="var(--cell-green-1)" />
+          <stop offset="100%" stopColor="var(--cell-green-2)" />
         </linearGradient>
         <linearGradient id="cell-red" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#e87868" />
-          <stop offset="45%" stopColor="#b83232" />
-          <stop offset="100%" stopColor="#6e1418" />
+          <stop offset="0%" stopColor="var(--cell-red-0)" />
+          <stop offset="45%" stopColor="var(--cell-red-1)" />
+          <stop offset="100%" stopColor="var(--cell-red-2)" />
         </linearGradient>
         <linearGradient id="cell-orange" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#f0b050" />
-          <stop offset="45%" stopColor="#d07820" />
-          <stop offset="100%" stopColor="#8a4810" />
+          <stop offset="0%" stopColor="var(--cell-orange-0)" />
+          <stop offset="45%" stopColor="var(--cell-orange-1)" />
+          <stop offset="100%" stopColor="var(--cell-orange-2)" />
         </linearGradient>
         <linearGradient id="cell-purple" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#c090d8" />
-          <stop offset="45%" stopColor="#6e3a98" />
-          <stop offset="100%" stopColor="#3a1860" />
+          <stop offset="0%" stopColor="var(--cell-purple-0)" />
+          <stop offset="45%" stopColor="var(--cell-purple-1)" />
+          <stop offset="100%" stopColor="var(--cell-purple-2)" />
         </linearGradient>
         <linearGradient id="cell-maroon" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#d07088" />
-          <stop offset="45%" stopColor="#8a2848" />
-          <stop offset="100%" stopColor="#4a1028" />
+          <stop offset="0%" stopColor="var(--cell-maroon-0)" />
+          <stop offset="45%" stopColor="var(--cell-maroon-1)" />
+          <stop offset="100%" stopColor="var(--cell-maroon-2)" />
         </linearGradient>
         <linearGradient id="cell-gold" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#ffe08a" />
-          <stop offset="45%" stopColor="#e0a830" />
-          <stop offset="100%" stopColor="#a07010" />
+          <stop offset="0%" stopColor="var(--cell-gold-0)" />
+          <stop offset="45%" stopColor="var(--cell-gold-1)" />
+          <stop offset="100%" stopColor="var(--cell-gold-2)" />
         </linearGradient>
       </defs>
     </svg>

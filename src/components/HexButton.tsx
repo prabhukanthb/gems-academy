@@ -16,45 +16,45 @@ const variants: Record<
 > = {
   blue: {
     fill: "url(#cell-blue)",
-    wall: "#6b4a10",
+    wall: "var(--wall)",
     glow: "rgba(90, 160, 210, 0.35)",
     text: "#f7fbff",
   },
   green: {
     fill: "url(#cell-green)",
-    wall: "#6b4a10",
+    wall: "var(--wall)",
     glow: "rgba(80, 160, 100, 0.35)",
     text: "#f7fff8",
   },
   red: {
     fill: "url(#cell-red)",
-    wall: "#6b4a10",
+    wall: "var(--wall)",
     glow: "rgba(200, 80, 70, 0.35)",
     text: "#fff8f7",
   },
   orange: {
     fill: "url(#cell-orange)",
-    wall: "#6b4a10",
+    wall: "var(--wall)",
     glow: "rgba(220, 140, 50, 0.4)",
     text: "#fffaf3",
   },
   purple: {
     fill: "url(#cell-purple)",
-    wall: "#6b4a10",
+    wall: "var(--wall)",
     glow: "rgba(140, 100, 180, 0.35)",
     text: "#faf7ff",
   },
   maroon: {
     fill: "url(#cell-maroon)",
-    wall: "#6b4a10",
+    wall: "var(--wall)",
     glow: "rgba(160, 60, 80, 0.35)",
     text: "#fff7f8",
   },
   gold: {
     fill: "url(#cell-gold)",
-    wall: "#5a4010",
+    wall: "var(--wall-strong)",
     glow: "rgba(230, 180, 60, 0.45)",
-    text: "#3a2808",
+    text: "var(--foreground)",
   },
 };
 
