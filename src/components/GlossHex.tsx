@@ -32,9 +32,38 @@ type Size = "sm" | "md" | "lg" | "xl";
 
 const sizes: Record<Size, string> = {
   sm: "w-[8.5rem] h-[9.8rem]",
-  md: "w-[11rem] h-[12.7rem]",
+  md: "w-[12.75rem] h-[14.72rem]",
   lg: "w-[14rem] h-[16.16rem]",
   xl: "w-[16.5rem] h-[19.05rem]",
+};
+
+/** Content column must stay inside the flat sides of the hex (not the points). */
+const contentWidth: Record<Size, string> = {
+  sm: "w-[54%] max-w-[4.4rem]",
+  md: "w-[56%] max-w-[6.6rem]",
+  lg: "w-[60%] max-w-[8rem]",
+  xl: "w-[62%] max-w-[9.6rem]",
+};
+
+const iconBox: Record<Size, string> = {
+  sm: "h-7 w-7",
+  md: "h-9 w-9",
+  lg: "h-12 w-12",
+  xl: "h-14 w-14",
+};
+
+const enType: Record<Size, string> = {
+  sm: "text-[0.55rem] leading-[1.05]",
+  md: "text-[0.7rem] leading-[1.08]",
+  lg: "text-[0.95rem] leading-tight sm:text-[1.05rem]",
+  xl: "text-[1.05rem] leading-tight sm:text-[1.15rem]",
+};
+
+const teType: Record<Size, string> = {
+  sm: "text-[0.46rem] leading-[1.15]",
+  md: "text-[0.58rem] leading-[1.2]",
+  lg: "text-[0.72rem] leading-snug sm:text-[0.78rem]",
+  xl: "text-[0.78rem] leading-snug sm:text-[0.85rem]",
 };
 
 type Props = {
@@ -119,13 +148,19 @@ export function GlossHex({
         <ellipse cx="50" cy="102" rx="5.5" ry="2.4" fill="rgba(255,255,255,0.45)" />
       </svg>
 
-      <span className="relative z-10 flex w-[78%] flex-col items-center justify-center gap-1 px-1 pt-1">
+      <span
+        className={`relative z-10 flex flex-col items-center justify-center gap-0.5 overflow-hidden px-0.5 ${contentWidth[size]}`}
+      >
         {icon ? (
-          <span className="mb-0.5 flex h-12 w-12 items-center justify-center drop-shadow-[0_2px_6px_rgba(0,0,0,0.25)] sm:h-14 sm:w-14">
+          <span
+            className={`mb-0.5 flex shrink-0 items-center justify-center drop-shadow-[0_2px_6px_rgba(0,0,0,0.25)] ${iconBox[size]}`}
+          >
             {icon}
           </span>
         ) : null}
-        <span className="font-display text-[0.95rem] font-extrabold leading-tight tracking-wide text-white sm:text-[1.05rem]">
+        <span
+          className={`font-display w-full whitespace-pre-line font-extrabold tracking-wide text-balance text-white hyphens-none ${enType[size]}`}
+        >
           {titleAccent && highlightAccent ? (
             <>
               {titleEn}{" "}
@@ -135,7 +170,9 @@ export function GlossHex({
             titleEn
           )}
         </span>
-        <span className="font-telugu text-[0.7rem] font-bold leading-snug text-[#fff6b0] sm:text-[0.78rem]">
+        <span
+          className={`font-telugu w-full whitespace-pre-line font-bold text-balance break-words text-[#fff6b0] ${teType[size]}`}
+        >
           {titleTe}
         </span>
       </span>

@@ -20,64 +20,64 @@ const tiles = [
     href: "/resources/track-record",
     variant: "pink" as const,
     icon: <IconClipboard />,
-    en: ui.ourTrack.en,
+    en: "OUR TRACK\nRECORD",
     te: ui.ourTrack.te,
   },
   {
     href: "/resources/concept-cards",
     variant: "green" as const,
     icon: <IconCards />,
-    en: ui.conceptCards.en,
-    te: ui.conceptCards.te,
+    en: "CONCEPT\nCARDS",
+    te: "కాన్సెప్ట్\nకార్డులు",
   },
   {
     href: "/resources/concept-videos",
     variant: "red" as const,
     icon: <IconLaptop />,
-    en: ui.conceptVideos.en,
-    te: ui.conceptVideos.te,
+    en: "CONCEPT\nVIDEOS",
+    te: "కాన్సెప్ట్\nవీడియోలు",
   },
   {
     href: "/resources/testimonials",
     variant: "orange" as const,
     icon: <IconStars />,
-    en: ui.testimonials.en,
-    te: ui.testimonials.te,
+    en: "TESTIMONIALS",
+    te: "విద్యార్థి\nఅభిప్రాయాలు",
   },
   {
     href: "/resources/faqs",
     variant: "purple" as const,
     icon: <IconFaq />,
     en: ui.faqs.en,
-    te: ui.faqs.te,
+    te: "తరచు అడిగే\nప్రశ్నలు",
   },
   {
     href: "/resources/demo-videos",
     variant: "gold" as const,
     icon: <IconClapper />,
-    en: ui.demoVideos.en,
-    te: ui.demoVideos.te,
+    en: "DEMO\nVIDEOS",
+    te: "డెమో\nవీడియోలు",
   },
   {
     href: "/resources/comments",
     variant: "green" as const,
     icon: <IconComment />,
-    en: ui.yourComments.en,
+    en: "YOUR\nCOMMENTS",
     te: ui.yourComments.te,
   },
   {
     href: "/resources/contact",
     variant: "pink" as const,
     icon: <IconContact />,
-    en: ui.contactUs.en,
-    te: ui.contactUs.te,
+    en: "CONTACT\nUS",
+    te: "మమ్మల్ని\nసంప్రదించండి",
   },
 ];
 
 export default function ResourcesPage() {
   return (
     <SiteShell showBrand={false}>
-      <div className="anim-enter grid grid-cols-2 justify-items-center gap-x-2 gap-y-3 sm:gap-x-4 sm:gap-y-4">
+      <div className="anim-enter grid grid-cols-2 justify-items-center gap-x-1 gap-y-2 sm:gap-x-3 sm:gap-y-3">
         {tiles.map((t) => (
           <GlossHex
             key={t.href}
