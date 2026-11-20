@@ -85,12 +85,10 @@ body {
 
 @keyframes float-in {
   from {
-    opacity: 0;
-    transform: translateY(18px) scale(0.96);
+    transform: translateY(16px);
   }
   to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 
@@ -114,19 +112,19 @@ body {
 }
 
 .anim-enter {
-  animation: float-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: float-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .anim-enter-delay-1 {
-  animation: float-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+  animation: float-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
 }
 
 .anim-enter-delay-2 {
-  animation: float-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both;
+  animation: float-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
 }
 
 .anim-enter-delay-3 {
-  animation: float-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.36s both;
+  animation: float-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.26s both;
 }
 
 .anim-hint {
