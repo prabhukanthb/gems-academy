@@ -6,31 +6,24 @@ import { getTheme, isThemeId } from "@/lib/themes";
 
 const STORAGE_KEY = "gems-theme";
 
-export function ThemeRoot({ children }: { children: React.ReactNode }) {
+/** Applies theme vars — render as a sibling, never wrap page content. */
+export function ThemeRoot() {
   const params = useSearchParams();
   const fromQuery = params.get("theme");
 
   useEffect(() => {
-    const stored =
-      typeof window !== "undefined"
-        ? window.localStorage.getItem(STORAGE_KEY)
-        : null;
+    const stored = window.localStorage.getItem(STORAGE_KEY);
     const id =
       (fromQuery && isThemeId(fromQuery) && fromQuery) ||
       (stored && isThemeId(stored) && stored) ||
       "sunset";
-    const theme = getTheme(id);
-    const root = document.documentElement;
-    root.setAttribute("data-theme", theme.id);
-    for (const [key, value] of Object.entries(theme.vars)) {
-      root.style.setProperty(key, value);
-    }
+    applyThemeId(id);
     if (fromQuery && isThemeId(fromQuery)) {
       window.localStorage.setItem(STORAGE_KEY, fromQuery);
     }
   }, [fromQuery]);
 
-  return children;
+  return null;
 }
 
 export function applyThemeId(id: string) {

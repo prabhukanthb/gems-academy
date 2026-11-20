@@ -53,12 +53,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      data-theme="sunset"
       className={`${brand.variable} ${display.variable} ${script.variable} ${body.variable} ${telugu.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
         <Suspense fallback={null}>
-          <ThemeRoot>{children}</ThemeRoot>
+          <ThemeRoot />
         </Suspense>
+        {children}
       </body>
     </html>
   );
