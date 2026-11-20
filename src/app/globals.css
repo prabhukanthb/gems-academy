@@ -212,7 +212,7 @@ body {
 .landing-comb::after {
   content: "";
   position: absolute;
-  inset: 10% 15%;
+  inset: 8% 12%;
   background: linear-gradient(
     110deg,
     transparent 35%,
@@ -221,7 +221,11 @@ body {
   );
   animation: honey-shimmer 4.2s ease-in-out infinite;
   pointer-events: none;
-  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.honey-cell svg path {
+  shape-rendering: geometricPrecision;
 }
 
 .honeycomb-cluster {

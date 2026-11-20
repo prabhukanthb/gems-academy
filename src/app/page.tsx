@@ -26,34 +26,32 @@ export default function LandingPage() {
             <Link
               href="/hub"
               aria-label="GEMS కి స్వాగతం — Welcome to GEMS"
-              className="landing-comb honey-cell group relative flex h-[17rem] w-[15.25rem] flex-col items-center justify-center transition-transform duration-300 hover:-translate-y-1.5 hover:scale-[1.03] sm:h-[19rem] sm:w-[17rem]"
+              className="landing-comb honey-cell group relative flex h-[17.6rem] w-[15.25rem] flex-col items-center justify-center transition-transform duration-300 hover:-translate-y-1.5 hover:scale-[1.03] sm:h-[19.6rem] sm:w-[17rem]"
             >
               <svg
-                className="absolute inset-0 h-full w-full drop-shadow-[0_14px_28px_rgba(90,60,10,0.22)]"
-                viewBox="0 0 100 112"
-                preserveAspectRatio="none"
+                className="absolute inset-0 h-full w-full drop-shadow-[0_12px_22px_rgba(90,60,10,0.2)]"
+                viewBox="0 0 100 115.47"
+                preserveAspectRatio="xMidYMid meet"
                 aria-hidden
               >
                 <path
-                  d="M50 4 L92 28 L92 84 L50 108 L8 84 L8 28 Z"
+                  d="M50 0.75 L96.56 28.67 L96.56 86.8 L50 114.72 L3.44 86.8 L3.44 28.67 Z"
                   fill="url(#cell-gold)"
-                  stroke="#7a5a14"
-                  strokeWidth="2.4"
-                  strokeLinejoin="round"
+                  stroke="#5a4010"
+                  strokeWidth="1.9"
+                  strokeLinejoin="miter"
+                  strokeMiterlimit={8}
+                  strokeLinecap="butt"
+                  vectorEffect="non-scaling-stroke"
                 />
                 <path
-                  d="M50 14 L84 34 L84 78 L50 98 L16 78 L16 34 Z"
+                  d="M50 8 L89.5 32 L89.5 83.5 L50 107.5 L10.5 83.5 L10.5 32 Z"
                   fill="none"
-                  stroke="rgba(255,255,255,0.45)"
-                  strokeWidth="1.1"
-                  strokeLinejoin="round"
-                />
-                <ellipse
-                  cx="50"
-                  cy="32"
-                  rx="22"
-                  ry="10"
-                  fill="rgba(255,255,255,0.22)"
+                  stroke="rgba(255,236,180,0.45)"
+                  strokeWidth="1"
+                  strokeLinejoin="miter"
+                  strokeMiterlimit={8}
+                  vectorEffect="non-scaling-stroke"
                 />
               </svg>
 
