@@ -12,13 +12,13 @@ export default function LandingPage() {
         </div>
 
         <div className="relative z-10 flex flex-col items-center">
-          <p className="anim-enter font-brand text-5xl tracking-tight text-[#0d3f68] sm:text-6xl">
+          <p className="anim-enter font-brand text-5xl font-bold tracking-tight text-[#0d3f68] sm:text-6xl">
             GEMS
           </p>
-          <p className="anim-enter-delay-1 mt-1 font-display text-base text-[#5a4a28] sm:text-lg">
+          <p className="anim-enter-delay-1 mt-1 font-display text-base font-semibold text-[#5a4a28] sm:text-lg">
             Academy · {brand.domain}
           </p>
-          <p className="anim-enter-delay-1 font-telugu mt-1 text-sm text-[#6a5a38]">
+          <p className="anim-enter-delay-1 font-telugu mt-1 text-sm font-medium text-[#6a5a38]">
             {brand.tagline.te}
           </p>
 
@@ -26,7 +26,7 @@ export default function LandingPage() {
             <Link
               href="/hub"
               aria-label="GEMS కి స్వాగతం — Welcome to GEMS"
-              className="landing-comb honey-cell group relative flex h-[16.5rem] w-[14.75rem] flex-col items-center justify-center transition-transform duration-300 hover:-translate-y-1.5 hover:scale-[1.03] sm:h-[18.5rem] sm:w-[16.5rem]"
+              className="landing-comb honey-cell group relative flex h-[17rem] w-[15.25rem] flex-col items-center justify-center transition-transform duration-300 hover:-translate-y-1.5 hover:scale-[1.03] sm:h-[19rem] sm:w-[17rem]"
             >
               <svg
                 className="absolute inset-0 h-full w-full drop-shadow-[0_14px_28px_rgba(90,60,10,0.22)]"
@@ -53,66 +53,107 @@ export default function LandingPage() {
                   cy="32"
                   rx="22"
                   ry="10"
-                  fill="rgba(255,255,255,0.28)"
+                  fill="rgba(255,255,255,0.22)"
                 />
               </svg>
-              <span className="relative z-10 flex flex-col items-center px-4 text-[#3a2808]">
-                <span className="font-script text-4xl leading-none text-[#5a3a08] sm:text-5xl">
+
+              {/* Text sits in the honey “cell” mid-band so Welcome fits the comb */}
+              <span className="relative z-10 flex w-[78%] flex-col items-center justify-center gap-0.5 pt-1">
+                <span className="font-display text-[1.85rem] font-bold leading-[1.05] tracking-wide text-[#c4922a] sm:text-[2.15rem]">
                   {ui.welcome.en}
                 </span>
-                <span className="mt-1 flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.22em] text-[#6a4a10]/90">
-                  <span className="h-px w-5 bg-[#8f6a1c]/70" aria-hidden />
+                <span className="flex items-center gap-2 text-[0.72rem] font-bold uppercase tracking-[0.2em] text-[#d4a017]">
+                  <span className="h-px w-5 bg-[#e0a830]/80" aria-hidden />
                   {ui.to.en}
-                  <span className="h-px w-5 bg-[#8f6a1c]/70" aria-hidden />
+                  <span className="h-px w-5 bg-[#e0a830]/80" aria-hidden />
                 </span>
-                <span className="font-brand mt-1 text-4xl font-bold tracking-wide text-[#0d3f68] sm:text-5xl">
+                <span className="font-brand text-[2.35rem] font-bold leading-none tracking-wide text-[#0d3f68] sm:text-[2.75rem]">
                   GEMS
                 </span>
-                <span className="font-telugu mt-3 text-base text-[#4a3810] sm:text-lg">
+                <span className="font-telugu mt-2 text-[0.95rem] font-semibold leading-snug text-[#a07018] sm:text-base">
                   GEMS కి స్వాగతం!
                 </span>
               </span>
             </Link>
           </div>
 
-          <div className="anim-hint relative z-10 mt-8 flex items-center gap-3 text-[#8f3a18]">
-            <TapIcon />
+          <Link
+            href="/hub"
+            className="anim-enter-delay-3 group relative z-10 mt-8 flex items-center gap-3 rounded-2xl px-2 py-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#c4922a]"
+          >
+            <span className="bee-buzz inline-flex shrink-0">
+              <BumbleBee />
+            </span>
             <div className="text-left">
-              <p className="font-display text-base font-semibold sm:text-lg">
+              <p className="font-display text-base font-bold text-[#c4922a] sm:text-lg">
                 {ui.clickHint.en}
               </p>
-              <p className="font-telugu text-sm opacity-90">{ui.clickHint.te}</p>
+              <p className="font-telugu text-sm font-semibold text-[#a07018]">
+                {ui.clickHint.te}
+              </p>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
     </SiteShell>
   );
 }
 
-function TapIcon() {
+function BumbleBee() {
   return (
     <svg
-      width="40"
-      height="40"
-      viewBox="0 0 40 40"
+      width="56"
+      height="48"
+      viewBox="0 0 56 48"
       fill="none"
       aria-hidden
-      className="shrink-0"
+      className="overflow-visible"
     >
-      <path
-        d="M20 3.5 L33.5 11.5 V27.5 L20 35.5 L6.5 27.5 V11.5 Z"
+      {/* Wings */}
+      <ellipse
+        className="bee-wing bee-wing-left"
+        cx="18"
+        cy="14"
+        rx="11"
+        ry="7"
+        fill="#e8f4ff"
         stroke="#8f6a1c"
-        strokeWidth="1.8"
-        fill="#ffe9a8"
+        strokeWidth="1.2"
+        opacity="0.9"
       />
-      <circle cx="20" cy="20" r="4.5" fill="#c4922a" />
+      <ellipse
+        className="bee-wing bee-wing-right"
+        cx="38"
+        cy="14"
+        rx="11"
+        ry="7"
+        fill="#e8f4ff"
+        stroke="#8f6a1c"
+        strokeWidth="1.2"
+        opacity="0.9"
+      />
+      {/* Body */}
+      <ellipse cx="28" cy="26" rx="14" ry="10" fill="#1a1a1a" />
       <path
-        d="M26 22c4 3 7 2 9-1"
-        stroke="#8f3a18"
-        strokeWidth="1.6"
+        d="M18 22.5h20M18 26.5h20M18 30.5h20"
+        stroke="#e0a830"
+        strokeWidth="2.4"
         strokeLinecap="round"
       />
+      {/* Head */}
+      <circle cx="14" cy="24" r="6.2" fill="#2a2214" />
+      <circle cx="12.2" cy="22.5" r="1.3" fill="#ffe9a8" />
+      {/* Antennae */}
+      <path
+        d="M11 19c-2-3-1.5-5 0-6M16 18.5c1.5-3 3-4 5-4"
+        stroke="#2a2214"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+      />
+      <circle cx="11" cy="12.5" r="1.4" fill="#c4922a" />
+      <circle cx="21.5" cy="14" r="1.4" fill="#c4922a" />
+      {/* Stinger hint */}
+      <path d="M41.5 26 L47 28 L41.5 30 Z" fill="#2a2214" />
     </svg>
   );
 }
