@@ -16,8 +16,8 @@ const shortDetail: Record<
   { en: string; te: string }
 > = {
   toddler: {
-    en: "Pre-beginner, before school",
-    te: "స్కూల్ ముందు ప్రీ-బిగినర్",
+    en: "Before joining school",
+    te: "స్కూల్‌లో చేరే ముందు",
   },
   beginner: {
     en: "KG to 5th Class",

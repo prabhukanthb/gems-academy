@@ -21,7 +21,13 @@ export default function ContactPage() {
           <strong>Email:</strong> hello@gemsacademy.in
         </li>
         <li>
-          <strong>Phone / WhatsApp:</strong> +91 90000 00000
+          <strong>Phone / WhatsApp / Google Pay / PhonePe:</strong>{" "}
+          <a
+            href="tel:9494447457"
+            className="text-[#0d6a3a] underline-offset-2 hover:underline"
+          >
+            9494447457
+          </a>
         </li>
         <li>
           <strong>Hours:</strong> Mon–Sat, 9:00 AM – 7:00 PM IST
@@ -30,9 +36,6 @@ export default function ContactPage() {
           </span>
         </li>
       </ul>
-      <p className="mt-4 text-xs text-[#4a6a8a]">
-        Sample contact details — update with your real numbers before launch.
-      </p>
     </InfoPage>
   );
 }

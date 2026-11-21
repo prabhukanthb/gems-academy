@@ -14,9 +14,9 @@ export default function TrackRecordPage() {
           </span>
         </li>
         <li>
-          Levels from Toddler to Professional
+          Levels from Pre-Beginner to Professional
           <span className="font-telugu block text-sm text-[#4a6a8a]">
-            టాడ్లర్ నుండి ప్రొఫెషనల్ వరకు స్థాయులు
+            ప్రీ-బిగినర్ నుండి ప్రొఫెషనల్ వరకు స్థాయులు
           </span>
         </li>
         <li>

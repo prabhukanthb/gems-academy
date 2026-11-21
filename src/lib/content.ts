@@ -67,9 +67,9 @@ export const levels: {
 }[] = [
   {
     id: "toddler",
-    name: { en: "TODDLER", te: "టాడ్లర్" },
+    name: { en: "PRE-BEGINNER", te: "ప్రీ-బిగినర్" },
     description: {
-      en: "Pre-beginner level before joining school",
+      en: "Pre-Beginner level before joining school",
       te: "స్కూల్‌లో చేరే ముందు ప్రీ-బిగినర్ స్థాయి",
     },
     color: "#1e3a5f",
@@ -265,7 +265,7 @@ export const feePlans: {
   note: Bilingual;
 }[] = [
   {
-    level: { en: "Toddler / Beginner", te: "టాడ్లర్ / బిగినర్" },
+    level: { en: "Pre-Beginner / Beginner", te: "ప్రీ-బిగినర్ / బిగినర్" },
     monthly: { en: "₹1,500 / month", te: "నెలకు ₹1,500" },
     note: {
       en: "2 sessions per week · group batch",
@@ -315,8 +315,8 @@ export const faqs: { q: Bilingual; a: Bilingual }[] = [
       te: "చేరే ముందు బేస్‌లైన్ పరీక్ష రాయవచ్చా?",
     },
     a: {
-      en: "Absolutely. Baseline tests help us place you in the right level from Toddler to Professional.",
-      te: "అవును. బేస్‌లైన్ పరీక్షలు మిమ్మల్ని టాడ్లర్ నుండి ప్రొఫెషనల్ వరకు సరైన స్థాయిలో ఉంచడానికి సహాయపడతాయి.",
+      en: "Absolutely. Baseline tests help us place you in the right level from Pre-Beginner to Professional.",
+      te: "అవును. బేస్‌లైన్ పరీక్షలు మిమ్మల్ని ప్రీ-బిగినర్ నుండి ప్రొఫెషనల్ వరకు సరైన స్థాయిలో ఉంచడానికి సహాయపడతాయి.",
     },
   },
   {
