@@ -74,6 +74,9 @@ type Props = {
   titleEn: string;
   titleAccent?: string;
   titleTe: string;
+  /** Optional short EN blurb under the titles (e.g. level description). */
+  detailEn?: string;
+  detailTe?: string;
   className?: string;
   ariaLabel?: string;
   highlightAccent?: boolean;
@@ -88,6 +91,8 @@ export function GlossHex({
   titleEn,
   titleAccent,
   titleTe,
+  detailEn,
+  detailTe,
   className = "",
   ariaLabel,
   highlightAccent = true,
@@ -208,6 +213,20 @@ export function GlossHex({
         >
           {titleTe}
         </span>
+        {detailEn ? (
+          <span
+            className={`hex-detail mt-0.5 w-full text-balance break-words text-[0.42rem] font-semibold leading-[1.15] text-white/90 transition-colors duration-300 sm:text-[0.48rem]`}
+          >
+            {detailEn}
+          </span>
+        ) : null}
+        {detailTe ? (
+          <span
+            className={`hex-detail font-telugu w-full text-balance break-words text-[0.38rem] font-medium leading-[1.15] text-white/80 transition-colors duration-300 sm:text-[0.42rem]`}
+          >
+            {detailTe}
+          </span>
+        ) : null}
       </span>
     </Link>
   );

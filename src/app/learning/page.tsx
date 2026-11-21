@@ -1,20 +1,13 @@
 import { SiteShell } from "@/components/SiteShell";
-import { GlossHex, type GlossVariant } from "@/components/GlossHex";
+import { GlossHex } from "@/components/GlossHex";
 import { HexHoneycomb } from "@/components/HexHoneycomb";
+import { LevelStaircase } from "@/components/LevelStaircase";
 import { NavFooter } from "@/components/NavFooter";
-import { levels, ui } from "@/lib/content";
+import { ui } from "@/lib/content";
 
 export const metadata = {
   title: "Learning @ GEMS",
 };
-
-const levelVariants: GlossVariant[] = [
-  "blue",
-  "green",
-  "orange",
-  "gold",
-  "purple",
-];
 
 export default function LearningPage() {
   return (
@@ -26,23 +19,9 @@ export default function LearningPage() {
         <p className="font-telugu mt-1 text-[#3a5a7a]">{ui.englishCourses.te}</p>
       </div>
 
-      {/* Levels — keep Toddler → Professional honeycomb as-is */}
+      {/* Same staircase levels — honeycomb shapes in a horizontal row */}
       <div className="anim-enter-delay-1">
-        <HexHoneycomb perRow={4}>
-          {levels.map((level, i) => (
-            <GlossHex
-              key={level.id}
-              href={`/learning/${level.id}`}
-              variant={levelVariants[i] ?? "blue"}
-              size="sm"
-              titleEn={level.name.en}
-              titleTe={level.name.te}
-              highlightAccent={false}
-              className="hex-cell-fill"
-              ariaLabel={`${level.name.en} — ${level.description.en}`}
-            />
-          ))}
-        </HexHoneycomb>
+        <LevelStaircase />
       </div>
 
       {/* Part 1 — Fee Details + Pay Fee, extreme right honeycomb */}
