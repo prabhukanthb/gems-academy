@@ -50,8 +50,8 @@ export default function TestimonialsPage() {
                 <p className="font-telugu text-xs text-[#4a6a8a]">{t.role.te}</p>
               </div>
 
-              <p className="leading-relaxed text-[#1a2a3a]">{t.quote.en}</p>
-              <p className="font-telugu text-sm leading-relaxed text-[#3a5a7a]">
+              {/* English is already on the letter image — show Telugu only to avoid duplication */}
+              <p className="font-telugu text-base leading-relaxed text-[#1a2a3a]">
                 {t.quote.te}
               </p>
 
