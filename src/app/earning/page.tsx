@@ -24,42 +24,46 @@ export default function EarningPage() {
         </p>
 
         <div className="anim-enter-delay-1 mt-8 w-full">
-          <HexHoneycomb perRow={2} className="earn-honeycomb">
+          <HexHoneycomb perRow={4}>
             <GlossHex
               href="/earning/tuition"
               variant="blue"
-              size="md"
+              size="sm"
               icon={<IconSchool />}
               titleEn="GEMS"
               titleAccent="TUITION"
               titleTe={ui.tuitionCenter.te}
+              className="hex-cell-fill"
             />
             <GlossHex
               href="/earning/home-tutors"
               variant="red"
-              size="md"
+              size="sm"
               icon={<IconTutor />}
               titleEn="GEMS"
               titleAccent="TUTORS"
               titleTe={ui.homeTutors.te}
+              className="hex-cell-fill"
             />
             <GlossHex
               href="/earning/earn-back"
               variant="green"
-              size="md"
+              size="sm"
               icon={<IconCoins />}
               titleEn={"EARN BACK\nYOUR FEE"}
               titleTe={ui.earnBack.te}
               highlightAccent={false}
+              className="hex-cell-fill"
             />
             <GlossHex
               href="/earning/work-with"
               variant="orange"
-              size="md"
+              size="sm"
               icon={<IconHandshake />}
               titleEn="WORK WITH"
               titleAccent="GEMS"
               titleTe={ui.workWith.te}
+              className="hex-cell-fill"
             />
           </HexHoneycomb>
         </div>

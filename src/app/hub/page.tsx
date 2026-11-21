@@ -1,5 +1,6 @@
 import { SiteShell } from "@/components/SiteShell";
 import { GlossHex, PathBanner } from "@/components/GlossHex";
+import { HexHoneycomb } from "@/components/HexHoneycomb";
 import {
   IconBookCap,
   IconHome,
@@ -19,39 +20,42 @@ export default function HubPage() {
           <PathBanner en="Choose your path" te="మీ మార్గాన్ని ఎంచుకోండి" />
         </div>
 
-        <div className="hub-honeycomb anim-enter-delay-1">
-          <GlossHex
-            href="/learning"
-            variant="blue"
-            size="lg"
-            icon={<IconBookCap />}
-            titleEn="LEARNING @"
-            titleAccent="GEMS"
-            titleTe={ui.learning.te}
-            ariaLabel="Learning at GEMS"
-          />
-
-          <GlossHex
-            href="/earning"
-            variant="red"
-            size="lg"
-            icon={<IconRupeeStack />}
-            titleEn="EARNING @"
-            titleAccent="GEMS"
-            titleTe={ui.earning.te}
-            ariaLabel="Earning at GEMS"
-          />
-
-          <GlossHex
-            href="/"
-            variant="green"
-            size="lg"
-            icon={<IconHome className="h-10 w-10" />}
-            titleEn="HOME"
-            titleAccent="SCREEN"
-            titleTe={ui.home.te}
-            ariaLabel="Home screen"
-          />
+        <div className="anim-enter-delay-1 w-full">
+          <HexHoneycomb perRow={4}>
+            <GlossHex
+              href="/learning"
+              variant="blue"
+              size="sm"
+              icon={<IconBookCap />}
+              titleEn="LEARNING @"
+              titleAccent="GEMS"
+              titleTe={ui.learning.te}
+              ariaLabel="Learning at GEMS"
+              className="hex-cell-fill"
+            />
+            <GlossHex
+              href="/earning"
+              variant="red"
+              size="sm"
+              icon={<IconRupeeStack />}
+              titleEn="EARNING @"
+              titleAccent="GEMS"
+              titleTe={ui.earning.te}
+              ariaLabel="Earning at GEMS"
+              className="hex-cell-fill"
+            />
+            <GlossHex
+              href="/"
+              variant="green"
+              size="sm"
+              icon={<IconHome className="h-8 w-8" />}
+              titleEn="HOME"
+              titleAccent="SCREEN"
+              titleTe={ui.home.te}
+              ariaLabel="Home screen"
+              className="hex-cell-fill"
+            />
+          </HexHoneycomb>
         </div>
       </div>
     </SiteShell>
