@@ -267,34 +267,38 @@ body {
 
 /* Resources: staggered honeycomb (right column nested into left) */
 .resource-honeycomb {
-  --hex-w: 12.75rem;
-  --hex-h: 14.72rem;
-  --nest-y: calc(var(--hex-h) * 0.28);
-  --nest-x: calc(var(--hex-w) * -0.12);
+  --hex-w: 10.5rem;
+  --hex-h: 12.12rem;
+  --nest-y: calc(var(--hex-h) * 0.32);
+  --nest-x: calc(var(--hex-w) * -0.18);
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, var(--hex-w));
   justify-content: center;
   justify-items: center;
+  align-items: start;
   column-gap: var(--nest-x);
   row-gap: calc(var(--nest-y) * -1);
-  width: min(100%, 26rem);
+  width: 100%;
+  max-width: 22rem;
   margin-inline: auto;
-  padding-bottom: calc(var(--nest-y) + 1rem);
+  padding-bottom: calc(var(--nest-y) + 1.25rem);
+}
+
+.resource-honeycomb > * {
+  width: var(--hex-w) !important;
+  height: var(--hex-h) !important;
 }
 
 .resource-honeycomb > *:nth-child(even) {
   transform: translateY(var(--nest-y));
 }
 
-.resource-honeycomb > *:nth-child(n + 3) {
-  margin-top: calc(var(--nest-y) * -0.35);
-}
-
 @media (min-width: 640px) {
   .resource-honeycomb {
-    --hex-w: 12.75rem;
-    width: min(100%, 28rem);
+    --hex-w: 12rem;
+    --hex-h: 13.86rem;
+    max-width: 26rem;
   }
 }
 
