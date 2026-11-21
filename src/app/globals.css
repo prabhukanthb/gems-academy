@@ -108,13 +108,14 @@ body {
     );
 }
 
+/* True interlocking honeycomb — shared walls, no gutters between cells */
 .hex-grid {
   position: fixed;
   inset: 0;
   z-index: 0;
-  opacity: 0.28;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='97' viewBox='0 0 84 97'%3E%3Cpath fill='none' stroke='%2370a8d0' stroke-width='1.35' d='M42 1.5L73.2 19.5v36L42 73.5 10.8 55.5v-36z'/%3E%3C/svg%3E");
-  background-size: 84px 72.75px;
+  opacity: 0.55;
+  background-image: url("/honeycomb.svg");
+  background-size: 112px 96.99px;
   pointer-events: none;
 }
 
