@@ -21,11 +21,12 @@ export default function HubPage() {
         </div>
 
         <div className="anim-enter-delay-1 w-full">
-          <HexHoneycomb perRow={4}>
+          {/* Top: Learning + Earning · Bottom: Home centred in the middle */}
+          <HexHoneycomb perRow={2} className="hub-path">
             <GlossHex
               href="/learning"
               variant="blue"
-              size="sm"
+              size="lg"
               icon={<IconBookCap />}
               titleEn="LEARNING @"
               titleAccent="GEMS"
@@ -36,7 +37,7 @@ export default function HubPage() {
             <GlossHex
               href="/earning"
               variant="red"
-              size="sm"
+              size="lg"
               icon={<IconRupeeStack />}
               titleEn="EARNING @"
               titleAccent="GEMS"
@@ -47,8 +48,8 @@ export default function HubPage() {
             <GlossHex
               href="/"
               variant="green"
-              size="sm"
-              icon={<IconHome className="h-8 w-8" />}
+              size="lg"
+              icon={<IconHome className="h-12 w-12" />}
               titleEn="HOME"
               titleAccent="SCREEN"
               titleTe={ui.home.te}

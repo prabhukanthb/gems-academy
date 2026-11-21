@@ -331,25 +331,26 @@ body {
   fill: rgba(255, 232, 74, 0.55);
 }
 
-/* Hub: horizontal path tiles with clear gaps */
-.hub-honeycomb {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 1.75rem 2.5rem;
-  width: 100%;
-  padding: 0.75rem 0 1.25rem;
+/* Hub path: larger hexes — Learning | Earning, Home nested below centre */
+.hex-honeycomb.hub-path {
+  --hex-w: 11.5rem;
+  --hex-h: 13.28rem;
+  --gap: 1.1rem;
 }
 
-@media (max-width: 639px) {
-  .hub-honeycomb {
-    gap: 1.25rem 1.5rem;
+@media (min-width: 640px) {
+  .hex-honeycomb.hub-path {
+    --hex-w: 13.5rem;
+    --hex-h: 15.59rem;
+    --gap: 1.35rem;
   }
+}
 
-  .hub-honeycomb > * {
-    width: 9.25rem !important;
-    height: 10.68rem !important;
+@media (min-width: 900px) {
+  .hex-honeycomb.hub-path {
+    --hex-w: 15rem;
+    --hex-h: 17.32rem;
+    --gap: 1.5rem;
   }
 }
 
