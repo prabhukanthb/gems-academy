@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
+import { HEX_ROUNDED, HEX_VIEW, INNER_ROUNDED } from "@/lib/hexPaths";
 
 type Variant =
   | "blue"
@@ -47,11 +48,9 @@ type Props = {
   ariaLabel?: string;
 };
 
-const VIEW = "0 0 100 115.47";
-const HEX =
-  "M50 1.2 L96.2 28.9 L96.2 86.6 L50 114.3 L3.8 86.6 L3.8 28.9 Z";
-const INNER =
-  "M50 9.5 L88.5 32.5 L88.5 83 L50 106 L11.5 83 L11.5 32.5 Z";
+const VIEW = HEX_VIEW;
+const HEX = HEX_ROUNDED;
+const INNER = INNER_ROUNDED;
 
 /** Glossy gold-rim honeycomb cell with site-wide hover colour flip. */
 export function HexButton({
@@ -119,8 +118,8 @@ export function HexButton({
           fill={`url(#${uid}-gold)`}
           stroke="#8a6010"
           strokeWidth="1.1"
-          strokeLinejoin="miter"
-          strokeMiterlimit={8}
+          strokeLinejoin="round"
+          strokeLinecap="round"
         />
         <path
           className="hex-face"
@@ -128,8 +127,8 @@ export function HexButton({
           fill={`url(#${uid}-fill)`}
           stroke="rgba(255,236,160,0.55)"
           strokeWidth="0.8"
-          strokeLinejoin="miter"
-          strokeMiterlimit={8}
+          strokeLinejoin="round"
+          strokeLinecap="round"
         />
         <path d={INNER} fill={`url(#${uid}-shine)`} />
         <ellipse
@@ -211,8 +210,15 @@ export function HexBadge({
             <stop offset="100%" stopColor="#b07808" />
           </linearGradient>
         </defs>
-        <path d={HEX} fill={`url(#${uid}-gold)`} stroke="#8a6010" strokeWidth="1.1" />
-        <path d={INNER} fill={`url(#${uid}-fill)`} />
+        <path
+          d={HEX}
+          fill={`url(#${uid}-gold)`}
+          stroke="#8a6010"
+          strokeWidth="1.1"
+          strokeLinejoin="round"
+          strokeLinecap="round"
+        />
+        <path d={INNER} fill={`url(#${uid}-fill)`} strokeLinejoin="round" />
       </svg>
       <span className="hex-title relative z-10 px-1.5 transition-colors duration-300">
         {children}

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { Theme } from "@/lib/themes";
 import { applyThemeId } from "@/components/ThemeRoot";
+import { HEX_ROUNDED, HEX_VIEW } from "@/lib/hexPaths";
 
 const SWATCH_KEYS = [
   "--cell-gold-1",
@@ -49,19 +50,31 @@ export function ThemePreviewCard({ theme }: { theme: Theme }) {
               ["--cell-gold-0", "--cell-gold-1"],
               ["--cell-maroon-0", "--cell-maroon-1"],
             ] as const
-          ).map(([a, b]) => (
-            <span
-              key={b}
-              className="inline-block h-14 w-12 shrink-0"
-              style={{
-                background: `linear-gradient(160deg, ${theme.vars[a]}, ${theme.vars[b]})`,
-                clipPath:
-                  "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
-                boxShadow: `inset 0 0 0 1.5px ${theme.vars["--wall"]}`,
-              }}
-              aria-hidden
-            />
-          ))}
+          ).map(([a, b]) => {
+            const gid = `sw-${theme.id}-${b.replace(/[^a-z0-9]+/gi, "")}`;
+            return (
+              <svg
+                key={b}
+                className="h-14 w-12 shrink-0"
+                viewBox={HEX_VIEW}
+                aria-hidden
+              >
+                <defs>
+                  <linearGradient id={gid} x1="0.2" y1="0" x2="0.8" y2="1">
+                    <stop offset="0%" stopColor={theme.vars[a]} />
+                    <stop offset="100%" stopColor={theme.vars[b]} />
+                  </linearGradient>
+                </defs>
+                <path
+                  d={HEX_ROUNDED}
+                  fill={`url(#${gid})`}
+                  stroke={theme.vars["--wall"]}
+                  strokeWidth="2"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            );
+          })}
         </div>
       </div>
 

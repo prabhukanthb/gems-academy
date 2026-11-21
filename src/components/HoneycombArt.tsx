@@ -1,4 +1,6 @@
-/** Decorative honeycomb with sharp mitered cell edges. */
+/** Decorative honeycomb with soft rounded cell edges. */
+
+import { roundedHexAt } from "@/lib/hexPaths";
 
 type Props = {
   className?: string;
@@ -35,9 +37,8 @@ export function HoneycombArt({ className = "", density = "hero" }: Props) {
       <g
         stroke="#8f6a1c"
         strokeWidth="1.35"
-        strokeLinejoin="miter"
-        strokeMiterlimit={8}
-        strokeLinecap="butt"
+        strokeLinejoin="round"
+        strokeLinecap="round"
         opacity={soft ? 0.35 : 0.55}
       >
         <path d={hex(70, 58, 38)} fill="url(#waxFill)" />
@@ -50,9 +51,8 @@ export function HoneycombArt({ className = "", density = "hero" }: Props) {
       <g
         stroke="#7a5a14"
         strokeWidth="1.5"
-        strokeLinejoin="miter"
-        strokeMiterlimit={8}
-        strokeLinecap="butt"
+        strokeLinejoin="round"
+        strokeLinecap="round"
         opacity={soft ? 0.45 : 0.75}
       >
         <path d={hex(105, 118, 40)} fill="url(#skyCell)" />
@@ -64,9 +64,8 @@ export function HoneycombArt({ className = "", density = "hero" }: Props) {
       <g
         stroke="#6b4a10"
         strokeWidth="1.65"
-        strokeLinejoin="miter"
-        strokeMiterlimit={8}
-        strokeLinecap="butt"
+        strokeLinejoin="round"
+        strokeLinecap="round"
         opacity={soft ? 0.5 : 0.9}
       >
         <path d={hex(70, 180, 42)} fill="url(#waxFill)" />
@@ -79,9 +78,8 @@ export function HoneycombArt({ className = "", density = "hero" }: Props) {
       <g
         stroke="#5a4010"
         strokeWidth="1.4"
-        strokeLinejoin="miter"
-        strokeMiterlimit={8}
-        strokeLinecap="butt"
+        strokeLinejoin="round"
+        strokeLinecap="round"
         opacity={0.4}
       >
         <path d={hex(105, 242, 38)} fill="url(#waxFill)" />
@@ -93,8 +91,8 @@ export function HoneycombArt({ className = "", density = "hero" }: Props) {
       <g
         stroke="#8f6a1c"
         strokeWidth="1.2"
-        strokeLinejoin="miter"
-        strokeMiterlimit={8}
+        strokeLinejoin="round"
+        strokeLinecap="round"
         opacity={0.3}
       >
         <path d={hex(140, 302, 36)} fill="url(#waxFill)" />
@@ -105,11 +103,7 @@ export function HoneycombArt({ className = "", density = "hero" }: Props) {
   );
 }
 
-/** Pointy-top hexagon path centered at (cx, cy) with outer radius r */
+/** Pointy-top hexagon with soft rounded corners */
 function hex(cx: number, cy: number, r: number) {
-  const pts = Array.from({ length: 6 }, (_, i) => {
-    const a = (Math.PI / 180) * (60 * i - 90);
-    return `${(cx + r * Math.cos(a)).toFixed(2)},${(cy + r * Math.sin(a)).toFixed(2)}`;
-  });
-  return `M ${pts.join(" L ")} Z`;
+  return roundedHexAt(cx, cy, r);
 }

@@ -1,10 +1,9 @@
 import Link from "next/link";
+import { HEX_ROUNDED, HEX_VIEW, INNER_ROUNDED } from "@/lib/hexPaths";
 
-const VIEW = "0 0 100 115.47";
-const HEX =
-  "M50 1.2 L96.2 28.9 L96.2 86.6 L50 114.3 L3.8 86.6 L3.8 28.9 Z";
-const INNER =
-  "M50 9.5 L88.5 32.5 L88.5 83 L50 106 L11.5 83 L11.5 32.5 Z";
+const VIEW = HEX_VIEW;
+const HEX = HEX_ROUNDED;
+const INNER = INNER_ROUNDED;
 
 /** Blueprint Welcome hex — blue face, gold rim, red Telugu ribbon. */
 export function WelcomeHex() {
@@ -46,10 +45,10 @@ export function WelcomeHex() {
           fill="url(#welcome-gold)"
           stroke="#8a6010"
           strokeWidth="1.15"
-          strokeLinejoin="miter"
-          strokeMiterlimit={8}
+          strokeLinejoin="round"
+          strokeLinecap="round"
         />
-        <path d={INNER} fill="url(#welcome-fill)" />
+        <path d={INNER} fill="url(#welcome-fill)" strokeLinejoin="round" />
         <path d={INNER} fill="url(#welcome-shine)" />
         <ellipse cx="50" cy="14" rx="8" ry="3.4" fill="rgba(255,255,255,0.9)" />
         <ellipse cx="50" cy="102" rx="6" ry="2.6" fill="rgba(255,255,255,0.4)" />

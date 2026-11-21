@@ -1,5 +1,11 @@
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
+import {
+  HEX_ROUNDED,
+  HEX_VIEW,
+  INNER_ROUNDED,
+  roundedPolygon,
+} from "@/lib/hexPaths";
 
 export type GlossVariant =
   | "blue"
@@ -22,11 +28,9 @@ const fills: Record<GlossVariant, { a: string; b: string; c: string }> = {
   gold: { a: "#ffe060", b: "#f0b020", c: "#b07808" },
 };
 
-const VIEW = "0 0 100 115.47";
-const HEX =
-  "M50 1.2 L96.2 28.9 L96.2 86.6 L50 114.3 L3.8 86.6 L3.8 28.9 Z";
-const INNER =
-  "M50 9.5 L88.5 32.5 L88.5 83 L50 106 L11.5 83 L11.5 32.5 Z";
+const VIEW = HEX_VIEW;
+const HEX = HEX_ROUNDED;
+const INNER = INNER_ROUNDED;
 
 type Size = "sm" | "md" | "lg" | "xl";
 
@@ -153,8 +157,8 @@ export function GlossHex({
           fill={`url(#${uid}-gold)`}
           stroke="#8a6010"
           strokeWidth="1.1"
-          strokeLinejoin="miter"
-          strokeMiterlimit={8}
+          strokeLinejoin="round"
+          strokeLinecap="round"
         />
         <path
           className="hex-face"
@@ -162,8 +166,8 @@ export function GlossHex({
           fill={`url(#${uid}-fill)`}
           stroke="rgba(255,236,160,0.55)"
           strokeWidth="0.8"
-          strokeLinejoin="miter"
-          strokeMiterlimit={8}
+          strokeLinejoin="round"
+          strokeLinecap="round"
         />
         <path d={INNER} fill={`url(#${uid}-shine)`} className="hex-shine" />
         <ellipse
@@ -255,8 +259,28 @@ export function WideHexBar({
   const W = 320;
   const H = 92;
   const tip = 28;
-  const d = `M${tip} 2 L${W - tip} 2 L${W - 2} ${H / 2} L${W - tip} ${H - 2} L${tip} ${H - 2} L2 ${H / 2} Z`;
-  const di = `M${tip + 6} 10 L${W - tip - 6} 10 L${W - 10} ${H / 2} L${W - tip - 6} ${H - 10} L${tip + 6} ${H - 10} L10 ${H / 2} Z`;
+  const d = roundedPolygon(
+    [
+      [tip, 2],
+      [W - tip, 2],
+      [W - 2, H / 2],
+      [W - tip, H - 2],
+      [tip, H - 2],
+      [2, H / 2],
+    ],
+    10,
+  );
+  const di = roundedPolygon(
+    [
+      [tip + 6, 10],
+      [W - tip - 6, 10],
+      [W - 10, H / 2],
+      [W - tip - 6, H - 10],
+      [tip + 6, H - 10],
+      [10, H / 2],
+    ],
+    8,
+  );
 
   return (
     <Link
@@ -301,8 +325,15 @@ export function WideHexBar({
             <stop offset="100%" stopColor="#b07808" />
           </linearGradient>
         </defs>
-        <path d={d} fill={`url(#${uid}-gold)`} stroke="#8a6010" strokeWidth="1.4" />
-        <path d={di} fill={`url(#${uid}-fill)`} />
+        <path
+          d={d}
+          fill={`url(#${uid}-gold)`}
+          stroke="#8a6010"
+          strokeWidth="1.4"
+          strokeLinejoin="round"
+          strokeLinecap="round"
+        />
+        <path d={di} fill={`url(#${uid}-fill)`} strokeLinejoin="round" />
         <ellipse
           className="hex-flare"
           cx={W / 2}
