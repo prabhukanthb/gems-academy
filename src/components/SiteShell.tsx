@@ -21,7 +21,7 @@ export function SiteShell({
       <div className="hex-grid" aria-hidden />
       <div
         className={`relative z-10 mx-auto flex min-h-screen w-full flex-col px-4 pb-14 pt-6 sm:px-6 ${
-          wide ? "max-w-5xl" : "max-w-3xl"
+          wide ? "max-w-6xl" : "max-w-3xl"
         }`}
       >
         {showBrand ? (

@@ -74,22 +74,43 @@ const tiles = [
   },
 ];
 
+const rowTop = tiles.slice(0, 4);
+const rowBottom = tiles.slice(4);
+
 export default function ResourcesPage() {
   return (
-    <SiteShell showBrand={false}>
+    <SiteShell showBrand={false} wide>
       <div className="resource-honeycomb anim-enter">
-        {tiles.map((t) => (
-          <GlossHex
-            key={t.href}
-            href={t.href}
-            variant={t.variant}
-            size="md"
-            icon={t.icon}
-            titleEn={t.en}
-            titleTe={t.te}
-            highlightAccent={false}
-          />
-        ))}
+        <div className="resource-row">
+          {rowTop.map((t) => (
+            <GlossHex
+              key={t.href}
+              href={t.href}
+              variant={t.variant}
+              size="sm"
+              icon={t.icon}
+              titleEn={t.en}
+              titleTe={t.te}
+              highlightAccent={false}
+              className="resource-cell"
+            />
+          ))}
+        </div>
+        <div className="resource-row resource-row--stagger">
+          {rowBottom.map((t) => (
+            <GlossHex
+              key={t.href}
+              href={t.href}
+              variant={t.variant}
+              size="sm"
+              icon={t.icon}
+              titleEn={t.en}
+              titleTe={t.te}
+              highlightAccent={false}
+              className="resource-cell"
+            />
+          ))}
+        </div>
       </div>
       <NavFooter backHref="/hub" />
     </SiteShell>

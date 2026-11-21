@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 export type GlossVariant =
   | "blue"
@@ -79,7 +79,7 @@ type Props = {
   highlightAccent?: boolean;
 };
 
-/** Glossy blueprint-style honeycomb cell with thick gold rim. */
+/** Glossy honeycomb cell — hover flips to dark + gold (menu-style). */
 export function GlossHex({
   href,
   variant = "blue",
@@ -99,19 +99,38 @@ export function GlossHex({
     <Link
       href={href}
       aria-label={ariaLabel ?? `${titleEn} ${titleTe}`}
-      className={`group relative inline-flex flex-col items-center justify-center text-center select-none transition-transform duration-300 hover:-translate-y-1.5 hover:scale-[1.03] active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f0b020] ${sizes[size]} ${className}`}
+      className={`gloss-hex group relative inline-flex flex-col items-center justify-center text-center select-none transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.04] active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f0b020] ${sizes[size]} ${className}`}
+      style={
+        {
+          "--hex-base-a": f.a,
+          "--hex-base-b": f.b,
+          "--hex-base-c": f.c,
+        } as CSSProperties
+      }
     >
       <svg
-        className="absolute inset-0 h-full w-full drop-shadow-[0_10px_18px_rgba(20,40,80,0.28)]"
+        className="absolute inset-0 h-full w-full drop-shadow-[0_10px_18px_rgba(20,40,80,0.28)] transition-[filter] duration-300 group-hover:drop-shadow-[0_12px_22px_rgba(0,0,0,0.45)]"
         viewBox={VIEW}
         preserveAspectRatio="xMidYMid meet"
         aria-hidden
       >
         <defs>
           <linearGradient id={`${uid}-fill`} x1="0.2" y1="0" x2="0.85" y2="1">
-            <stop offset="0%" stopColor={f.a} />
-            <stop offset="48%" stopColor={f.b} />
-            <stop offset="100%" stopColor={f.c} />
+            <stop
+              className="hex-stop-a"
+              offset="0%"
+              style={{ stopColor: "var(--hex-a)" }}
+            />
+            <stop
+              className="hex-stop-b"
+              offset="48%"
+              style={{ stopColor: "var(--hex-b)" }}
+            />
+            <stop
+              className="hex-stop-c"
+              offset="100%"
+              style={{ stopColor: "var(--hex-c)" }}
+            />
           </linearGradient>
           <linearGradient id={`${uid}-gold`} x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#fff6a8" />
@@ -124,7 +143,6 @@ export function GlossHex({
             <stop offset="55%" stopColor="rgba(255,255,255,0)" />
           </radialGradient>
         </defs>
-        {/* Outer gold rim */}
         <path
           d={HEX}
           fill={`url(#${uid}-gold)`}
@@ -133,8 +151,8 @@ export function GlossHex({
           strokeLinejoin="miter"
           strokeMiterlimit={8}
         />
-        {/* Inner colored face */}
         <path
+          className="hex-face"
           d={INNER}
           fill={`url(#${uid}-fill)`}
           stroke="rgba(255,236,160,0.55)"
@@ -142,10 +160,23 @@ export function GlossHex({
           strokeLinejoin="miter"
           strokeMiterlimit={8}
         />
-        <path d={INNER} fill={`url(#${uid}-shine)`} />
-        {/* Gloss flares */}
-        <ellipse cx="50" cy="14" rx="7" ry="3.2" fill="rgba(255,255,255,0.85)" />
-        <ellipse cx="50" cy="102" rx="5.5" ry="2.4" fill="rgba(255,255,255,0.45)" />
+        <path d={INNER} fill={`url(#${uid}-shine)`} className="hex-shine" />
+        <ellipse
+          className="hex-flare"
+          cx="50"
+          cy="14"
+          rx="7"
+          ry="3.2"
+          fill="rgba(255,255,255,0.85)"
+        />
+        <ellipse
+          className="hex-flare"
+          cx="50"
+          cy="102"
+          rx="5.5"
+          ry="2.4"
+          fill="rgba(255,255,255,0.45)"
+        />
       </svg>
 
       <span
@@ -153,25 +184,27 @@ export function GlossHex({
       >
         {icon ? (
           <span
-            className={`mb-0.5 flex shrink-0 items-center justify-center drop-shadow-[0_2px_6px_rgba(0,0,0,0.25)] ${iconBox[size]}`}
+            className={`hex-icon mb-0.5 flex shrink-0 items-center justify-center drop-shadow-[0_2px_6px_rgba(0,0,0,0.25)] transition-[filter] duration-300 ${iconBox[size]}`}
           >
             {icon}
           </span>
         ) : null}
         <span
-          className={`font-display w-full whitespace-pre-line font-extrabold tracking-wide text-balance text-white hyphens-none ${enType[size]}`}
+          className={`hex-title font-display w-full whitespace-pre-line font-extrabold tracking-wide text-balance text-white hyphens-none transition-colors duration-300 ${enType[size]}`}
         >
           {titleAccent && highlightAccent ? (
             <>
               {titleEn}{" "}
-              <span className="text-[#ffe84a]">{titleAccent}</span>
+              <span className="hex-accent text-[#ffe84a] transition-colors duration-300">
+                {titleAccent}
+              </span>
             </>
           ) : (
             titleEn
           )}
         </span>
         <span
-          className={`font-telugu w-full whitespace-pre-line font-bold text-balance break-words text-[#fff6b0] ${teType[size]}`}
+          className={`hex-te font-telugu w-full whitespace-pre-line font-bold text-balance break-words text-[#fff6b0] transition-colors duration-300 ${teType[size]}`}
         >
           {titleTe}
         </span>
