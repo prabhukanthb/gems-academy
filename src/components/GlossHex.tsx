@@ -268,7 +268,7 @@ export function WideHexBar({
       [tip, H - 2],
       [2, H / 2],
     ],
-    10,
+    16,
   );
   const di = roundedPolygon(
     [
@@ -279,7 +279,7 @@ export function WideHexBar({
       [tip + 6, H - 10],
       [10, H / 2],
     ],
-    8,
+    14,
   );
 
   return (
