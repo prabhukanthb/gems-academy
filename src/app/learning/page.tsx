@@ -46,7 +46,7 @@ export default function LearningPage() {
       </div>
 
       {/* Part 1 — Fee Details + Pay Fee, extreme right honeycomb */}
-      <div className="anim-enter-delay-2 mt-2 flex w-full justify-end pr-1 sm:pr-4">
+      <div className="anim-enter-delay-2 mt-2 flex w-full flex-col items-stretch px-1 sm:px-2">
         <HexHoneycomb perRow={2} className="learning-part1">
           <GlossHex
             href="/learning/fees"

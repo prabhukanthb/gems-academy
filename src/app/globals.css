@@ -434,10 +434,12 @@ body {
   }
 }
 
-/* Learning: Part 1 fees hug the right; Part 2 sits lower */
-.learning-part1 {
-  margin-inline: 0 0;
+/* Learning: Part 1 fees hug the extreme right; Part 2 sits lower */
+.hex-honeycomb.learning-part1 {
+  margin-left: auto !important;
+  margin-right: 0 !important;
   padding-inline: 0;
+  align-self: flex-end;
 }
 
 .learning-part2 {
