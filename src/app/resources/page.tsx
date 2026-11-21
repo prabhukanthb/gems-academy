@@ -1,5 +1,6 @@
 import { SiteShell } from "@/components/SiteShell";
 import { GlossHex } from "@/components/GlossHex";
+import { HexHoneycomb } from "@/components/HexHoneycomb";
 import { NavFooter } from "@/components/NavFooter";
 import {
   IconCards,
@@ -74,15 +75,12 @@ const tiles = [
   },
 ];
 
-const rowTop = tiles.slice(0, 4);
-const rowBottom = tiles.slice(4);
-
 export default function ResourcesPage() {
   return (
     <SiteShell showBrand={false} wide>
-      <div className="resource-honeycomb anim-enter">
-        <div className="resource-row">
-          {rowTop.map((t) => (
+      <div className="anim-enter">
+        <HexHoneycomb perRow={4}>
+          {tiles.map((t) => (
             <GlossHex
               key={t.href}
               href={t.href}
@@ -92,25 +90,10 @@ export default function ResourcesPage() {
               titleEn={t.en}
               titleTe={t.te}
               highlightAccent={false}
-              className="resource-cell"
+              className="hex-cell-fill"
             />
           ))}
-        </div>
-        <div className="resource-row resource-row--stagger">
-          {rowBottom.map((t) => (
-            <GlossHex
-              key={t.href}
-              href={t.href}
-              variant={t.variant}
-              size="sm"
-              icon={t.icon}
-              titleEn={t.en}
-              titleTe={t.te}
-              highlightAccent={false}
-              className="resource-cell"
-            />
-          ))}
-        </div>
+        </HexHoneycomb>
       </div>
       <NavFooter backHref="/hub" />
     </SiteShell>

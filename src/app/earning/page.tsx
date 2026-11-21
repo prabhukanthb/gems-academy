@@ -1,5 +1,6 @@
 import { SiteShell } from "@/components/SiteShell";
-import { WideHexBar } from "@/components/GlossHex";
+import { GlossHex } from "@/components/GlossHex";
+import { HexHoneycomb } from "@/components/HexHoneycomb";
 import { NavFooter } from "@/components/NavFooter";
 import {
   IconCoins,
@@ -13,7 +14,7 @@ export const metadata = { title: "Earning @ GEMS" };
 
 export default function EarningPage() {
   return (
-    <SiteShell showBrand={false}>
+    <SiteShell showBrand={false} wide>
       <div className="relative flex flex-1 flex-col items-center py-2">
         <h1 className="anim-enter text-center font-display text-2xl font-extrabold text-[#0d3f68] sm:text-3xl">
           {ui.earning.en}
@@ -22,39 +23,45 @@ export default function EarningPage() {
           {ui.earning.te}
         </p>
 
-        <div className="anim-enter-delay-1 mt-8 flex w-full flex-col gap-4 sm:gap-5">
-          <WideHexBar
-            href="/earning/tuition"
-            variant="blue"
-            icon={<IconSchool />}
-            line1="GEMS"
-            line1Accent="TUITION CENTER"
-            line2Te={ui.tuitionCenter.te}
-          />
-          <WideHexBar
-            href="/earning/home-tutors"
-            variant="red"
-            icon={<IconTutor />}
-            line1="GEMS"
-            line1Accent="HOME TUTORS"
-            line2Te={ui.homeTutors.te}
-          />
-          <WideHexBar
-            href="/earning/earn-back"
-            variant="green"
-            icon={<IconCoins />}
-            line1="EARN BACK"
-            line1Accent="YOUR FEE"
-            line2Te={ui.earnBack.te}
-          />
-          <WideHexBar
-            href="/earning/work-with"
-            variant="orange"
-            icon={<IconHandshake />}
-            line1="WORK WITH"
-            line1Accent="GEMS"
-            line2Te={ui.workWith.te}
-          />
+        <div className="anim-enter-delay-1 mt-8 w-full">
+          <HexHoneycomb perRow={2} className="earn-honeycomb">
+            <GlossHex
+              href="/earning/tuition"
+              variant="blue"
+              size="md"
+              icon={<IconSchool />}
+              titleEn="GEMS"
+              titleAccent="TUITION"
+              titleTe={ui.tuitionCenter.te}
+            />
+            <GlossHex
+              href="/earning/home-tutors"
+              variant="red"
+              size="md"
+              icon={<IconTutor />}
+              titleEn="GEMS"
+              titleAccent="TUTORS"
+              titleTe={ui.homeTutors.te}
+            />
+            <GlossHex
+              href="/earning/earn-back"
+              variant="green"
+              size="md"
+              icon={<IconCoins />}
+              titleEn={"EARN BACK\nYOUR FEE"}
+              titleTe={ui.earnBack.te}
+              highlightAccent={false}
+            />
+            <GlossHex
+              href="/earning/work-with"
+              variant="orange"
+              size="md"
+              icon={<IconHandshake />}
+              titleEn="WORK WITH"
+              titleAccent="GEMS"
+              titleTe={ui.workWith.te}
+            />
+          </HexHoneycomb>
         </div>
 
         <NavFooter backHref="/hub" />

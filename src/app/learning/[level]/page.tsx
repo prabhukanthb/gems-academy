@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteShell } from "@/components/SiteShell";
-import { HexButton } from "@/components/HexButton";
+import { GlossHex } from "@/components/GlossHex";
+import { HexHoneycomb } from "@/components/HexHoneycomb";
 import { NavFooter } from "@/components/NavFooter";
-import { Bilingual } from "@/components/Bilingual";
 import { getLevel, levels, topics, ui } from "@/lib/content";
 
 type Props = {
@@ -30,7 +30,7 @@ export default async function LevelPage({ params }: Props) {
   const core = topics.filter((t) => t.group === "core");
 
   return (
-    <SiteShell>
+    <SiteShell wide>
       <div
         className="anim-enter rounded-2xl px-5 py-4 text-white shadow-lg"
         style={{ background: level.color }}
@@ -110,63 +110,81 @@ export default async function LevelPage({ params }: Props) {
         </ul>
       </div>
 
-      <div className="anim-enter-delay-2 mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <HexButton href="/resources/track-record" variant="maroon" size="sm">
-          <Bilingual
-            text={ui.ourTrack}
-            enClassName="text-[0.6rem]"
-            teClassName="text-[0.5rem] font-normal"
+      <div className="anim-enter-delay-2 mt-10">
+        <HexHoneycomb perRow={4}>
+          <GlossHex
+            href="/resources/track-record"
+            variant="maroon"
+            size="sm"
+            titleEn={"OUR TRACK\nRECORD"}
+            titleTe={ui.ourTrack.te}
+            highlightAccent={false}
+            className="hex-cell-fill"
           />
-        </HexButton>
-        <HexButton href="/resources/concept-cards" variant="green" size="sm">
-          <Bilingual
-            text={ui.conceptCards}
-            enClassName="text-[0.6rem]"
-            teClassName="text-[0.5rem] font-normal"
+          <GlossHex
+            href="/resources/concept-cards"
+            variant="green"
+            size="sm"
+            titleEn={"CONCEPT\nCARDS"}
+            titleTe={ui.conceptCards.te}
+            highlightAccent={false}
+            className="hex-cell-fill"
           />
-        </HexButton>
-        <HexButton href="/resources/concept-videos" variant="red" size="sm">
-          <Bilingual
-            text={ui.conceptVideos}
-            enClassName="text-[0.6rem]"
-            teClassName="text-[0.5rem] font-normal"
+          <GlossHex
+            href="/resources/concept-videos"
+            variant="red"
+            size="sm"
+            titleEn={"CONCEPT\nVIDEOS"}
+            titleTe={ui.conceptVideos.te}
+            highlightAccent={false}
+            className="hex-cell-fill"
           />
-        </HexButton>
-        <HexButton href="/resources/testimonials" variant="orange" size="sm">
-          <Bilingual
-            text={ui.testimonials}
-            enClassName="text-[0.6rem]"
-            teClassName="text-[0.5rem] font-normal"
+          <GlossHex
+            href="/resources/testimonials"
+            variant="orange"
+            size="sm"
+            titleEn="TESTIMONIALS"
+            titleTe={ui.testimonials.te}
+            highlightAccent={false}
+            className="hex-cell-fill"
           />
-        </HexButton>
-        <HexButton href="/resources/faqs" variant="purple" size="sm">
-          <Bilingual
-            text={ui.faqs}
-            enClassName="text-[0.6rem]"
-            teClassName="text-[0.5rem] font-normal"
+          <GlossHex
+            href="/resources/faqs"
+            variant="purple"
+            size="sm"
+            titleEn={ui.faqs.en}
+            titleTe={ui.faqs.te}
+            highlightAccent={false}
+            className="hex-cell-fill"
           />
-        </HexButton>
-        <HexButton href="/resources/demo-videos" variant="orange" size="sm">
-          <Bilingual
-            text={ui.demoVideos}
-            enClassName="text-[0.6rem]"
-            teClassName="text-[0.5rem] font-normal"
+          <GlossHex
+            href="/resources/demo-videos"
+            variant="gold"
+            size="sm"
+            titleEn={"DEMO\nVIDEOS"}
+            titleTe={ui.demoVideos.te}
+            highlightAccent={false}
+            className="hex-cell-fill"
           />
-        </HexButton>
-        <HexButton href="/resources/comments" variant="green" size="sm">
-          <Bilingual
-            text={ui.yourComments}
-            enClassName="text-[0.6rem]"
-            teClassName="text-[0.5rem] font-normal"
+          <GlossHex
+            href="/resources/comments"
+            variant="green"
+            size="sm"
+            titleEn={"YOUR\nCOMMENTS"}
+            titleTe={ui.yourComments.te}
+            highlightAccent={false}
+            className="hex-cell-fill"
           />
-        </HexButton>
-        <HexButton href="/resources/contact" variant="maroon" size="sm">
-          <Bilingual
-            text={ui.contactUs}
-            enClassName="text-[0.6rem]"
-            teClassName="text-[0.5rem] font-normal"
+          <GlossHex
+            href="/resources/contact"
+            variant="pink"
+            size="sm"
+            titleEn={"CONTACT\nUS"}
+            titleTe={ui.contactUs.te}
+            highlightAccent={false}
+            className="hex-cell-fill"
           />
-        </HexButton>
+        </HexHoneycomb>
       </div>
 
       <NavFooter backHref="/learning" />

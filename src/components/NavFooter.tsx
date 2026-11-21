@@ -1,4 +1,4 @@
-import { HexButton } from "./HexButton";
+import { GlossHex } from "./GlossHex";
 import { Bilingual } from "./Bilingual";
 import { ui } from "@/lib/content";
 import Link from "next/link";
@@ -36,13 +36,15 @@ export function NavFooter({
         </Link>
       ) : null}
       {showHome ? (
-        <HexButton href="/hub" variant="green" size="sm" ariaLabel="Home">
-          <Bilingual
-            text={ui.home}
-            enClassName="text-[0.75rem] leading-tight"
-            teClassName="text-[0.65rem] leading-tight font-normal"
-          />
-        </HexButton>
+        <GlossHex
+          href="/"
+          variant="green"
+          size="sm"
+          titleEn="HOME"
+          titleAccent="SCREEN"
+          titleTe={ui.home.te}
+          ariaLabel="Home screen"
+        />
       ) : null}
     </nav>
   );

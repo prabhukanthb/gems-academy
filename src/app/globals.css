@@ -303,7 +303,9 @@ body {
 }
 
 .gloss-hex:hover .hex-title,
-.gloss-hex:focus-visible .hex-title {
+.gloss-hex:focus-visible .hex-title,
+.gloss-hex:hover .hex-title *,
+.gloss-hex:focus-visible .hex-title * {
   color: #ffe84a;
 }
 
@@ -313,7 +315,9 @@ body {
 }
 
 .gloss-hex:hover .hex-te,
-.gloss-hex:focus-visible .hex-te {
+.gloss-hex:focus-visible .hex-te,
+.gloss-hex:hover .font-telugu,
+.gloss-hex:focus-visible .font-telugu {
   color: #ffe9a8;
 }
 
@@ -349,7 +353,8 @@ body {
   }
 }
 
-/* Resources: horizontal honeycomb — 4 + 4 with gaps, bottom nested into valleys */
+/* Shared horizontal honeycomb — staggered rows with cream gaps */
+.hex-honeycomb,
 .resource-honeycomb {
   --hex-w: 7.6rem;
   --hex-h: 8.78rem;
@@ -362,11 +367,19 @@ body {
   width: max-content;
   max-width: 100%;
   margin-inline: auto;
-  /* room for the half-step nest on the bottom row */
   padding-inline: calc(var(--step) / 2);
   padding-bottom: 1rem;
 }
 
+.hex-honeycomb.fee-honeycomb,
+.hex-honeycomb.earn-honeycomb,
+.hex-honeycomb.level-honeycomb {
+  --hex-w: 9.5rem;
+  --hex-h: 10.97rem;
+  --gap: 1.25rem;
+}
+
+.hex-row,
 .resource-row {
   display: flex;
   flex-wrap: nowrap;
@@ -374,46 +387,74 @@ body {
   gap: var(--gap);
 }
 
+.hex-row--stagger,
 .resource-row--stagger {
-  /* slight nest into top-row valleys, with a clear cream gap */
   margin-top: calc(var(--hex-h) * -0.08);
   transform: translateX(calc(var(--step) / 2));
 }
 
-.resource-honeycomb .resource-cell {
+.hex-honeycomb > .hex-row > .gloss-hex,
+.hex-honeycomb > .hex-row > .honey-cell,
+.resource-honeycomb .resource-cell,
+.hex-honeycomb .hex-cell-fill {
   width: var(--hex-w) !important;
   height: var(--hex-h) !important;
   flex: 0 0 var(--hex-w);
 }
 
 @media (min-width: 640px) {
+  .hex-honeycomb,
   .resource-honeycomb {
     --hex-w: 9.25rem;
     --hex-h: 10.68rem;
     --gap: 1rem;
   }
+
+  .hex-honeycomb.fee-honeycomb,
+  .hex-honeycomb.earn-honeycomb {
+    --hex-w: 11rem;
+    --hex-h: 12.7rem;
+    --gap: 1.5rem;
+  }
+
+  .hex-honeycomb.level-honeycomb {
+    --hex-w: 10rem;
+    --hex-h: 11.55rem;
+    --gap: 1.15rem;
+  }
 }
 
 @media (min-width: 900px) {
+  .hex-honeycomb,
   .resource-honeycomb {
     --hex-w: 10.5rem;
     --hex-h: 12.12rem;
     --gap: 1.15rem;
   }
+
+  .hex-honeycomb.fee-honeycomb,
+  .hex-honeycomb.earn-honeycomb {
+    --hex-w: 12rem;
+    --hex-h: 13.86rem;
+    --gap: 1.75rem;
+  }
 }
 
 @media (max-width: 639px) {
+  .hex-honeycomb,
   .resource-honeycomb {
     align-items: center;
     padding-inline: 0;
     width: 100%;
   }
 
+  .hex-row,
   .resource-row {
     flex-wrap: wrap;
     justify-content: center;
   }
 
+  .hex-row--stagger,
   .resource-row--stagger {
     transform: none;
     margin-top: 0.65rem;

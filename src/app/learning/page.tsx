@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { SiteShell } from "@/components/SiteShell";
-import { HexButton, HexBadge } from "@/components/HexButton";
+import { GlossHex } from "@/components/GlossHex";
+import { HexBadge } from "@/components/HexButton";
+import { HexHoneycomb } from "@/components/HexHoneycomb";
 import { LevelStaircase } from "@/components/LevelStaircase";
 import { NavFooter } from "@/components/NavFooter";
-import { Bilingual } from "@/components/Bilingual";
 import { ui } from "@/lib/content";
 
 export const metadata = {
@@ -59,52 +60,66 @@ export default function LearningPage() {
         </Link>
       </div>
 
-      <div className="anim-enter-delay-3 mt-10 flex flex-wrap items-center justify-center gap-6">
-        <HexButton href="/learning/fees" variant="red" size="md">
-          <Bilingual
-            text={ui.feeDetails}
-            enClassName="text-sm"
-            teClassName="text-[0.7rem] font-normal"
+      <div className="anim-enter-delay-3 mt-10">
+        <HexHoneycomb perRow={2} className="fee-honeycomb">
+          <GlossHex
+            href="/learning/fees"
+            variant="red"
+            size="md"
+            titleEn="FEE"
+            titleAccent="DETAILS"
+            titleTe={ui.feeDetails.te}
           />
-        </HexButton>
-        <HexButton href="/learning/pay" variant="green" size="md">
-          <Bilingual
-            text={ui.payFee}
-            enClassName="text-sm"
-            teClassName="text-[0.7rem] font-normal"
+          <GlossHex
+            href="/learning/pay"
+            variant="green"
+            size="md"
+            titleEn={"PAY — the —\nFEE"}
+            titleTe={ui.payFee.te}
+            highlightAccent={false}
           />
-        </HexButton>
+        </HexHoneycomb>
       </div>
 
-      <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
-        <HexButton href="/resources/concept-cards" variant="green" size="sm">
-          <Bilingual
-            text={ui.conceptCards}
-            enClassName="text-[0.65rem]"
-            teClassName="text-[0.55rem] font-normal"
+      <div className="anim-enter-delay-3 mt-8">
+        <HexHoneycomb perRow={4}>
+          <GlossHex
+            href="/resources/concept-cards"
+            variant="green"
+            size="sm"
+            titleEn={"CONCEPT\nCARDS"}
+            titleTe={ui.conceptCards.te}
+            highlightAccent={false}
+            className="hex-cell-fill"
           />
-        </HexButton>
-        <HexButton href="/resources/concept-videos" variant="red" size="sm">
-          <Bilingual
-            text={ui.conceptVideos}
-            enClassName="text-[0.65rem]"
-            teClassName="text-[0.55rem] font-normal"
+          <GlossHex
+            href="/resources/concept-videos"
+            variant="red"
+            size="sm"
+            titleEn={"CONCEPT\nVIDEOS"}
+            titleTe={ui.conceptVideos.te}
+            highlightAccent={false}
+            className="hex-cell-fill"
           />
-        </HexButton>
-        <HexButton href="/resources/testimonials" variant="orange" size="sm">
-          <Bilingual
-            text={ui.testimonials}
-            enClassName="text-[0.65rem]"
-            teClassName="text-[0.55rem] font-normal"
+          <GlossHex
+            href="/resources/testimonials"
+            variant="orange"
+            size="sm"
+            titleEn="TESTIMONIALS"
+            titleTe={ui.testimonials.te}
+            highlightAccent={false}
+            className="hex-cell-fill"
           />
-        </HexButton>
-        <HexButton href="/resources/faqs" variant="purple" size="sm">
-          <Bilingual
-            text={ui.faqs}
-            enClassName="text-[0.65rem]"
-            teClassName="text-[0.55rem] font-normal"
+          <GlossHex
+            href="/resources/faqs"
+            variant="purple"
+            size="sm"
+            titleEn={ui.faqs.en}
+            titleTe={ui.faqs.te}
+            highlightAccent={false}
+            className="hex-cell-fill"
           />
-        </HexButton>
+        </HexHoneycomb>
       </div>
 
       <NavFooter backHref="/hub" />

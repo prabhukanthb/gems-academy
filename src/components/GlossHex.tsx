@@ -213,7 +213,7 @@ export function GlossHex({
   );
 }
 
-/** Elongated horizontal honeycomb bar (earning menu style). */
+/** Elongated honeycomb bar — same hover flip as GlossHex. */
 export function WideHexBar({
   href,
   variant = "blue",
@@ -233,7 +233,6 @@ export function WideHexBar({
 }) {
   const f = fills[variant];
   const uid = `wh-${variant}-${line1.replace(/\W+/g, "").slice(0, 10)}`;
-  // Flat-top elongated hex
   const W = 320;
   const H = 92;
   const tip = 28;
@@ -244,7 +243,14 @@ export function WideHexBar({
     <Link
       href={href}
       aria-label={ariaLabel ?? `${line1} ${line2Te}`}
-      className="group relative mx-auto flex h-[5.75rem] w-full max-w-[22rem] items-center transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.015] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f0b020] sm:h-[6.25rem] sm:max-w-[26rem]"
+      className="gloss-hex group relative mx-auto flex h-[5.75rem] w-full max-w-[22rem] items-center transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.015] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f0b020] sm:h-[6.25rem] sm:max-w-[26rem]"
+      style={
+        {
+          "--hex-base-a": f.a,
+          "--hex-base-b": f.b,
+          "--hex-base-c": f.c,
+        } as CSSProperties
+      }
     >
       <svg
         className="absolute inset-0 h-full w-full drop-shadow-[0_8px_16px_rgba(20,40,80,0.28)]"
@@ -254,9 +260,21 @@ export function WideHexBar({
       >
         <defs>
           <linearGradient id={`${uid}-fill`} x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor={f.a} />
-            <stop offset="50%" stopColor={f.b} />
-            <stop offset="100%" stopColor={f.c} />
+            <stop
+              className="hex-stop-a"
+              offset="0%"
+              style={{ stopColor: "var(--hex-a)" }}
+            />
+            <stop
+              className="hex-stop-b"
+              offset="50%"
+              style={{ stopColor: "var(--hex-b)" }}
+            />
+            <stop
+              className="hex-stop-c"
+              offset="100%"
+              style={{ stopColor: "var(--hex-c)" }}
+            />
           </linearGradient>
           <linearGradient id={`${uid}-gold`} x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#fff6a8" />
@@ -266,26 +284,35 @@ export function WideHexBar({
         </defs>
         <path d={d} fill={`url(#${uid}-gold)`} stroke="#8a6010" strokeWidth="1.4" />
         <path d={di} fill={`url(#${uid}-fill)`} />
-        <ellipse cx={W / 2} cy="12" rx="28" ry="5" fill="rgba(255,255,255,0.35)" />
+        <ellipse
+          className="hex-flare"
+          cx={W / 2}
+          cy="12"
+          rx="28"
+          ry="5"
+          fill="rgba(255,255,255,0.35)"
+        />
       </svg>
       <span className="relative z-10 flex w-full items-center gap-3 px-8 sm:gap-4 sm:px-10">
         {icon ? (
-          <span className="flex h-12 w-12 shrink-0 items-center justify-center drop-shadow sm:h-14 sm:w-14">
+          <span className="hex-icon flex h-12 w-12 shrink-0 items-center justify-center drop-shadow sm:h-14 sm:w-14">
             {icon}
           </span>
         ) : null}
         <span className="min-w-0 text-left">
-          <span className="block font-display text-base font-extrabold leading-tight tracking-wide text-white sm:text-lg">
+          <span className="hex-title block font-display text-base font-extrabold leading-tight tracking-wide text-white transition-colors duration-300 sm:text-lg">
             {line1Accent ? (
               <>
                 {line1}{" "}
-                <span className="text-[#ffe84a]">{line1Accent}</span>
+                <span className="hex-accent text-[#ffe84a] transition-colors duration-300">
+                  {line1Accent}
+                </span>
               </>
             ) : (
               line1
             )}
           </span>
-          <span className="font-telugu mt-0.5 block text-sm font-bold text-white/95">
+          <span className="hex-te font-telugu mt-0.5 block text-sm font-bold text-white/95 transition-colors duration-300">
             {line2Te}
           </span>
         </span>
