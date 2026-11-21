@@ -77,7 +77,7 @@ const tiles = [
 export default function ResourcesPage() {
   return (
     <SiteShell showBrand={false}>
-      <div className="anim-enter grid grid-cols-2 justify-items-center gap-x-1 gap-y-2 sm:gap-x-3 sm:gap-y-3">
+      <div className="resource-honeycomb anim-enter">
         {tiles.map((t) => (
           <GlossHex
             key={t.href}
