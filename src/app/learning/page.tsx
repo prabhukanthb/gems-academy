@@ -16,76 +16,6 @@ const levelVariants: GlossVariant[] = [
   "purple",
 ];
 
-/** One honeycomb menu — every cell the same size, staggered like the reference. */
-const cells: {
-  href: string;
-  variant: GlossVariant;
-  en: string;
-  te: string;
-  accent?: string;
-}[] = [
-  ...levels.map((level, i) => ({
-    href: `/learning/${level.id}`,
-    variant: levelVariants[i] ?? ("blue" as GlossVariant),
-    en: level.name.en,
-    te: level.name.te,
-  })),
-  {
-    href: "/learning/baseline",
-    variant: "gold",
-    en: "BASELINE\nTESTS",
-    te: ui.baselineTests.te,
-  },
-  {
-    href: "/learning/fees",
-    variant: "red",
-    en: "FEE\nDETAILS",
-    te: ui.feeDetails.te,
-  },
-  {
-    href: "/learning/pay",
-    variant: "green",
-    en: "PAY — the —\nFEE",
-    te: ui.payFee.te,
-  },
-  {
-    href: "/resources/concept-cards",
-    variant: "green",
-    en: "CONCEPT\nCARDS",
-    te: ui.conceptCards.te,
-  },
-  {
-    href: "/resources/concept-videos",
-    variant: "red",
-    en: "CONCEPT\nVIDEOS",
-    te: ui.conceptVideos.te,
-  },
-  {
-    href: "/resources/testimonials",
-    variant: "orange",
-    en: "TESTIMONIALS",
-    te: ui.testimonials.te,
-  },
-  {
-    href: "/resources/faqs",
-    variant: "purple",
-    en: ui.faqs.en,
-    te: ui.faqs.te,
-  },
-  {
-    href: "/learning/handwriting",
-    variant: "blue",
-    en: "HAND\nWRITING",
-    te: ui.handwriting.te,
-  },
-  {
-    href: "/learning/family",
-    variant: "purple",
-    en: "FAMILY\nENGLISH",
-    te: ui.familyEnglish.te,
-  },
-];
-
 export default function LearningPage() {
   return (
     <SiteShell wide showBrand={false}>
@@ -96,21 +26,115 @@ export default function LearningPage() {
         <p className="font-telugu mt-1 text-[#3a5a7a]">{ui.englishCourses.te}</p>
       </div>
 
+      {/* Levels — keep Toddler → Professional honeycomb as-is */}
       <div className="anim-enter-delay-1">
         <HexHoneycomb perRow={4}>
-          {cells.map((c) => (
+          {levels.map((level, i) => (
             <GlossHex
-              key={c.href}
-              href={c.href}
-              variant={c.variant}
+              key={level.id}
+              href={`/learning/${level.id}`}
+              variant={levelVariants[i] ?? "blue"}
               size="sm"
-              titleEn={c.en}
-              titleAccent={c.accent}
-              titleTe={c.te}
-              highlightAccent={Boolean(c.accent)}
+              titleEn={level.name.en}
+              titleTe={level.name.te}
+              highlightAccent={false}
               className="hex-cell-fill"
+              ariaLabel={`${level.name.en} — ${level.description.en}`}
             />
           ))}
+        </HexHoneycomb>
+      </div>
+
+      {/* Part 1 — Fee Details + Pay Fee, extreme right honeycomb */}
+      <div className="anim-enter-delay-2 mt-2 flex w-full justify-end pr-1 sm:pr-4">
+        <HexHoneycomb perRow={2} className="learning-part1">
+          <GlossHex
+            href="/learning/fees"
+            variant="red"
+            size="sm"
+            titleEn={"FEE\nDETAILS"}
+            titleTe={ui.feeDetails.te}
+            highlightAccent={false}
+            className="hex-cell-fill"
+          />
+          <GlossHex
+            href="/learning/pay"
+            variant="green"
+            size="sm"
+            titleEn={"PAY — the —\nFEE"}
+            titleTe={ui.payFee.te}
+            highlightAccent={false}
+            className="hex-cell-fill"
+          />
+        </HexHoneycomb>
+      </div>
+
+      {/* Part 2 — lower; Baseline on left; FAQ next to Family */}
+      <div className="anim-enter-delay-3 learning-part2 mt-10 sm:mt-14">
+        <HexHoneycomb perRow={4}>
+          <GlossHex
+            href="/learning/baseline"
+            variant="gold"
+            size="sm"
+            titleEn={"BASELINE\nTESTS"}
+            titleTe={ui.baselineTests.te}
+            highlightAccent={false}
+            className="hex-cell-fill"
+          />
+          <GlossHex
+            href="/resources/concept-cards"
+            variant="green"
+            size="sm"
+            titleEn={"CONCEPT\nCARDS"}
+            titleTe={ui.conceptCards.te}
+            highlightAccent={false}
+            className="hex-cell-fill"
+          />
+          <GlossHex
+            href="/resources/concept-videos"
+            variant="red"
+            size="sm"
+            titleEn={"CONCEPT\nVIDEOS"}
+            titleTe={ui.conceptVideos.te}
+            highlightAccent={false}
+            className="hex-cell-fill"
+          />
+          <GlossHex
+            href="/resources/testimonials"
+            variant="orange"
+            size="sm"
+            titleEn="TESTIMONIALS"
+            titleTe={ui.testimonials.te}
+            highlightAccent={false}
+            className="hex-cell-fill"
+          />
+          <GlossHex
+            href="/learning/handwriting"
+            variant="blue"
+            size="sm"
+            titleEn={"HAND\nWRITING"}
+            titleTe={ui.handwriting.te}
+            highlightAccent={false}
+            className="hex-cell-fill"
+          />
+          <GlossHex
+            href="/learning/family"
+            variant="purple"
+            size="sm"
+            titleEn={"FAMILY\nENGLISH"}
+            titleTe={ui.familyEnglish.te}
+            highlightAccent={false}
+            className="hex-cell-fill"
+          />
+          <GlossHex
+            href="/resources/faqs"
+            variant="purple"
+            size="sm"
+            titleEn={ui.faqs.en}
+            titleTe={ui.faqs.te}
+            highlightAccent={false}
+            className="hex-cell-fill"
+          />
         </HexHoneycomb>
       </div>
 

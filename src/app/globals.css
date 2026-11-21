@@ -434,6 +434,16 @@ body {
   }
 }
 
+/* Learning: Part 1 fees hug the right; Part 2 sits lower */
+.learning-part1 {
+  margin-inline: 0 0;
+  padding-inline: 0;
+}
+
+.learning-part2 {
+  scroll-margin-top: 1rem;
+}
+
 .honeycomb-cluster {
   position: relative;
   display: flex;
