@@ -8,83 +8,85 @@ export const metadata = { title: "About Us" };
 export default function AboutPage() {
   return (
     <SiteShell>
-      <div className="anim-enter relative mx-auto w-full max-w-lg overflow-hidden">
-        {/* Honey pouring from honeycomb — page identity */}
+      <div className="anim-enter relative mx-auto w-full max-w-md">
         <svg
-          viewBox="0 0 320 220"
-          className="about-page-pour mx-auto h-auto w-full max-w-md drop-shadow-[0_10px_20px_rgba(120,70,10,0.22)]"
+          viewBox="0 0 320 260"
+          className="about-page-pour mx-auto h-auto w-full drop-shadow-[0_12px_22px_rgba(120,70,10,0.24)]"
           aria-hidden
         >
           <defs>
             <linearGradient id="ap-wax" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#ffe9a0" />
+              <stop offset="0%" stopColor="#fff0b0" />
               <stop offset="50%" stopColor="#f0b020" />
               <stop offset="100%" stopColor="#c47808" />
             </linearGradient>
             <linearGradient id="ap-honey" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#ffe56a" />
+              <stop offset="0%" stopColor="#ffe978" />
               <stop offset="40%" stopColor="#f0b020" />
-              <stop offset="100%" stopColor="#a06008" />
+              <stop offset="100%" stopColor="#9a5808" />
             </linearGradient>
-            <radialGradient id="ap-shine" cx="40%" cy="30%" r="50%">
-              <stop offset="0%" stopColor="rgba(255,255,255,0.5)" />
-              <stop offset="70%" stopColor="rgba(255,255,255,0)" />
+            <radialGradient id="ap-blob" cx="40%" cy="30%" r="60%">
+              <stop offset="0%" stopColor="#fff2a8" />
+              <stop offset="50%" stopColor="#f0b020" />
+              <stop offset="100%" stopColor="#a86808" />
             </radialGradient>
           </defs>
 
-          <g stroke="#8a6010" strokeWidth="1.5" strokeLinejoin="round">
-            <path d={roundedHexAt(110, 48, 32)} fill="url(#ap-wax)" />
-            <path d={roundedHexAt(162, 48, 32)} fill="url(#ap-wax)" />
-            <path d={roundedHexAt(214, 48, 32)} fill="url(#ap-wax)" />
-            <path d={roundedHexAt(136, 90, 32)} fill="url(#ap-wax)" />
-            <path d={roundedHexAt(188, 90, 32)} fill="url(#ap-wax)" />
-            <path d={roundedHexAt(162, 132, 30)} fill="url(#ap-wax)" />
+          <g stroke="#7a5010" strokeWidth="1.45" strokeLinejoin="round">
+            <path d={roundedHexAt(100, 42, 30)} fill="url(#ap-wax)" />
+            <path d={roundedHexAt(152, 42, 30)} fill="url(#ap-wax)" />
+            <path d={roundedHexAt(204, 42, 28)} fill="url(#ap-wax)" />
+            <path d={roundedHexAt(126, 82, 30)} fill="url(#ap-wax)" />
+            <path d={roundedHexAt(178, 82, 30)} fill="url(#ap-wax)" />
+            <path d={roundedHexAt(152, 122, 28)} fill="url(#ap-wax)" />
           </g>
-          <ellipse cx="162" cy="70" rx="14" ry="5" fill="rgba(255,255,255,0.4)" />
+          <ellipse cx="152" cy="62" rx="12" ry="4.5" fill="rgba(255,255,255,0.42)" />
 
-          {/* Honey spilling from the lowest cell */}
+          {/* Thick pour into title pool */}
           <path
             className="honey-stream"
-            d="M148 148
-               C150 158 154 170 158 182
-               C162 194 168 204 174 210
-               L160 216
-               C152 208 144 194 140 180
-               C136 166 140 154 148 148 Z"
+            d="M142 138
+               C148 148 154 160 158 174
+               C162 186 164 196 162 204
+               L150 208
+               C150 198 148 186 144 174
+               C140 160 138 146 142 138 Z"
             fill="url(#ap-honey)"
           />
-          <ellipse
+          <path
             className="honey-drop"
-            cx="168"
-            cy="188"
-            rx="7"
-            ry="10"
-            fill="#ffd24a"
+            d="M168 168 C176 168 180 176 180 184 C180 196 172 206 168 212 C164 206 156 196 156 184 C156 176 160 168 168 168 Z"
+            fill="#ffd84a"
           />
-          {/* Honey puddle with title sitting on it */}
           <ellipse
             cx="160"
-            cy="205"
-            rx="92"
-            ry="18"
-            fill="url(#ap-honey)"
-            stroke="#8a6010"
-            strokeWidth="1"
+            cy="228"
+            rx="108"
+            ry="26"
+            fill="url(#ap-blob)"
+            stroke="#7a5010"
+            strokeWidth="1.2"
           />
-          <ellipse cx="140" cy="198" rx="50" ry="8" fill="url(#ap-shine)" />
+          <ellipse
+            cx="130"
+            cy="218"
+            rx="48"
+            ry="9"
+            fill="rgba(255,255,255,0.35)"
+          />
         </svg>
 
-        <div className="pointer-events-none absolute inset-x-0 bottom-2 flex flex-col items-center text-center sm:bottom-3">
-          <h1 className="font-display text-3xl font-extrabold tracking-wide text-[#5a3808] sm:text-4xl">
+        <div className="pointer-events-none absolute inset-x-0 bottom-[4%] flex flex-col items-center text-center">
+          <h1 className="font-display text-3xl font-extrabold tracking-wide text-white drop-shadow-[0_1px_2px_rgba(60,30,0,0.45)] sm:text-4xl">
             {ui.aboutUs.en}
           </h1>
-          <p className="font-telugu text-lg font-bold text-[#8a6010]">
+          <p className="font-telugu text-base font-bold text-[#fff8d8] sm:text-lg">
             {ui.aboutUs.te}
           </p>
         </div>
       </div>
 
-      <div className="anim-enter-delay-1 relative -mt-2 space-y-5 px-1 sm:px-2">
+      <div className="anim-enter-delay-1 mt-6 space-y-5 px-1 sm:px-2">
         <p className="text-center text-lg leading-relaxed text-[#1a2a3a]">
           Like honey from the comb, {brand.name} shares English knowledge —
           sweet, steady, and meant to be shared — from Pre-Beginner through
