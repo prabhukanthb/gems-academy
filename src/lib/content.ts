@@ -20,6 +20,7 @@ export const ui = {
   learning: { en: "LEARNING @ GEMS", te: "GEMS వద్ద నేర్చుకోండి" },
   earning: { en: "EARNING @ GEMS", te: "GEMS తో సంపాదించండి" },
   home: { en: "HOME SCREEN", te: "హోమ్ స్క్రీన్" },
+  aboutUs: { en: "ABOUT US", te: "మా గురించి" },
   back: { en: "BACK", te: "వెనుకకు" },
   feeDetails: { en: "FEE DETAILS", te: "ఫీజు వివరాలు" },
   payFee: { en: "PAY — the — FEE", te: "ఫీజు చెల్లించండి" },

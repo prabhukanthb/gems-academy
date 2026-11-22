@@ -19,38 +19,12 @@ export default function LearningPage() {
         <p className="font-telugu mt-1 text-[#3a5a7a]">{ui.englishCourses.te}</p>
       </div>
 
-      {/* Same staircase levels — honeycomb shapes in a horizontal row */}
       <div className="anim-enter-delay-1">
         <LevelStaircase />
       </div>
 
-      {/* Part 1 — Fee Details + Pay Fee, extreme right honeycomb */}
-      <div className="anim-enter-delay-2 mt-2 flex w-full flex-col items-stretch px-1 sm:px-2">
-        <HexHoneycomb perRow={2} className="learning-part1">
-          <GlossHex
-            href="/learning/fees"
-            variant="red"
-            size="sm"
-            titleEn={"FEE\nDETAILS"}
-            titleTe={ui.feeDetails.te}
-            highlightAccent={false}
-            className="hex-cell-fill"
-          />
-          <GlossHex
-            href="/learning/pay"
-            variant="green"
-            size="sm"
-            titleEn={"PAY — the —\nFEE"}
-            titleTe={ui.payFee.te}
-            highlightAccent={false}
-            className="hex-cell-fill"
-          />
-        </HexHoneycomb>
-      </div>
-
-      {/* Part 2 — lower; Baseline on left; FAQ next to Family */}
-      <div className="anim-enter-delay-3 learning-part2 mt-10 sm:mt-14">
-        <HexHoneycomb perRow={4}>
+      <div className="anim-enter-delay-2 learning-part2 mt-10 sm:mt-14">
+        <HexHoneycomb perRow={3}>
           <GlossHex
             href="/learning/baseline"
             variant="gold"
@@ -84,24 +58,6 @@ export default function LearningPage() {
             size="sm"
             titleEn="TESTIMONIALS"
             titleTe={ui.testimonials.te}
-            highlightAccent={false}
-            className="hex-cell-fill"
-          />
-          <GlossHex
-            href="/learning/handwriting"
-            variant="blue"
-            size="sm"
-            titleEn={"HAND\nWRITING"}
-            titleTe={ui.handwriting.te}
-            highlightAccent={false}
-            className="hex-cell-fill"
-          />
-          <GlossHex
-            href="/learning/family"
-            variant="purple"
-            size="sm"
-            titleEn={"FAMILY\nENGLISH"}
-            titleTe={ui.familyEnglish.te}
             highlightAccent={false}
             className="hex-cell-fill"
           />

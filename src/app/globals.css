@@ -364,7 +364,7 @@ body {
   }
 }
 
-/* Hub path: larger hexes — Learning | Earning, Home nested below centre */
+/* Hub path: larger hexes — Learning | Earning */
 .hex-honeycomb.hub-path {
   --hex-w: 11.5rem;
   --hex-h: 13.28rem;
