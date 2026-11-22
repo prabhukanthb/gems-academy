@@ -173,6 +173,83 @@ body {
   }
 }
 
+/* About Us — honey pouring from the comb */
+@keyframes honey-drip-sway {
+  0%,
+  100% {
+    transform: translateY(0) scaleY(1);
+  }
+  50% {
+    transform: translateY(4px) scaleY(1.04);
+  }
+}
+
+@keyframes honey-drop-fall {
+  0% {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(28px);
+    opacity: 0;
+  }
+}
+
+@keyframes honey-pool-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.025);
+  }
+}
+
+.about-honey .honey-stream {
+  transform-origin: 96px 118px;
+  animation: honey-drip-sway 2.8s ease-in-out infinite;
+}
+
+.about-honey .honey-drip--a {
+  transform-origin: 72px 120px;
+  animation: honey-drip-sway 3.2s ease-in-out 0.2s infinite;
+}
+
+.about-honey .honey-drip--b {
+  transform-origin: 128px 122px;
+  animation: honey-drip-sway 2.6s ease-in-out 0.45s infinite;
+}
+
+.about-honey .honey-drop {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: honey-drop-fall 2.4s ease-in infinite;
+}
+
+.about-honey .honey-pool {
+  transform-origin: 110px 218px;
+  animation: honey-pool-breathe 3.4s ease-in-out infinite;
+}
+
+.about-honey:hover .honey-stream,
+.about-honey:hover .honey-drip--a,
+.about-honey:hover .honey-drip--b {
+  animation-duration: 1.6s;
+}
+
+/* About page hero pour */
+.about-page-pour .honey-stream {
+  transform-origin: 160px 140px;
+  animation: honey-drip-sway 3s ease-in-out infinite;
+}
+
+.about-page-pour .honey-drop {
+  animation: honey-drop-fall 2.6s ease-in infinite;
+}
+
 .anim-enter {
   animation: float-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
