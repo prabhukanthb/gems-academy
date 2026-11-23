@@ -169,10 +169,6 @@ export const partnerLogos = [
 export const aboutContact = {
   email: "contact@gemsacademy.in",
   phones: ["8639569412", "9494447457"],
-  place: {
-    en: "Garla · Mahabubabad District · Telangana",
-    te: "గార్ల · మహబూబాబాద్ జిల్లా · తెలంగాణ",
-  },
   focus: {
     en: "Digital Methodology & Smart Training",
     te: "డిజిటల్ విధానం & స్మార్ట్ ట్రైనింగ్",

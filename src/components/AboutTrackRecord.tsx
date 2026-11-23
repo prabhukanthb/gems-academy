@@ -313,10 +313,6 @@ export function AboutTrackRecord() {
         <p className="font-telugu text-xs text-[#8a6010]">
           {aboutContact.focus.te}
         </p>
-        <p className="mt-3 text-sm text-[#1a2a3a]">{aboutContact.place.en}</p>
-        <p className="font-telugu text-xs text-[#3a5a7a]">
-          {aboutContact.place.te}
-        </p>
         <p className="mt-3 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm font-bold text-[#0d6a3a]">
           {aboutContact.phones.map((p) => (
             <a
