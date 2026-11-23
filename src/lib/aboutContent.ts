@@ -2,6 +2,8 @@
 
 export const aboutHero = {
   name: "Kiron Satyamurthy",
+  /** Exact phrasing requested for About Us */
+  softSkillLine: "He is soft skill speaclist teacher in an isititue",
   roles: {
     en: "Soft Skills Specialist · Learning Loss Recovery Expert",
     te: "సాఫ్ట్ స్కిల్స్ స్పెషలిస్ట్ · లెర్నింగ్ లాస్ రికవరీ నిపుణుడు",
@@ -14,6 +16,7 @@ export const aboutHero = {
     en: "Children · Learning · A Brighter Tomorrow",
     te: "పిల్లలు · నేర్చుకోవడం · ఉజ్వల భవిష్యత్తు",
   },
+  schoolsLine: "Schools | Colleges | IT HUB",
 };
 
 export const experienceStats = [
@@ -71,47 +74,97 @@ export const impactBlocks = [
   },
 ];
 
+/** Full endorsement list from the track-record flyer (3 columns). */
 export const endorsements = {
-  intro: {
-    en: "Work appreciated by professors, senior IAS / IPS officers, ministers, and Members of Parliament.",
-    te: "ప్రొఫెసర్లు, సీనియర్ IAS / IPS అధికారులు, మంత్రులు మరియు పార్లమెంటు సభ్యులు ప్రశంసించిన కృషి.",
-  },
-  names: [
-    "Prof. Raja Reddy — VC, IIIT",
-    "Prof. V. Sashi Kumar — CIEFL",
-    "Prof. Ganta Subba Rao — APSSDC",
-    "Prof. Carol — USA",
-    "Prof. George Bishop — USA",
-    "Dr. Manmohan Singh — IAS",
-    "Dr. R.S. Praveen — IPS",
-    "Mr. A.K. Khan — IPS",
-    "Mr. V.P. Gowtham — IAS",
-    "Kadiyam Srihari — Education Minister",
-    "Satyavathi R. — Tribal Minister",
+  header:
+    "Professors, Senior IAS / IPS Officers, M.P's. who appreciated my work",
+  columns: [
+    [
+      "Prof. RAJA REDDY, Vice Chancellor IIIT",
+      "Dr. MANMOHAN SINGH, IAS",
+      "Dr. P. SUBRAMANYAM, IAS",
+      "Mr. CHANDRA MOULI, IAS",
+      "Mr. CHAKRAPANI, IAS",
+      "Prof. CAROL (USA)",
+      "Prof. GEORGE BISHOP (USA)",
+      "Mr. JAMES, USA",
+      "Ms. MARY, USA",
+      "Dr. SUDHAKAR RAO, USA",
+      "Mr. V.P. Gowtham, IAS",
+      "Mr. J.P. Narayana, IAS",
+      "Ms. Bindu, Chairperson, ZP, MHBD",
+    ],
+    [
+      "Mr. Girish Sanghi, M.P.",
+      "Mr. Cadmial, IAS",
+      "Prof. V. Sashi Kumar — CIEFL",
+      "Mr. D. Rama Naidu, M.P.",
+      "Mr. M.A. Khan, M.P.",
+      "Prof. Ganta Subba Rao (APSSDC)",
+      "Mrs. Chaya Ratan, IAS",
+      "Mr. R. Laxman, IRS",
+      "Mr. Pavithran, IAS",
+      "Dr. Prathap Reddy, APSCERT-Dir",
+      "Mr. Kadiyam Srihari, Edn. Min.",
+      "Mr. Vishnu S. Warrier, IPS",
+      "Col. Ramulu, IPAS",
+      "B. Haripriya, MLA, Yellandu",
+    ],
+    [
+      "Mr. M.V. Krishna Rao, IPS",
+      "Dr. R.S. Praveen, IPS",
+      "Mr. K.V. Satyanarayana, IAS",
+      "Mr. Bhagayat, IPS",
+      "Mr. A.K. Khan, IPS",
+      "Mr. D.V. Rao, IAS",
+      "Dr. Preethi Meena, IAS",
+      "Mr. Nagi Reddy, IPS",
+      "Mr. Sundara Sekhar, IAS",
+      "Ms. Yetri Selvi, IAS",
+      "Mr. Rajasekhar, IAS",
+      "Mrs. Satyavathi R., Trbl. Min.",
+      "Mr. Ajay Kumar, Transp. Min.",
+      "Mr. K. Shashanka, IAS",
+    ],
   ],
 };
 
-export const mediaAndSeminars = {
-  seminars: {
-    en: "National seminars on Medical Transcription (Trivandrum) and Teaching English at the Primary Level; international seminars on English Language Management in SAARC countries.",
-    te: "మెడికల్ ట్రాన్స్‌క్రిప్షన్ (తిరువనంతపురం), ప్రాథమిక స్థాయిలో ఇంగ్లీష్ బోధనపై జాతీయ సెమినార్లు; SAARC దేశాల్లో ఇంగ్లీష్ భాషా నిర్వహణపై అంతర్జాతీయ సెమినార్లు.",
+/** Exact flyer format — Seminars / Newspapers / TV with bullets. */
+export const mediaSections = [
+  {
+    title: "Seminars Participated in :",
+    bullets: [
+      "National Seminar on Medical Transcription in Trivendrum",
+      "National Seminar on Teaching English at Primary Level",
+      "International Seminar on English Language Management in SARAC Conodries.",
+    ],
   },
-  press: {
-    en: "Articles on Spoken English in Deccan Chronicle and Vaartha; handwriting articles in Eenadu. Selected for Sakshi School of Journalism (2013).",
-    te: "Deccan Chronicle, వార్తలో Spoken English వ్యాసాలు; ఈనాడులో చేతిరాత వ్యాసాలు. 2013లో సాక్షి స్కూల్ ఆఫ్ జర్నలిజంకు ఎంపిక.",
+  {
+    title: "Newspapers :",
+    bullets: [
+      "Written articles on SPOKEN ENGLISH in Deccan Chronicle, Vaartha / Handwriting in Eenadu.",
+      "Got selected for a Teaching Position in Sakshi School of Journalsion in 2013.",
+    ],
   },
-  tv: {
-    en: "Featured on TV9, HMTV, TV5, RTV, and Mana TV.",
-    te: "TV9, HMTV, TV5, RTV, మన TVలలో ప్రదర్శన.",
+  {
+    title: "TV Channels :",
+    bullets: ["TV9, HMTV, TV5, RTV, Mana TV - IEGJKC"],
   },
+];
+
+export const instituteCard = {
+  name: "KIRON SATYAMURTHY",
+  title: "Soft Skills Specialist",
+  org: "Institute for Electronic Governance",
+  address: "Corporate Building, IIT Campus, Gachibowli, Hyderabad-500 032.",
+  website: "www.ieg.gov.in",
 };
 
-export const affiliations = [
-  { en: "NCERT", te: "NCERT" },
-  { en: "IEG — Institute for Electronic Governance (IIT Campus, Gachibowli)", te: "IEG — ఇన్‌స్టిట్యూట్ ఫర్ ఎలక్ట్రానిక్ గవర్నెన్స్" },
-  { en: "APTWREIS", te: "APTWREIS" },
-  { en: "Banjara Seva Samithi (BSS)", te: "బంజారా సేవా సమితి" },
-];
+export const partnerLogos = [
+  { id: "ncert", label: "NCERT", sub: "New Delhi" },
+  { id: "aptwreis", label: "APTWREIS", sub: "Gurukulams" },
+  { id: "bss", label: "BSS", sub: "Banjara Seva Samithi" },
+] as const;
 
 export const aboutContact = {
   email: "contact@gemsacademy.in",

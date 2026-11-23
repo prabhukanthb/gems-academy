@@ -2,11 +2,12 @@ import { roundedHexAt } from "@/lib/hexPaths";
 import {
   aboutContact,
   aboutHero,
-  affiliations,
   endorsements,
   experienceStats,
   impactBlocks,
-  mediaAndSeminars,
+  instituteCard,
+  mediaSections,
+  partnerLogos,
 } from "@/lib/aboutContent";
 import { brand, ui } from "@/lib/content";
 
@@ -57,7 +58,6 @@ function ExperienceHex({
 }: (typeof experienceStats)[number]) {
   const f = hexFills[variant];
   const uid = `ex-${variant}`;
-  // Keep copy inside the flat sides of the hex (not the pointed tips).
   return (
     <div className="relative flex h-[11.5rem] w-[10rem] flex-col items-center justify-center sm:h-[13rem] sm:w-[11.25rem]">
       <svg
@@ -108,13 +108,7 @@ function ExperienceHex({
   );
 }
 
-function SectionTitle({
-  en,
-  te,
-}: {
-  en: string;
-  te: string;
-}) {
+function SectionTitle({ en, te }: { en: string; te: string }) {
   return (
     <header className="mb-3 text-center">
       <h2 className="font-display text-xl font-extrabold text-[#0d355f] sm:text-2xl">
@@ -129,11 +123,38 @@ function SectionTitle({
   );
 }
 
+/** Stylised affiliation marks (NCERT · APTWREIS · BSS) — not official logo files. */
+function PartnerLogoBadges() {
+  const styles: Record<string, string> = {
+    ncert: "from-[#1a5f8a] to-[#0d3f68]",
+    aptwreis: "from-[#1a9a38] to-[#0a6420]",
+    bss: "from-[#c48810] to-[#8a5010]",
+  };
+  return (
+    <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+      {partnerLogos.map((logo) => (
+        <div
+          key={logo.id}
+          className={`flex h-[3.6rem] w-[3.6rem] flex-col items-center justify-center rounded-full bg-gradient-to-br ${styles[logo.id]} text-center text-white shadow-[0_4px_10px_rgba(20,40,80,0.25)] ring-2 ring-[#ffd24a]/70 sm:h-[4.1rem] sm:w-[4.1rem]`}
+          title={`${logo.label} — ${logo.sub}`}
+        >
+          <span className="text-[0.55rem] font-extrabold leading-none tracking-wide sm:text-[0.62rem]">
+            {logo.label}
+          </span>
+          <span className="mt-0.5 max-w-[3.2rem] text-[0.42rem] leading-tight opacity-90 sm:text-[0.45rem]">
+            {logo.sub}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 /** Full About / track-record story — text + honeycomb graphics (not a flyer scan). */
 export function AboutTrackRecord() {
   return (
     <div className="mx-auto w-full max-w-3xl space-y-10 pb-4">
-      {/* Identity */}
+      {/* Identity + logos */}
       <section className="anim-enter-delay-1 text-center">
         <p className="font-display text-sm font-bold uppercase tracking-[0.2em] text-[#c48810]">
           My Track Record · నా అనుభవ గాథ
@@ -145,6 +166,17 @@ export function AboutTrackRecord() {
           {aboutHero.roles.en}
         </p>
         <p className="font-telugu text-sm text-[#3a5a7a]">{aboutHero.roles.te}</p>
+
+        <p className="mt-4 text-base font-bold text-[#7a1838]">
+          {aboutHero.softSkillLine}
+        </p>
+        <div className="mt-3">
+          <PartnerLogoBadges />
+        </div>
+        <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-[#1560b0]">
+          {aboutHero.schoolsLine}
+        </p>
+
         <p className="mt-3 inline-block rounded-full border border-[#f0b020]/50 bg-[#fff8e0]/90 px-4 py-1.5 font-display text-sm font-extrabold text-[#8a5010]">
           {aboutHero.motto.en}
         </p>
@@ -205,58 +237,69 @@ export function AboutTrackRecord() {
         </ul>
       </section>
 
-      {/* Endorsements */}
+      {/* Full endorsement names — 3 columns like the flyer */}
       <section>
-        <SectionTitle en="Appreciated By" te="ప్రశంసించినవారు" />
-        <p className="mb-3 text-center text-sm text-[#1a2a3a]">
-          {endorsements.intro.en}
-        </p>
-        <p className="font-telugu mb-4 text-center text-sm text-[#3a5a7a]">
-          {endorsements.intro.te}
-        </p>
-        <ul className="flex flex-wrap justify-center gap-2">
-          {endorsements.names.map((name) => (
-            <li
-              key={name}
-              className="rounded-full border border-[#c5a040]/45 bg-white/70 px-3 py-1.5 text-xs font-semibold text-[#3a2810] sm:text-sm"
-            >
-              {name}
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* Media */}
-      <section className="space-y-3">
-        <SectionTitle en="Seminars, Press & TV" te="సెమినార్లు, పత్రికలు & టీవీ" />
-        <div className="space-y-3 text-sm leading-relaxed">
-          <p className="text-[#1a2a3a]">{mediaAndSeminars.seminars.en}</p>
-          <p className="font-telugu text-[#3a5a7a]">
-            {mediaAndSeminars.seminars.te}
-          </p>
-          <p className="text-[#1a2a3a]">{mediaAndSeminars.press.en}</p>
-          <p className="font-telugu text-[#3a5a7a]">{mediaAndSeminars.press.te}</p>
-          <p className="font-semibold text-[#0d355f]">{mediaAndSeminars.tv.en}</p>
-          <p className="font-telugu text-[#3a5a7a]">{mediaAndSeminars.tv.te}</p>
+        <div className="mb-3 rounded-lg bg-[#1a7a3a] px-3 py-2 text-center">
+          <h2 className="font-display text-sm font-extrabold text-white sm:text-base">
+            {endorsements.header}
+          </h2>
+        </div>
+        <div className="rounded-xl border border-[#e0c878]/80 bg-[#fff8e0]/90 p-3 sm:p-4">
+          <div className="grid gap-4 text-left sm:grid-cols-3">
+            {endorsements.columns.map((col, i) => (
+              <ul key={i} className="space-y-1.5">
+                {col.map((name) => (
+                  <li
+                    key={name}
+                    className="border-b border-[#e8d4a0]/60 pb-1 text-[0.72rem] font-semibold leading-snug text-[#1a2a3a] sm:text-xs"
+                  >
+                    {name}
+                  </li>
+                ))}
+              </ul>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Affiliations */}
-      <section>
-        <SectionTitle en="Affiliations" te="సంబంధిత సంస్థలు" />
-        <ul className="grid gap-2 sm:grid-cols-2">
-          {affiliations.map((a) => (
-            <li
-              key={a.en}
-              className="rounded-xl border border-[#d4b060]/50 bg-gradient-to-br from-[#fff8e0] to-[#ffe9a8]/60 px-3 py-2.5 text-center"
-            >
-              <span className="block text-sm font-bold text-[#0d355f]">{a.en}</span>
-              <span className="font-telugu block text-xs text-[#8a6010]">
-                {a.te}
-              </span>
-            </li>
-          ))}
-        </ul>
+      {/* Institute card */}
+      <section className="rounded-2xl border-2 border-[#c01018]/70 bg-white/90 px-4 py-4 text-center sm:px-5">
+        <p className="font-display text-lg font-extrabold uppercase tracking-wide text-[#c01018]">
+          {instituteCard.name}
+        </p>
+        <p className="text-sm font-semibold text-[#1a1a1a]">{instituteCard.title}</p>
+        <p className="mt-1 text-sm font-bold text-[#c01018]">{instituteCard.org}</p>
+        <p className="mt-2 text-xs text-[#3a5a7a]">{instituteCard.address}</p>
+        <p className="mt-1 text-xs font-semibold text-[#1560b0]">
+          {instituteCard.website}
+        </p>
+      </section>
+
+      {/* Seminars / Newspapers / TV — exact flyer bullet format */}
+      <section className="space-y-4">
+        {mediaSections.map((block) => (
+          <div key={block.title}>
+            <div className="mb-2 inline-block rounded-full bg-[#6b2d8a] px-4 py-1.5">
+              <h3 className="font-display text-sm font-extrabold text-white">
+                {block.title}
+              </h3>
+            </div>
+            <ul className="ml-1 space-y-2">
+              {block.bullets.map((item) => (
+                <li
+                  key={item}
+                  className="flex gap-2 text-sm font-semibold leading-snug text-[#1a1a1a]"
+                >
+                  <span
+                    className="mt-1.5 h-2 w-2 shrink-0 rounded-[2px] bg-[#6b2d8a]"
+                    aria-hidden
+                  />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </section>
 
       {/* Contact */}
