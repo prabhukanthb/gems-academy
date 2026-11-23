@@ -125,32 +125,6 @@ function SectionTitle({ en, te }: { en: string; te: string }) {
   );
 }
 
-function PartnerLogos() {
-  return (
-    <div className="flex flex-wrap items-stretch justify-center gap-3 sm:gap-4">
-      {partnerLogos.map((logo) => (
-        <div
-          key={logo.id}
-          className="flex w-[7.5rem] flex-col items-center gap-1.5 sm:w-[8.5rem]"
-        >
-          <div className="flex h-[4.5rem] w-full items-center justify-center rounded-xl border border-[#e0c878]/80 bg-white p-1.5 shadow-sm sm:h-[5rem]">
-            <Image
-              src={logo.src}
-              alt={logo.alt}
-              width={96}
-              height={96}
-              className="h-full w-full object-contain"
-            />
-          </div>
-          <p className="text-center text-[0.62rem] font-bold leading-snug text-[#0d355f] sm:text-[0.68rem]">
-            {logo.label}
-          </p>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 /** Expertise card — holds content moved from the cancelled intro block. */
 function ExpertiseBlock() {
   return (
@@ -176,13 +150,12 @@ function ExpertiseBlock() {
             {aboutHero.schoolsLine}
           </p>
 
-          <div className="mt-4 flex flex-col items-center justify-center gap-4">
+          <div className="mt-4 flex justify-center">
             <div className="inline-flex items-center justify-center rounded-md bg-[#c01018] px-6 py-2.5 shadow-md">
               <span className="font-display text-lg font-extrabold tracking-[0.12em] text-white sm:text-xl">
                 {expertiseBanner.label}
               </span>
             </div>
-            <PartnerLogos />
           </div>
 
           <p className="mt-4 inline-block rounded-full border border-[#f0b020]/50 bg-[#fff8e0]/90 px-4 py-1.5 font-display text-sm font-extrabold text-[#8a5010]">
