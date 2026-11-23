@@ -3,6 +3,7 @@ import {
   aboutContact,
   aboutHero,
   endorsements,
+  expertiseBanner,
   experienceStats,
   impactBlocks,
   instituteCard,
@@ -10,6 +11,7 @@ import {
   partnerLogos,
 } from "@/lib/aboutContent";
 import { brand, ui } from "@/lib/content";
+import Image from "next/image";
 
 function StatIcon({
   icon,
@@ -123,30 +125,58 @@ function SectionTitle({ en, te }: { en: string; te: string }) {
   );
 }
 
-/** Stylised affiliation marks (NCERT · APTWREIS · BSS) — not official logo files. */
-function PartnerLogoBadges() {
-  const styles: Record<string, string> = {
-    ncert: "from-[#1a5f8a] to-[#0d3f68]",
-    aptwreis: "from-[#1a9a38] to-[#0a6420]",
-    bss: "from-[#c48810] to-[#8a5010]",
-  };
+function PartnerLogos() {
   return (
-    <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+    <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5">
       {partnerLogos.map((logo) => (
         <div
           key={logo.id}
-          className={`flex h-[3.6rem] w-[3.6rem] flex-col items-center justify-center rounded-full bg-gradient-to-br ${styles[logo.id]} text-center text-white shadow-[0_4px_10px_rgba(20,40,80,0.25)] ring-2 ring-[#ffd24a]/70 sm:h-[4.1rem] sm:w-[4.1rem]`}
-          title={`${logo.label} — ${logo.sub}`}
+          className="flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-xl border border-[#e0c878]/80 bg-white p-1.5 shadow-sm sm:h-[5.25rem] sm:w-[5.25rem]"
         >
-          <span className="text-[0.55rem] font-extrabold leading-none tracking-wide sm:text-[0.62rem]">
-            {logo.label}
-          </span>
-          <span className="mt-0.5 max-w-[3.2rem] text-[0.42rem] leading-tight opacity-90 sm:text-[0.45rem]">
-            {logo.sub}
-          </span>
+          <Image
+            src={logo.src}
+            alt={logo.alt}
+            width={96}
+            height={96}
+            className="h-full w-full object-contain"
+          />
         </div>
       ))}
     </div>
+  );
+}
+
+/** Expertise banner matching the professional card, with partner logos beside it. */
+function ExpertiseBlock() {
+  return (
+    <section className="mx-auto w-full max-w-xl">
+      <div className="overflow-hidden rounded-xl border border-[#c9a84a]/50 bg-white shadow-[0_8px_20px_rgba(80,50,10,0.12)]">
+        <div className="h-1.5 bg-gradient-to-r from-[#fff6a8] via-[#f0b020] to-[#c48810]" />
+        <div className="px-4 py-5 text-center sm:px-6">
+          <h3 className="font-display text-xl font-extrabold text-[#0d3f68] sm:text-2xl">
+            {expertiseBanner.name}
+          </h3>
+          <div className="mx-auto mt-1 h-0.5 w-28 bg-[#c01018]" aria-hidden />
+          <p className="mt-2 text-sm font-bold text-[#0d3f68] sm:text-base">
+            {expertiseBanner.focus}
+          </p>
+
+          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5">
+            <div className="inline-flex items-center justify-center rounded-md bg-[#c01018] px-6 py-2.5 shadow-md">
+              <span className="font-display text-lg font-extrabold tracking-[0.12em] text-white sm:text-xl">
+                {expertiseBanner.label}
+              </span>
+            </div>
+            <PartnerLogos />
+          </div>
+
+          <p className="mt-4 text-sm font-bold text-[#0d3f68]">
+            {expertiseBanner.phones.join(" | ")}
+          </p>
+        </div>
+        <div className="h-1.5 bg-gradient-to-r from-[#fff6a8] via-[#f0b020] to-[#c48810]" />
+      </div>
+    </section>
   );
 }
 
@@ -166,13 +196,6 @@ export function AboutTrackRecord() {
           {aboutHero.roles.en}
         </p>
         <p className="font-telugu text-sm text-[#3a5a7a]">{aboutHero.roles.te}</p>
-
-        <p className="mt-4 text-base font-bold text-[#7a1838]">
-          {aboutHero.softSkillLine}
-        </p>
-        <div className="mt-3">
-          <PartnerLogoBadges />
-        </div>
         <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-[#1560b0]">
           {aboutHero.schoolsLine}
         </p>
@@ -187,6 +210,8 @@ export function AboutTrackRecord() {
           {aboutHero.tagline.en}
         </p>
       </section>
+
+      <ExpertiseBlock />
 
       {/* Experience hexes */}
       <section className="anim-enter-delay-2">

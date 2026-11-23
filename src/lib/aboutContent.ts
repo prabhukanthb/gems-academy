@@ -2,8 +2,6 @@
 
 export const aboutHero = {
   name: "Kiron Satyamurthy",
-  /** Exact phrasing requested for About Us */
-  softSkillLine: "He is soft skill speaclist teacher in an isititue",
   roles: {
     en: "Soft Skills Specialist · Learning Loss Recovery Expert",
     te: "సాఫ్ట్ స్కిల్స్ స్పెషలిస్ట్ · లెర్నింగ్ లాస్ రికవరీ నిపుణుడు",
@@ -17,6 +15,13 @@ export const aboutHero = {
     te: "పిల్లలు · నేర్చుకోవడం · ఉజ్వల భవిష్యత్తు",
   },
   schoolsLine: "Schools | Colleges | IT HUB",
+};
+
+export const expertiseBanner = {
+  name: "Kiron Satyamurthy",
+  focus: "Digital Methodology & Smart Training",
+  label: "EXPERTISE",
+  phones: ["863 9569 412", "949 4447 457"],
 };
 
 export const experienceStats = [
@@ -161,9 +166,24 @@ export const instituteCard = {
 };
 
 export const partnerLogos = [
-  { id: "ncert", label: "NCERT", sub: "New Delhi" },
-  { id: "aptwreis", label: "APTWREIS", sub: "Gurukulams" },
-  { id: "bss", label: "BSS", sub: "Banjara Seva Samithi" },
+  {
+    id: "ncert",
+    label: "NCERT",
+    src: "/logos/ncert.png",
+    alt: "NCERT — National Council of Educational Research and Training",
+  },
+  {
+    id: "aptwreis",
+    label: "APTWREIS",
+    src: "/logos/aptwreis.png",
+    alt: "APTWREIS — Andhra Pradesh Tribal Welfare Residential Educational Institutions Society",
+  },
+  {
+    id: "bss",
+    label: "BSS",
+    src: "/logos/bss.png",
+    alt: "BSS — Banjara Seva Samithi",
+  },
 ] as const;
 
 export const aboutContact = {
