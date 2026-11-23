@@ -9,11 +9,11 @@ export const metadata = { title: "About Us · Track Record" };
 export default function AboutPage() {
   return (
     <SiteShell wide>
-      {/* Honeycomb title mark */}
-      <div className="anim-enter relative mx-auto mb-2 w-full max-w-sm">
+      {/* Honeycomb above; title sits fully inside the honey oval below — no overlap */}
+      <div className="anim-enter mx-auto mb-4 flex w-full max-w-md flex-col items-center">
         <svg
-          viewBox="0 0 280 150"
-          className="mx-auto h-auto w-full max-w-xs drop-shadow-[0_8px_16px_rgba(120,70,10,0.2)]"
+          viewBox="0 0 280 200"
+          className="h-auto w-full max-w-sm drop-shadow-[0_8px_16px_rgba(120,70,10,0.2)]"
           aria-hidden
         >
           <defs>
@@ -28,15 +28,19 @@ export default function AboutPage() {
               <stop offset="100%" stopColor="#a86808" />
             </radialGradient>
           </defs>
-          <g stroke="#7a5010" strokeWidth="1.3" strokeLinejoin="round">
-            <path d={roundedHexAt(90, 40, 26)} fill="url(#ap-wax)" />
-            <path d={roundedHexAt(136, 40, 26)} fill="url(#ap-wax)" />
-            <path d={roundedHexAt(182, 40, 24)} fill="url(#ap-wax)" />
-            <path d={roundedHexAt(113, 74, 26)} fill="url(#ap-wax)" />
-            <path d={roundedHexAt(159, 74, 26)} fill="url(#ap-wax)" />
+
+          {/* Larger honeycomb cluster */}
+          <g stroke="#7a5010" strokeWidth="1.35" strokeLinejoin="round">
+            <path d={roundedHexAt(88, 36, 30)} fill="url(#ap-wax)" />
+            <path d={roundedHexAt(140, 36, 30)} fill="url(#ap-wax)" />
+            <path d={roundedHexAt(192, 36, 28)} fill="url(#ap-wax)" />
+            <path d={roundedHexAt(114, 74, 30)} fill="url(#ap-wax)" />
+            <path d={roundedHexAt(166, 74, 30)} fill="url(#ap-wax)" />
           </g>
-          {/* Bee between comb and title */}
-          <g transform="translate(136 108)">
+          <ellipse cx="140" cy="52" rx="10" ry="3.5" fill="rgba(255,255,255,0.4)" />
+
+          {/* Bee in the gap — clear of the title oval */}
+          <g transform="translate(140 112)">
             <ellipse
               cx="-5"
               cy="-7"
@@ -53,25 +57,50 @@ export default function AboutPage() {
               fill="rgba(255,255,255,0.85)"
               transform="rotate(15)"
             />
-            <ellipse cx="0" cy="1" rx="10" ry="7.5" fill="#ffd24a" stroke="#1a1a1a" strokeWidth="0.8" />
+            <ellipse
+              cx="0"
+              cy="1"
+              rx="10"
+              ry="7.5"
+              fill="#ffd24a"
+              stroke="#1a1a1a"
+              strokeWidth="0.8"
+            />
             <path d="M-7 -1 H7 M-7 3 H7" stroke="#1a1a1a" strokeWidth="1.6" />
-            <circle cx="-8" cy="-2" r="4" fill="#ffd24a" stroke="#1a1a1a" strokeWidth="0.7" />
+            <circle
+              cx="-8"
+              cy="-2"
+              r="4"
+              fill="#ffd24a"
+              stroke="#1a1a1a"
+              strokeWidth="0.7"
+            />
           </g>
+
+          {/* Title honey oval — roomy so text fits inside */}
           <ellipse
             cx="140"
-            cy="138"
-            rx="88"
-            ry="14"
+            cy="168"
+            rx="108"
+            ry="28"
             fill="url(#ap-blob)"
             stroke="#7a5010"
-            strokeWidth="1"
+            strokeWidth="1.2"
+          />
+          <ellipse
+            cx="118"
+            cy="158"
+            rx="48"
+            ry="8"
+            fill="rgba(255,255,255,0.32)"
           />
         </svg>
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col items-center pb-0.5 text-center">
-          <h1 className="font-display text-2xl font-extrabold tracking-wide text-white drop-shadow-[0_1px_2px_rgba(60,30,0,0.4)] sm:text-3xl">
+
+        <div className="pointer-events-none relative -mt-[4.6rem] flex h-[3.6rem] w-[min(88%,16rem)] flex-col items-center justify-center text-center sm:-mt-[5.1rem] sm:h-[4rem]">
+          <h1 className="font-display text-xl font-extrabold leading-none tracking-wide text-white drop-shadow-[0_1px_2px_rgba(60,30,0,0.45)] sm:text-2xl">
             {ui.aboutUs.en}
           </h1>
-          <p className="font-telugu text-sm font-bold text-[#fff8d8]">
+          <p className="font-telugu mt-1 text-sm font-bold leading-none text-[#fff8d8]">
             {ui.aboutUs.te}
           </p>
         </div>

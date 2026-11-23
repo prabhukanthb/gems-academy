@@ -19,19 +19,19 @@ export const aboutHero = {
 export const experienceStats = [
   {
     years: "50",
-    label: { en: "Years Teaching", te: "సంవత్సరాల బోధన" },
+    label: { en: "Years\nTeaching", te: "సంవత్సరాల\nబోధన" },
     icon: "teach" as const,
     variant: "blue" as const,
   },
   {
     years: "40",
-    label: { en: "Years English Training", te: "సంవత్సరాల ఇంగ్లీష్ శిక్షణ" },
+    label: { en: "Years English\nTraining", te: "ఇంగ్లీష్\nశిక్షణ" },
     icon: "book" as const,
     variant: "green" as const,
   },
   {
     years: "36",
-    label: { en: "Years Homeschooling", te: "సంవత్సరాల హోమ్‌స్కూలింగ్" },
+    label: { en: "Years\nHomeschooling", te: "హోమ్‌స్కూలింగ్" },
     icon: "home" as const,
     variant: "gold" as const,
   },

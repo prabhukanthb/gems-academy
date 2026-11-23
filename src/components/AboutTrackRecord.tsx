@@ -57,8 +57,9 @@ function ExperienceHex({
 }: (typeof experienceStats)[number]) {
   const f = hexFills[variant];
   const uid = `ex-${variant}`;
+  // Keep copy inside the flat sides of the hex (not the pointed tips).
   return (
-    <div className="relative flex h-[9.2rem] w-[8rem] flex-col items-center justify-center sm:h-[10.5rem] sm:w-[9.1rem]">
+    <div className="relative flex h-[11.5rem] w-[10rem] flex-col items-center justify-center sm:h-[13rem] sm:w-[11.25rem]">
       <svg
         className="absolute inset-0 h-full w-full drop-shadow-[0_8px_14px_rgba(20,40,80,0.22)]"
         viewBox="0 0 100 115.47"
@@ -91,15 +92,15 @@ function ExperienceHex({
           strokeLinejoin="round"
         />
       </svg>
-      <div className="relative z-10 flex w-[70%] flex-col items-center text-center text-white">
-        <StatIcon icon={icon} className="mb-0.5 h-5 w-5 opacity-95" />
-        <span className="font-display text-2xl font-extrabold leading-none sm:text-3xl">
+      <div className="relative z-10 flex w-[58%] max-w-[5.8rem] flex-col items-center px-0.5 py-3 text-center text-white sm:max-w-[6.5rem]">
+        <StatIcon icon={icon} className="mb-0.5 h-4 w-4 opacity-95 sm:h-5 sm:w-5" />
+        <span className="font-display text-[1.65rem] font-extrabold leading-none sm:text-[1.9rem]">
           {years}
         </span>
-        <span className="mt-1 text-[0.62rem] font-bold uppercase leading-tight tracking-wide sm:text-[0.7rem]">
+        <span className="mt-1 whitespace-pre-line text-[0.58rem] font-bold uppercase leading-snug tracking-wide sm:text-[0.65rem]">
           {label.en}
         </span>
-        <span className="font-telugu mt-0.5 text-[0.58rem] leading-tight text-[#ffe9a8]">
+        <span className="font-telugu mt-0.5 max-w-full whitespace-pre-line text-[0.52rem] leading-snug text-[#ffe9a8] sm:text-[0.58rem]">
           {label.te}
         </span>
       </div>
