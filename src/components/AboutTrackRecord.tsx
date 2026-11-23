@@ -127,41 +127,56 @@ function SectionTitle({ en, te }: { en: string; te: string }) {
 
 function PartnerLogos() {
   return (
-    <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5">
+    <div className="flex flex-wrap items-stretch justify-center gap-3 sm:gap-4">
       {partnerLogos.map((logo) => (
         <div
           key={logo.id}
-          className="flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-xl border border-[#e0c878]/80 bg-white p-1.5 shadow-sm sm:h-[5.25rem] sm:w-[5.25rem]"
+          className="flex w-[7.5rem] flex-col items-center gap-1.5 sm:w-[8.5rem]"
         >
-          <Image
-            src={logo.src}
-            alt={logo.alt}
-            width={96}
-            height={96}
-            className="h-full w-full object-contain"
-          />
+          <div className="flex h-[4.5rem] w-full items-center justify-center rounded-xl border border-[#e0c878]/80 bg-white p-1.5 shadow-sm sm:h-[5rem]">
+            <Image
+              src={logo.src}
+              alt={logo.alt}
+              width={96}
+              height={96}
+              className="h-full w-full object-contain"
+            />
+          </div>
+          <p className="text-center text-[0.62rem] font-bold leading-snug text-[#0d355f] sm:text-[0.68rem]">
+            {logo.label}
+          </p>
         </div>
       ))}
     </div>
   );
 }
 
-/** Expertise banner matching the professional card, with partner logos beside it. */
+/** Expertise card — holds content moved from the cancelled intro block. */
 function ExpertiseBlock() {
   return (
-    <section className="mx-auto w-full max-w-xl">
+    <section className="anim-enter-delay-1 mx-auto w-full max-w-2xl">
+      <p className="mb-3 text-center font-display text-sm font-bold uppercase tracking-[0.2em] text-[#c48810]">
+        My Track Record · నా అనుభవ గాథ
+      </p>
       <div className="overflow-hidden rounded-xl border border-[#c9a84a]/50 bg-white shadow-[0_8px_20px_rgba(80,50,10,0.12)]">
         <div className="h-1.5 bg-gradient-to-r from-[#fff6a8] via-[#f0b020] to-[#c48810]" />
         <div className="px-4 py-5 text-center sm:px-6">
-          <h3 className="font-display text-xl font-extrabold text-[#0d3f68] sm:text-2xl">
+          <h2 className="font-display text-xl font-extrabold text-[#0d3f68] sm:text-2xl">
             {expertiseBanner.name}
-          </h3>
+          </h2>
           <div className="mx-auto mt-1 h-0.5 w-28 bg-[#c01018]" aria-hidden />
-          <p className="mt-2 text-sm font-bold text-[#0d3f68] sm:text-base">
+          <p className="mt-2 text-sm font-semibold text-[#1a5f8a] sm:text-base">
+            {aboutHero.roles.en}
+          </p>
+          <p className="font-telugu text-sm text-[#3a5a7a]">{aboutHero.roles.te}</p>
+          <p className="mt-2 text-sm font-bold text-[#0d3f68]">
             {expertiseBanner.focus}
           </p>
+          <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-[#1560b0]">
+            {aboutHero.schoolsLine}
+          </p>
 
-          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5">
+          <div className="mt-4 flex flex-col items-center justify-center gap-4">
             <div className="inline-flex items-center justify-center rounded-md bg-[#c01018] px-6 py-2.5 shadow-md">
               <span className="font-display text-lg font-extrabold tracking-[0.12em] text-white sm:text-xl">
                 {expertiseBanner.label}
@@ -169,6 +184,16 @@ function ExpertiseBlock() {
             </div>
             <PartnerLogos />
           </div>
+
+          <p className="mt-4 inline-block rounded-full border border-[#f0b020]/50 bg-[#fff8e0]/90 px-4 py-1.5 font-display text-sm font-extrabold text-[#8a5010]">
+            {aboutHero.motto.en}
+          </p>
+          <p className="font-telugu mt-1 text-xs text-[#8a6010]">
+            {aboutHero.motto.te}
+          </p>
+          <p className="mt-2 text-xs font-semibold tracking-wide text-[#4a6a8a]">
+            {aboutHero.tagline.en}
+          </p>
 
           <p className="mt-4 text-sm font-bold text-[#0d3f68]">
             {expertiseBanner.phones.join(" | ")}
@@ -180,37 +205,26 @@ function ExpertiseBlock() {
   );
 }
 
+function ImpactLogo({ id }: { id: "ncert" | "aptwreis" | "bss" }) {
+  const logo = partnerLogos.find((l) => l.id === id);
+  if (!logo) return null;
+  return (
+    <div className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-lg border border-[#e0c878]/70 bg-white p-1 shadow-sm sm:h-16 sm:w-16">
+      <Image
+        src={logo.src}
+        alt={logo.alt}
+        width={64}
+        height={64}
+        className="h-full w-full object-contain"
+      />
+    </div>
+  );
+}
+
 /** Full About / track-record story — text + honeycomb graphics (not a flyer scan). */
 export function AboutTrackRecord() {
   return (
     <div className="mx-auto w-full max-w-3xl space-y-10 pb-4">
-      {/* Identity + logos */}
-      <section className="anim-enter-delay-1 text-center">
-        <p className="font-display text-sm font-bold uppercase tracking-[0.2em] text-[#c48810]">
-          My Track Record · నా అనుభవ గాథ
-        </p>
-        <h2 className="mt-2 font-display text-2xl font-extrabold text-[#0d355f] sm:text-3xl">
-          {aboutHero.name}
-        </h2>
-        <p className="mt-1 text-sm font-semibold text-[#1a5f8a] sm:text-base">
-          {aboutHero.roles.en}
-        </p>
-        <p className="font-telugu text-sm text-[#3a5a7a]">{aboutHero.roles.te}</p>
-        <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-[#1560b0]">
-          {aboutHero.schoolsLine}
-        </p>
-
-        <p className="mt-3 inline-block rounded-full border border-[#f0b020]/50 bg-[#fff8e0]/90 px-4 py-1.5 font-display text-sm font-extrabold text-[#8a5010]">
-          {aboutHero.motto.en}
-        </p>
-        <p className="font-telugu mt-1 text-xs text-[#8a6010]">
-          {aboutHero.motto.te}
-        </p>
-        <p className="mt-2 text-xs font-semibold tracking-wide text-[#4a6a8a]">
-          {aboutHero.tagline.en}
-        </p>
-      </section>
-
       <ExpertiseBlock />
 
       {/* Experience hexes */}
@@ -223,7 +237,7 @@ export function AboutTrackRecord() {
         </div>
       </section>
 
-      {/* Impact */}
+      {/* Impact — logos beside org headings */}
       <section className="anim-enter-delay-3 space-y-4">
         <SectionTitle en="Impact Across India" te="భారతదేశం అంతటా ప్రభావం" />
         <ul className="space-y-4">
@@ -232,25 +246,17 @@ export function AboutTrackRecord() {
               key={block.title.en}
               className="relative overflow-hidden rounded-2xl border border-[#e0c878]/70 bg-[#fffaf0]/85 px-4 py-4 sm:px-5"
             >
-              <span
-                className="pointer-events-none absolute -right-3 -top-3 opacity-30"
-                aria-hidden
-              >
-                <svg viewBox="0 0 60 70" className="h-16 w-14">
-                  <path
-                    d={roundedHexAt(30, 35, 26)}
-                    fill="#f0b020"
-                    stroke="#8a6010"
-                    strokeWidth="1"
-                  />
-                </svg>
-              </span>
-              <h3 className="relative font-display text-base font-extrabold text-[#0d355f] sm:text-lg">
-                {block.title.en}
-              </h3>
-              <p className="font-telugu relative text-xs font-semibold text-[#8a6010]">
-                {block.title.te}
-              </p>
+              <div className="relative flex items-start gap-3">
+                {block.logoId ? <ImpactLogo id={block.logoId} /> : null}
+                <div className="min-w-0 flex-1">
+                  <h3 className="font-display text-base font-extrabold text-[#0d355f] sm:text-lg">
+                    {block.title.en}
+                  </h3>
+                  <p className="font-telugu text-xs font-semibold text-[#8a6010]">
+                    {block.title.te}
+                  </p>
+                </div>
+              </div>
               <p className="relative mt-2 text-sm leading-relaxed text-[#1a2a3a]">
                 {block.body.en}
               </p>

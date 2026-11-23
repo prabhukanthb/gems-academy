@@ -47,6 +47,7 @@ export const experienceStats = [
 
 export const impactBlocks = [
   {
+    logoId: "ncert" as const,
     title: { en: "NCERT, New Delhi", te: "NCERT, న్యూఢిల్లీ" },
     body: {
       en: "Presented the paper “English is being taught and learnt in the wrong way in most of the places in India” at NCERT (March 2017).",
@@ -54,6 +55,7 @@ export const impactBlocks = [
     },
   },
   {
+    logoId: "aptwreis" as const,
     title: { en: "APTWREIS — Statewide Reach", te: "APTWREIS — రాష్ట్రవ్యాప్తి" },
     body: {
       en: "Trained 25,000 students across 77 Gurukulams in 22 districts of undivided Andhra Pradesh, and coached 604 teachers in 4-day programmes covering Listening, Speaking, Reading, Vocabulary, Grammar, and Conversations.",
@@ -61,6 +63,7 @@ export const impactBlocks = [
     },
   },
   {
+    logoId: "bss" as const,
     title: {
       en: "Banjara Seva Samithi — Tribal Learners",
       te: "బంజారా సేవా సమితి — గిరిజన విద్యార్థులు",
@@ -71,6 +74,7 @@ export const impactBlocks = [
     },
   },
   {
+    logoId: null,
     title: { en: "Schools Across India", te: "భారతదేశం నలుమూలల్లో పాఠశాలలు" },
     body: {
       en: "Visited dozens of schools nationwide to speak on LSRW — Listening, Speaking, Reading, and Writing — plus Medical Transcription, Call Centre Training, and the RTV Spoken English Series.",
@@ -168,19 +172,19 @@ export const instituteCard = {
 export const partnerLogos = [
   {
     id: "ncert",
-    label: "NCERT",
+    label: "NCERT, New Delhi",
     src: "/logos/ncert.png",
-    alt: "NCERT — National Council of Educational Research and Training",
+    alt: "NCERT — National Council of Educational Research and Training, New Delhi",
   },
   {
     id: "aptwreis",
-    label: "APTWREIS",
+    label: "APTWREIS — Statewide Reach",
     src: "/logos/aptwreis.png",
     alt: "APTWREIS — Andhra Pradesh Tribal Welfare Residential Educational Institutions Society",
   },
   {
     id: "bss",
-    label: "BSS",
+    label: "Banjara Seva Samithi — Tribal Learners",
     src: "/logos/bss.png",
     alt: "BSS — Banjara Seva Samithi",
   },
