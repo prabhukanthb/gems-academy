@@ -173,17 +173,7 @@ body {
   }
 }
 
-/* About Us — honey blob + buzzing bee */
-@keyframes honey-pool-breathe {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.025);
-  }
-}
-
+/* About Us — buzzing bee beside the honeycomb title */
 @keyframes about-bee-bob {
   0%,
   100% {
@@ -192,11 +182,6 @@ body {
   50% {
     transform: translate(3px, -5px) rotate(5deg);
   }
-}
-
-.about-honey .honey-pool {
-  transform-origin: 100px 209px;
-  animation: honey-pool-breathe 3.4s ease-in-out infinite;
 }
 
 .about-honey .about-bee {

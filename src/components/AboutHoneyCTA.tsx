@@ -1,12 +1,11 @@
 import Link from "next/link";
-import { roundedHexAt } from "@/lib/hexPaths";
+import { HEX_ROUNDED, HEX_VIEW, INNER_ROUNDED, roundedHexAt } from "@/lib/hexPaths";
 import { ui } from "@/lib/content";
 
 /** Cute cartoon bee for the About honeycomb. */
 function BeeGraphic({ x, y }: { x: number; y: number }) {
   return (
     <g className="about-bee" transform={`translate(${x} ${y})`}>
-      {/* Dotted flight trail */}
       <path
         d="M-28 -8 C-18 -18 -6 -20 4 -10"
         fill="none"
@@ -16,7 +15,6 @@ function BeeGraphic({ x, y }: { x: number; y: number }) {
         strokeLinecap="round"
         opacity="0.55"
       />
-      {/* Wings */}
       <ellipse
         cx="-6"
         cy="-10"
@@ -37,22 +35,12 @@ function BeeGraphic({ x, y }: { x: number; y: number }) {
         strokeWidth="0.8"
         transform="rotate(18 8 -10)"
       />
-      {/* Body */}
       <ellipse cx="0" cy="2" rx="14" ry="11" fill="#1a1a1a" />
       <ellipse cx="0" cy="2" rx="12" ry="9" fill="#ffd24a" />
-      {/* Stripes */}
-      <path
-        d="M-10 -2 Q0 -6 10 -2 L10 2 Q0 -1 -10 2 Z"
-        fill="#1a1a1a"
-      />
-      <path
-        d="M-10 5 Q0 2 10 5 L10 8.5 Q0 6 -10 8.5 Z"
-        fill="#1a1a1a"
-      />
-      {/* Head */}
+      <path d="M-10 -2 Q0 -6 10 -2 L10 2 Q0 -1 -10 2 Z" fill="#1a1a1a" />
+      <path d="M-10 5 Q0 2 10 5 L10 8.5 Q0 6 -10 8.5 Z" fill="#1a1a1a" />
       <circle cx="-12" cy="-2" r="6.5" fill="#1a1a1a" />
       <circle cx="-12" cy="-2" r="5.2" fill="#ffd24a" />
-      {/* Face */}
       <circle cx="-14" cy="-3.5" r="1.1" fill="#1a1a1a" />
       <circle cx="-10" cy="-3.5" r="1.1" fill="#1a1a1a" />
       <path
@@ -64,7 +52,6 @@ function BeeGraphic({ x, y }: { x: number; y: number }) {
       />
       <circle cx="-15.5" cy="0.5" r="1.6" fill="#f07090" opacity="0.7" />
       <circle cx="-8.5" cy="0.5" r="1.6" fill="#f07090" opacity="0.7" />
-      {/* Antennae */}
       <path
         d="M-14 -7 Q-16 -14 -13 -16"
         fill="none"
@@ -81,23 +68,23 @@ function BeeGraphic({ x, y }: { x: number; y: number }) {
       />
       <circle cx="-13" cy="-16" r="1.4" fill="#1a1a1a" />
       <circle cx="-11" cy="-16" r="1.4" fill="#1a1a1a" />
-      {/* Stinger */}
       <path d="M12 2 L18 2 L14 6 Z" fill="#1a1a1a" />
     </g>
   );
 }
 
-/** Honeycomb + bee + About Us honey blob (no drip streams). */
+/** Honeycomb cluster + bee + About Us written inside a honeycomb. */
 export function AboutHoneyCTA() {
   return (
     <Link
       href="/about"
       aria-label={`${ui.aboutUs.en} · ${ui.aboutUs.te}`}
-      className="about-honey group relative mx-auto block w-[min(100%,17.5rem)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f0b020]"
+      className="about-honey group relative mx-auto flex w-[min(100%,16.5rem)] flex-col items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f0b020]"
     >
+      {/* Small comb cluster + bee above the title hex */}
       <svg
-        viewBox="0 0 200 270"
-        className="h-auto w-full drop-shadow-[0_14px_28px_rgba(120,70,10,0.3)] transition-transform duration-300 group-hover:-translate-y-1.5 group-hover:scale-[1.03]"
+        viewBox="0 0 200 150"
+        className="relative z-10 -mb-3 h-auto w-[88%] drop-shadow-[0_8px_16px_rgba(120,70,10,0.22)] transition-transform duration-300 group-hover:-translate-y-1"
         aria-hidden
       >
         <defs>
@@ -111,11 +98,6 @@ export function AboutHoneyCTA() {
             <stop offset="55%" stopColor="#f0b020" />
             <stop offset="100%" stopColor="#b07008" />
           </linearGradient>
-          <radialGradient id="ah-blob" cx="42%" cy="28%" r="62%">
-            <stop offset="0%" stopColor="#fff2a8" />
-            <stop offset="45%" stopColor="#f0b020" />
-            <stop offset="100%" stopColor="#a86808" />
-          </radialGradient>
           <filter id="ah-soft" x="-15%" y="-15%" width="130%" height="130%">
             <feGaussianBlur in="SourceAlpha" stdDeviation="1.4" result="b" />
             <feOffset dy="1" result="o" />
@@ -129,7 +111,6 @@ export function AboutHoneyCTA() {
           </filter>
         </defs>
 
-        {/* Honeycomb cluster */}
         <g
           stroke="#7a5010"
           strokeWidth="1.35"
@@ -147,48 +128,57 @@ export function AboutHoneyCTA() {
         </g>
         <ellipse cx="86" cy="58" rx="9" ry="3.5" fill="rgba(255,255,255,0.5)" />
         <ellipse cx="108" cy="28" rx="7" ry="2.8" fill="rgba(255,255,255,0.45)" />
-
-        {/* Bee in the former drip gap */}
-        <BeeGraphic x={100} y={148} />
-
-        {/* About Us honey blob */}
-        <g filter="url(#ah-soft)">
-          <path
-            className="honey-pool"
-            d="M36 200
-               C36 178 62 164 100 164
-               C138 164 164 178 164 200
-               C164 230 138 254 100 254
-               C62 254 36 230 36 200 Z"
-            fill="url(#ah-blob)"
-            stroke="#7a5010"
-            strokeWidth="1.4"
-          />
-          <ellipse
-            cx="82"
-            cy="186"
-            rx="36"
-            ry="11"
-            fill="rgba(255,255,255,0.38)"
-          />
-          <ellipse
-            cx="118"
-            cy="226"
-            rx="22"
-            ry="7"
-            fill="rgba(255,255,255,0.18)"
-          />
-        </g>
+        <BeeGraphic x={168} y={118} />
       </svg>
 
-      <span className="pointer-events-none absolute inset-x-[12%] bottom-[8%] z-10 flex flex-col items-center justify-center px-3 pb-2 pt-1 text-center">
-        <span className="font-display text-[1.2rem] font-extrabold leading-none tracking-wide text-white drop-shadow-[0_1px_2px_rgba(60,30,0,0.5)] sm:text-[1.35rem]">
-          ABOUT US
+      {/* About Us inside a honeycomb hex — no oval */}
+      <div className="relative z-20 flex h-[14.5rem] w-[12.75rem] flex-col items-center justify-center transition-transform duration-300 group-hover:-translate-y-1.5 group-hover:scale-[1.03] sm:h-[15.5rem] sm:w-[13.5rem]">
+        <svg
+          className="absolute inset-0 h-full w-full drop-shadow-[0_14px_28px_rgba(120,70,10,0.32)]"
+          viewBox={HEX_VIEW}
+          preserveAspectRatio="xMidYMid meet"
+          aria-hidden
+        >
+          <defs>
+            <linearGradient id="ah-gold" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#fff6a8" />
+              <stop offset="35%" stopColor="#ffd24a" />
+              <stop offset="70%" stopColor="#e0a010" />
+              <stop offset="100%" stopColor="#b07808" />
+            </linearGradient>
+            <linearGradient id="ah-face" x1="0.2" y1="0" x2="0.85" y2="1">
+              <stop offset="0%" stopColor="#fff2a8" />
+              <stop offset="45%" stopColor="#f0b020" />
+              <stop offset="100%" stopColor="#a86808" />
+            </linearGradient>
+            <radialGradient id="ah-shine" cx="50%" cy="18%" r="55%">
+              <stop offset="0%" stopColor="rgba(255,255,255,0.55)" />
+              <stop offset="60%" stopColor="rgba(255,255,255,0)" />
+            </radialGradient>
+          </defs>
+          <path
+            d={HEX_ROUNDED}
+            fill="url(#ah-gold)"
+            stroke="#7a5010"
+            strokeWidth="1.15"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+          />
+          <path d={INNER_ROUNDED} fill="url(#ah-face)" strokeLinejoin="round" />
+          <path d={INNER_ROUNDED} fill="url(#ah-shine)" />
+          <ellipse cx="50" cy="14" rx="8" ry="3.4" fill="rgba(255,255,255,0.85)" />
+          <ellipse cx="50" cy="102" rx="6" ry="2.6" fill="rgba(255,255,255,0.28)" />
+        </svg>
+
+        <span className="relative z-10 flex w-[72%] flex-col items-center text-center">
+          <span className="font-display text-[1.55rem] font-extrabold leading-none tracking-wide text-white drop-shadow-[0_1px_2px_rgba(60,30,0,0.45)] sm:text-[1.7rem]">
+            {ui.aboutUs.en}
+          </span>
+          <span className="font-telugu mt-2 text-[1.05rem] font-bold leading-snug text-[#fff8d8] sm:text-[1.15rem]">
+            {ui.aboutUs.te}
+          </span>
         </span>
-        <span className="font-telugu mt-1 text-[0.9rem] font-bold leading-tight text-[#fff8d8]">
-          {ui.aboutUs.te}
-        </span>
-      </span>
+      </div>
     </Link>
   );
 }
