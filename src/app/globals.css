@@ -194,6 +194,15 @@ body {
   animation-duration: 1.2s;
 }
 
+.about-honey .about-nectar-glow {
+  transition: opacity 0.28s ease;
+}
+
+.about-honey:hover .about-nectar-glow,
+.about-honey:focus-visible .about-nectar-glow {
+  opacity: 0.15;
+}
+
 /* About page hero */
 @keyframes honey-drip-sway {
   0%,
