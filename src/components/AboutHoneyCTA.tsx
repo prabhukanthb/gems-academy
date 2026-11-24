@@ -8,7 +8,7 @@ import { ui } from "@/lib/content";
 /** Cute cartoon bee for the About honeycomb. */
 function BeeGraphic({ x, y }: { x: number; y: number }) {
   return (
-    <g className="about-bee" transform={`translate(${x} ${y}) scale(0.92)`}>
+    <g className="about-bee" transform={`translate(${x} ${y}) scale(0.85)`}>
       <path
         d="M-28 -8 C-18 -18 -6 -20 4 -10"
         fill="none"
@@ -76,25 +76,33 @@ function BeeGraphic({ x, y }: { x: number; y: number }) {
   );
 }
 
-type Cell = { cx: number; cy: number; r: number };
+type Cell = { cx: number; cy: number; r: number; role: "outer" | "center" };
 
-/** Rich nectar honeycomb — About Us in the middle; hover flips black like other pages. */
+/** Large center comb with About Us; smaller outer nectar cells. */
 export function AboutHoneyCTA() {
-  const cells: Cell[] = [
-    { cx: 78, cy: 52, r: 34 },
-    { cx: 142, cy: 52, r: 34 },
-    { cx: 46, cy: 104, r: 32 },
-    { cx: 110, cy: 104, r: 36 },
-    { cx: 174, cy: 104, r: 32 },
-    { cx: 78, cy: 156, r: 34 },
-    { cx: 142, cy: 156, r: 34 },
+  const CX = 110;
+  const CY = 112;
+  const R = 50; // large middle comb
+  const r = 20; // smaller outer combs
+  const SQRT3 = Math.sqrt(3);
+  // Slight gap so the six outer cells stay visible around the big center
+  const dist = (SQRT3 / 2) * (R + r) * 1.08;
+
+  const outer: Cell[] = [
+    { cx: CX + dist * 0.5, cy: CY - dist * (SQRT3 / 2), r, role: "outer" }, // NE
+    { cx: CX - dist * 0.5, cy: CY - dist * (SQRT3 / 2), r, role: "outer" }, // NW
+    { cx: CX + dist, cy: CY, r, role: "outer" }, // E
+    { cx: CX - dist, cy: CY, r, role: "outer" }, // W
+    { cx: CX + dist * 0.5, cy: CY + dist * (SQRT3 / 2), r, role: "outer" }, // SE
+    { cx: CX - dist * 0.5, cy: CY + dist * (SQRT3 / 2), r, role: "outer" }, // SW
   ];
+  const center: Cell = { cx: CX, cy: CY, r: R, role: "center" };
 
   return (
     <Link
       href="/about"
       aria-label={`${ui.aboutUs.en} · ${ui.aboutUs.te}`}
-      className="about-honey gloss-hex group relative mx-auto block w-[min(100%,18rem)] select-none transition-transform duration-300 hover:-translate-y-1.5 hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f0b020]"
+      className="about-honey gloss-hex group relative mx-auto block w-[min(100%,18.5rem)] select-none transition-transform duration-300 hover:-translate-y-1.5 hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f0b020]"
       style={
         {
           "--hex-base-a": "#fff6c0",
@@ -104,7 +112,7 @@ export function AboutHoneyCTA() {
       }
     >
       <svg
-        viewBox="0 0 220 220"
+        viewBox="0 0 220 224"
         className="h-auto w-full drop-shadow-[0_16px_32px_rgba(120,70,10,0.34)] transition-[filter] duration-300 group-hover:drop-shadow-[0_14px_28px_rgba(0,0,0,0.5)]"
         aria-hidden
       >
@@ -131,7 +139,7 @@ export function AboutHoneyCTA() {
             <stop offset="40%" stopColor="#ffd24a" />
             <stop offset="100%" stopColor="#b07808" />
           </linearGradient>
-          <radialGradient id="ah-glow" cx="50%" cy="42%" r="48%">
+          <radialGradient id="ah-glow" cx="50%" cy="48%" r="46%">
             <stop offset="0%" stopColor="rgba(255,248,200,0.55)" />
             <stop offset="55%" stopColor="rgba(240,176,32,0.2)" />
             <stop offset="100%" stopColor="rgba(160,90,10,0)" />
@@ -149,36 +157,62 @@ export function AboutHoneyCTA() {
           </filter>
         </defs>
 
-        <ellipse cx="110" cy="110" rx="92" ry="78" fill="url(#ah-glow)" className="about-nectar-glow" />
+        <ellipse cx={CX} cy={CY} rx="96" ry="86" fill="url(#ah-glow)" className="about-nectar-glow" />
 
-        <g stroke="#6a4010" strokeWidth="1.45" strokeLinejoin="round" filter="url(#ah-soft)">
-          {cells.map((cell) => (
+        <g stroke="#6a4010" strokeWidth="1.35" strokeLinejoin="round" filter="url(#ah-soft)">
+          {/* Outer combs first (smaller) */}
+          {outer.map((cell) => (
             <g key={`${cell.cx}-${cell.cy}`}>
-              {/* Thin gold rim so hover black still feels like honeycomb */}
-              <path d={roundedHexAt(cell.cx, cell.cy, cell.r + 1.4)} fill="url(#ah-rim)" />
+              <path d={roundedHexAt(cell.cx, cell.cy, cell.r + 1.2)} fill="url(#ah-rim)" />
               <path d={roundedHexAt(cell.cx, cell.cy, cell.r)} fill="url(#ah-nectar)" />
             </g>
           ))}
+          {/* Large middle comb on top */}
+          <g>
+            <path d={roundedHexAt(center.cx, center.cy, center.r + 1.8)} fill="url(#ah-rim)" />
+            <path d={roundedHexAt(center.cx, center.cy, center.r)} fill="url(#ah-nectar)" />
+          </g>
         </g>
 
-        {/* Specular nectar highlights — soften on hover via CSS */}
-        <ellipse className="hex-flare" cx="78" cy="38" rx="11" ry="4.2" fill="rgba(255,255,255,0.62)" />
-        <ellipse className="hex-flare" cx="142" cy="38" rx="10" ry="3.8" fill="rgba(255,255,255,0.55)" />
-        <ellipse className="hex-flare" cx="110" cy="88" rx="14" ry="5" fill="rgba(255,255,255,0.48)" />
-        <ellipse className="hex-flare" cx="46" cy="90" rx="8" ry="3.2" fill="rgba(255,255,255,0.4)" />
-        <ellipse className="hex-flare" cx="174" cy="90" rx="8" ry="3.2" fill="rgba(255,255,255,0.38)" />
-        <ellipse className="hex-flare" cx="78" cy="142" rx="10" ry="3.6" fill="rgba(255,255,255,0.32)" />
-        <ellipse className="hex-flare" cx="142" cy="142" rx="10" ry="3.6" fill="rgba(255,255,255,0.3)" />
+        {/* Specular highlights */}
+        {outer.map((cell) => (
+          <ellipse
+            key={`flare-${cell.cx}`}
+            className="hex-flare"
+            cx={cell.cx}
+            cy={cell.cy - cell.r * 0.42}
+            rx={cell.r * 0.38}
+            ry={cell.r * 0.14}
+            fill="rgba(255,255,255,0.48)"
+          />
+        ))}
+        <ellipse
+          className="hex-flare"
+          cx={CX}
+          cy={CY - R * 0.38}
+          rx={R * 0.42}
+          ry={R * 0.15}
+          fill="rgba(255,255,255,0.55)"
+        />
 
-        <BeeGraphic x={196} y={168} />
+        <BeeGraphic x={198} y={178} />
       </svg>
 
-      {/* About Us centered in the middle of the comb */}
-      <span className="pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center px-6 text-center">
-        <span className="hex-title font-display text-[1.65rem] font-extrabold leading-none tracking-[0.04em] text-[#5a2808] transition-colors duration-300 sm:text-[1.85rem]">
+      {/* About Us only inside the large middle comb */}
+      <span
+        className="pointer-events-none absolute z-10 flex flex-col items-center justify-center text-center"
+        style={{
+          left: "50%",
+          top: "50%",
+          width: "42%",
+          height: "46%",
+          transform: "translate(-50%, -50%)",
+        }}
+      >
+        <span className="hex-title font-display text-[1.15rem] font-extrabold leading-[1.05] tracking-[0.02em] text-[#5a2808] transition-colors duration-300 sm:text-[1.3rem]">
           {ui.aboutUs.en}
         </span>
-        <span className="hex-te font-telugu mt-1.5 text-[1.05rem] font-bold leading-snug text-[#6a3010] transition-colors duration-300 sm:text-[1.15rem]">
+        <span className="hex-te font-telugu mt-1 text-[0.78rem] font-bold leading-snug text-[#6a3010] transition-colors duration-300 sm:text-[0.88rem]">
           {ui.aboutUs.te}
         </span>
       </span>
