@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { HEX_ROUNDED, HEX_VIEW, INNER_ROUNDED, roundedHexAt } from "@/lib/hexPaths";
+import { roundedHexAt } from "@/lib/hexPaths";
 import { ui } from "@/lib/content";
 
 /** Cute cartoon bee for the About honeycomb. */
 function BeeGraphic({ x, y }: { x: number; y: number }) {
   return (
-    <g className="about-bee" transform={`translate(${x} ${y})`}>
+    <g className="about-bee" transform={`translate(${x} ${y}) scale(0.92)`}>
       <path
         d="M-28 -8 C-18 -18 -6 -20 4 -10"
         fill="none"
@@ -73,112 +73,133 @@ function BeeGraphic({ x, y }: { x: number; y: number }) {
   );
 }
 
-/** Honeycomb cluster + bee + About Us written inside a honeycomb. */
+type Cell = { cx: number; cy: number; r: number; fill: "nectar" | "amber" | "deep" };
+
+/** Rich nectar honeycomb with About Us blended into the comb. */
 export function AboutHoneyCTA() {
+  const cells: Cell[] = [
+    { cx: 78, cy: 52, r: 34, fill: "nectar" },
+    { cx: 142, cy: 52, r: 34, fill: "amber" },
+    { cx: 46, cy: 104, r: 32, fill: "amber" },
+    { cx: 110, cy: 104, r: 36, fill: "nectar" },
+    { cx: 174, cy: 104, r: 32, fill: "deep" },
+    { cx: 78, cy: 156, r: 34, fill: "deep" },
+    { cx: 142, cy: 156, r: 34, fill: "nectar" },
+  ];
+
   return (
     <Link
       href="/about"
       aria-label={`${ui.aboutUs.en} · ${ui.aboutUs.te}`}
-      className="about-honey group relative mx-auto flex w-[min(100%,16.5rem)] flex-col items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f0b020]"
+      className="about-honey group relative mx-auto block w-[min(100%,18rem)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f0b020]"
     >
-      {/* Small comb cluster + bee above the title hex */}
       <svg
-        viewBox="0 0 200 150"
-        className="relative z-10 -mb-3 h-auto w-[88%] drop-shadow-[0_8px_16px_rgba(120,70,10,0.22)] transition-transform duration-300 group-hover:-translate-y-1"
+        viewBox="0 0 220 220"
+        className="h-auto w-full drop-shadow-[0_16px_32px_rgba(120,70,10,0.34)] transition-transform duration-300 group-hover:-translate-y-1.5 group-hover:scale-[1.03]"
         aria-hidden
       >
         <defs>
-          <linearGradient id="ah-wax" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#fff0b0" />
-            <stop offset="40%" stopColor="#ffd24a" />
-            <stop offset="100%" stopColor="#c88810" />
+          <linearGradient id="ah-nectar" x1="0.2" y1="0" x2="0.85" y2="1">
+            <stop offset="0%" stopColor="#fff6c0" />
+            <stop offset="28%" stopColor="#ffe060" />
+            <stop offset="62%" stopColor="#f0a818" />
+            <stop offset="100%" stopColor="#b86808" />
           </linearGradient>
-          <linearGradient id="ah-cell" x1="0.15" y1="0" x2="0.85" y2="1">
-            <stop offset="0%" stopColor="#fff8d0" />
-            <stop offset="55%" stopColor="#f0b020" />
-            <stop offset="100%" stopColor="#b07008" />
+          <linearGradient id="ah-amber" x1="0.15" y1="0" x2="0.9" y2="1">
+            <stop offset="0%" stopColor="#fff0a0" />
+            <stop offset="40%" stopColor="#ffc830" />
+            <stop offset="100%" stopColor="#c87810" />
           </linearGradient>
-          <filter id="ah-soft" x="-15%" y="-15%" width="130%" height="130%">
-            <feGaussianBlur in="SourceAlpha" stdDeviation="1.4" result="b" />
-            <feOffset dy="1" result="o" />
+          <linearGradient id="ah-deep" x1="0.2" y1="0" x2="0.8" y2="1">
+            <stop offset="0%" stopColor="#ffe878" />
+            <stop offset="45%" stopColor="#e09818" />
+            <stop offset="100%" stopColor="#9a5808" />
+          </linearGradient>
+          <radialGradient id="ah-glow" cx="50%" cy="42%" r="48%">
+            <stop offset="0%" stopColor="rgba(255,248,200,0.72)" />
+            <stop offset="55%" stopColor="rgba(240,176,32,0.28)" />
+            <stop offset="100%" stopColor="rgba(160,90,10,0)" />
+          </radialGradient>
+          <filter id="ah-soft" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="1.8" result="b" />
+            <feOffset dy="1.5" result="o" />
             <feComponentTransfer in="o" result="s">
-              <feFuncA type="linear" slope="0.25" />
+              <feFuncA type="linear" slope="0.28" />
             </feComponentTransfer>
             <feMerge>
               <feMergeNode in="s" />
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
+          <filter id="ah-text-glow" x="-30%" y="-40%" width="160%" height="180%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="2.4" result="blur" />
+            <feFlood floodColor="#fff4b0" floodOpacity="0.85" result="color" />
+            <feComposite in="color" in2="blur" operator="in" result="soft" />
+            <feMerge>
+              <feMergeNode in="soft" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
         </defs>
 
+        {/* Soft nectar bloom behind the comb */}
+        <ellipse cx="110" cy="110" rx="92" ry="78" fill="url(#ah-glow)" />
+
         <g
-          stroke="#7a5010"
-          strokeWidth="1.35"
+          stroke="#6a4010"
+          strokeWidth="1.45"
           strokeLinejoin="round"
           filter="url(#ah-soft)"
         >
-          <path d={roundedHexAt(64, 38, 26)} fill="url(#ah-cell)" />
-          <path d={roundedHexAt(108, 38, 26)} fill="url(#ah-wax)" />
-          <path d={roundedHexAt(152, 38, 24)} fill="url(#ah-cell)" opacity="0.95" />
-          <path d={roundedHexAt(42, 72, 24)} fill="url(#ah-wax)" opacity="0.9" />
-          <path d={roundedHexAt(86, 72, 26)} fill="url(#ah-cell)" />
-          <path d={roundedHexAt(130, 72, 26)} fill="url(#ah-wax)" />
-          <path d={roundedHexAt(64, 106, 24)} fill="url(#ah-wax)" />
-          <path d={roundedHexAt(108, 106, 26)} fill="url(#ah-cell)" />
+          {cells.map((cell) => (
+            <path
+              key={`${cell.cx}-${cell.cy}`}
+              d={roundedHexAt(cell.cx, cell.cy, cell.r)}
+              fill={
+                cell.fill === "nectar"
+                  ? "url(#ah-nectar)"
+                  : cell.fill === "amber"
+                    ? "url(#ah-amber)"
+                    : "url(#ah-deep)"
+              }
+            />
+          ))}
         </g>
-        <ellipse cx="86" cy="58" rx="9" ry="3.5" fill="rgba(255,255,255,0.5)" />
-        <ellipse cx="108" cy="28" rx="7" ry="2.8" fill="rgba(255,255,255,0.45)" />
-        <BeeGraphic x={168} y={118} />
+
+        {/* Specular nectar highlights */}
+        <ellipse cx="78" cy="38" rx="11" ry="4.2" fill="rgba(255,255,255,0.62)" />
+        <ellipse cx="142" cy="38" rx="10" ry="3.8" fill="rgba(255,255,255,0.55)" />
+        <ellipse cx="110" cy="88" rx="14" ry="5" fill="rgba(255,255,255,0.48)" />
+        <ellipse cx="46" cy="90" rx="8" ry="3.2" fill="rgba(255,255,255,0.4)" />
+        <ellipse cx="174" cy="90" rx="8" ry="3.2" fill="rgba(255,255,255,0.38)" />
+        <ellipse cx="78" cy="142" rx="10" ry="3.6" fill="rgba(255,255,255,0.32)" />
+        <ellipse cx="142" cy="142" rx="10" ry="3.6" fill="rgba(255,255,255,0.3)" />
+
+        {/* Inner honey sheen on center cell */}
+        <path
+          d={roundedHexAt(110, 104, 22)}
+          fill="rgba(255,250,210,0.28)"
+          stroke="none"
+        />
+
+        <BeeGraphic x={196} y={168} />
       </svg>
 
-      {/* About Us inside a honeycomb hex — no oval */}
-      <div className="relative z-20 flex h-[14.5rem] w-[12.75rem] flex-col items-center justify-center transition-transform duration-300 group-hover:-translate-y-1.5 group-hover:scale-[1.03] sm:h-[15.5rem] sm:w-[13.5rem]">
-        <svg
-          className="absolute inset-0 h-full w-full drop-shadow-[0_14px_28px_rgba(120,70,10,0.32)]"
-          viewBox={HEX_VIEW}
-          preserveAspectRatio="xMidYMid meet"
-          aria-hidden
+      {/* About Us blended into the nectar — centered over the comb */}
+      <span className="pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center px-6 text-center">
+        <span
+          className="font-display text-[1.65rem] font-extrabold leading-none tracking-[0.04em] text-[#5a2808] drop-shadow-[0_1px_0_rgba(255,248,200,0.9)] sm:text-[1.85rem]"
+          style={{ textShadow: "0 0 18px rgba(255,244,176,0.95), 0 1px 0 rgba(255,250,220,0.9)" }}
         >
-          <defs>
-            <linearGradient id="ah-gold" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#fff6a8" />
-              <stop offset="35%" stopColor="#ffd24a" />
-              <stop offset="70%" stopColor="#e0a010" />
-              <stop offset="100%" stopColor="#b07808" />
-            </linearGradient>
-            <linearGradient id="ah-face" x1="0.2" y1="0" x2="0.85" y2="1">
-              <stop offset="0%" stopColor="#fff2a8" />
-              <stop offset="45%" stopColor="#f0b020" />
-              <stop offset="100%" stopColor="#a86808" />
-            </linearGradient>
-            <radialGradient id="ah-shine" cx="50%" cy="18%" r="55%">
-              <stop offset="0%" stopColor="rgba(255,255,255,0.55)" />
-              <stop offset="60%" stopColor="rgba(255,255,255,0)" />
-            </radialGradient>
-          </defs>
-          <path
-            d={HEX_ROUNDED}
-            fill="url(#ah-gold)"
-            stroke="#7a5010"
-            strokeWidth="1.15"
-            strokeLinejoin="round"
-            strokeLinecap="round"
-          />
-          <path d={INNER_ROUNDED} fill="url(#ah-face)" strokeLinejoin="round" />
-          <path d={INNER_ROUNDED} fill="url(#ah-shine)" />
-          <ellipse cx="50" cy="14" rx="8" ry="3.4" fill="rgba(255,255,255,0.85)" />
-          <ellipse cx="50" cy="102" rx="6" ry="2.6" fill="rgba(255,255,255,0.28)" />
-        </svg>
-
-        <span className="relative z-10 flex w-[72%] flex-col items-center text-center">
-          <span className="font-display text-[1.55rem] font-extrabold leading-none tracking-wide text-white drop-shadow-[0_1px_2px_rgba(60,30,0,0.45)] sm:text-[1.7rem]">
-            {ui.aboutUs.en}
-          </span>
-          <span className="font-telugu mt-2 text-[1.05rem] font-bold leading-snug text-[#fff8d8] sm:text-[1.15rem]">
-            {ui.aboutUs.te}
-          </span>
+          {ui.aboutUs.en}
         </span>
-      </div>
+        <span
+          className="font-telugu mt-1.5 text-[1.05rem] font-bold leading-snug text-[#6a3010] sm:text-[1.15rem]"
+          style={{ textShadow: "0 0 14px rgba(255,244,176,0.9), 0 1px 0 rgba(255,250,220,0.85)" }}
+        >
+          {ui.aboutUs.te}
+        </span>
+      </span>
     </Link>
   );
 }
